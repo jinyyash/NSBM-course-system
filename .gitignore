@@ -61,3 +61,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/Course Enrollment system/nbproject/private/
+/Course Enrollment system/build/
