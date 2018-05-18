@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,18 +11,12 @@ package edu.ucsc.ce.models;
  */
 public class StudentDTO {
     private Integer sid;
-    private Integer fid;
+    private FacultyDTO facultyDTO;
     private String name;
     private String address;
     private String dob;
 
-    public StudentDTO(Integer sid, Integer fid, String name, String address, String dob) {
-        this.sid = sid;
-        this.fid = fid;
-        this.name = name;
-        this.address = address;
-        this.dob = dob;
-    }
+   
     
     
 
@@ -40,20 +34,7 @@ public class StudentDTO {
         this.sid = sid;
     }
 
-    /**
-     * @return the fid
-     */
-    public Integer getFid() {
-        return fid;
-    }
-
-    /**
-     * @param fid the fid to set
-     */
-    public void setFid(Integer fid) {
-        this.fid = fid;
-    }
-
+    
     /**
      * @return the name
      */
@@ -94,6 +75,20 @@ public class StudentDTO {
      */
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    /**
+     * @return the facultyDTO
+     */
+    public FacultyDTO getFacultyDTO() {
+        return facultyDTO;
+    }
+
+    /**
+     * @param facultyDTO the facultyDTO to set
+     */
+    public void setFacultyDTO(FacultyDTO facultyDTO) {
+        this.facultyDTO = facultyDTO;
     }
     
 }
