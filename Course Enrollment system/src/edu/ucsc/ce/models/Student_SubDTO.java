@@ -18,45 +18,7 @@ public class Student_SubDTO {
     /**
      * @return the sid
      */
-    public Integer getSid() {
-        return sid;
-    }
-
-    /**
-     * @param sid the sid to set
-     */
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
-    /**
-     * @return the subid
-     */
-    public Integer getSubid() {
-        return subid;
-    }
-
-    /**
-     * @param subid the subid to set
-     */
-    public void setSubid(Integer subid) {
-        this.subid = subid;
-    }
-
-    /**
-     * @return the ssid
-     */
-    public Integer getSsid() {
-        return ssid;
-    }
-
-    /**
-     * @param ssid the ssid to set
-     */
-    public void setSsid(Integer ssid) {
-        this.ssid = ssid;
-    }
-
+   
     /**
      * @return the studentDTO
      */
@@ -83,6 +45,20 @@ public class Student_SubDTO {
      */
     public void setSubjectDTO(SubjectDTO subjectDTO) {
         this.subjectDTO = subjectDTO;
+    }
+
+    /**
+     * @return the ssid
+     */
+    public Integer getSsid() {
+        return ssid;
+    }
+
+    /**
+     * @param ssid the ssid to set
+     */
+    public void setSsid(Integer ssid) {
+        this.ssid = ssid;
     }
 
 }

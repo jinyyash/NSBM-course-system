@@ -16,6 +16,7 @@ public class SubjectDTO {
     private String semester;
     private Integer credits;
     private Double price;
+    private String duration;
 
     /**
      * @return the sid
@@ -101,5 +102,19 @@ public class SubjectDTO {
      */
     public void setLectureDTO(LectureDTO lectureDTO) {
         this.lectureDTO = lectureDTO;
+    }
+
+    /**
+     * @return the duration
+     */
+    public String getDuration() {
+        return duration;
+    }
+
+    /**
+     * @param duration the duration to set
+     */
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 }
