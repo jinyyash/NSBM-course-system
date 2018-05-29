@@ -11,6 +11,7 @@ package edu.ucsc.ce.models;
  */
 public class StudentDTO {
     private Integer sid;
+    private String NIC;
     private FacultyDTO facultyDTO;
     private String name;
     private String address;
@@ -89,6 +90,20 @@ public class StudentDTO {
      */
     public void setFacultyDTO(FacultyDTO facultyDTO) {
         this.facultyDTO = facultyDTO;
+    }
+
+    /**
+     * @return the NIC
+     */
+    public String getNIC() {
+        return NIC;
+    }
+
+    /**
+     * @param NIC the NIC to set
+     */
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
     }
     
 }
