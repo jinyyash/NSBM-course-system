@@ -11,8 +11,10 @@ package edu.ucsc.ce.models;
  */
 public class LectureDTO {
     private Integer lid;
+    private String NIC;
     private String name;
     private String quali;
+    private String speciality;
 
     /**
      * @return the lid
@@ -54,6 +56,34 @@ public class LectureDTO {
      */
     public void setQuali(String quali) {
         this.quali = quali;
+    }
+
+    /**
+     * @return the NIC
+     */
+    public String getNIC() {
+        return NIC;
+    }
+
+    /**
+     * @param NIC the NIC to set
+     */
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
+    }
+
+    /**
+     * @return the speciality
+     */
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    /**
+     * @param speciality the speciality to set
+     */
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
     
 }
