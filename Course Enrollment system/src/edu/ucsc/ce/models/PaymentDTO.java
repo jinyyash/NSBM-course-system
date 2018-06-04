@@ -12,8 +12,10 @@ import java.beans.PropertyChangeSupport;
  * @author Jinadi
  */
 public class PaymentDTO {
+
     private Integer pid;
-    private Integer ssid;
+    private SubjectDTO subjectDTO;
+    private StudentDTO studentDTO;
     private String date;
     private String time;
 
@@ -30,24 +32,10 @@ public class PaymentDTO {
     public void setPid(Integer pid) {
         java.lang.Integer oldPid = this.pid;
         this.pid = pid;
-        propertyChangeSupport.firePropertyChange(PROP_PID, oldPid, pid);
+        getPropertyChangeSupport().firePropertyChange(getPROP_PID(), oldPid, pid);
     }
 
-    /**
-     * @return the ssid
-     */
-    public Integer getSsid() {
-        return ssid;
-    }
-
-    /**
-     * @param ssid the ssid to set
-     */
-    public void setSsid(Integer ssid) {
-        java.lang.Integer oldSsid = this.ssid;
-        this.ssid = ssid;
-        propertyChangeSupport.firePropertyChange(PROP_SSID, oldSsid, ssid);
-    }
+    
 
     /**
      * @return the date
@@ -62,7 +50,7 @@ public class PaymentDTO {
     public void setDate(String date) {
         java.lang.String oldDate = this.date;
         this.date = date;
-        propertyChangeSupport.firePropertyChange(PROP_DATE, oldDate, date);
+        getPropertyChangeSupport().firePropertyChange(getPROP_DATE(), oldDate, date);
     }
 
     /**
@@ -78,12 +66,110 @@ public class PaymentDTO {
     public void setTime(String time) {
         java.lang.String oldTime = this.time;
         this.time = time;
-        propertyChangeSupport.firePropertyChange(PROP_TIME, oldTime, time);
+        getPropertyChangeSupport().firePropertyChange(getPROP_TIME(), oldTime, time);
     }
-    private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
-    public static final String PROP_PID = "pid";
-    public static final String PROP_SSID = "ssid";
-    public static final String PROP_DATE = "date";
-    public static final String PROP_TIME = "time";
-    
+    private transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
+    private static String PROP_PID = "pid";
+    private static String PROP_SSID = "ssid";
+    private static String PROP_DATE = "date";
+    private static String PROP_TIME = "time";
+
+    /**
+     * @return the subjectDTO
+     */
+    public SubjectDTO getSubjectDTO() {
+        return subjectDTO;
+    }
+
+    /**
+     * @param subjectDTO the subjectDTO to set
+     */
+    public void setSubjectDTO(SubjectDTO subjectDTO) {
+        this.subjectDTO = subjectDTO;
+    }
+
+    /**
+     * @return the studentDTO
+     */
+    public StudentDTO getStudentDTO() {
+        return studentDTO;
+    }
+
+    /**
+     * @param studentDTO the studentDTO to set
+     */
+    public void setStudentDTO(StudentDTO studentDTO) {
+        this.studentDTO = studentDTO;
+    }
+
+    /**
+     * @return the propertyChangeSupport
+     */
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
+
+    /**
+     * @param propertyChangeSupport the propertyChangeSupport to set
+     */
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        this.propertyChangeSupport = propertyChangeSupport;
+    }
+
+    /**
+     * @return the PROP_PID
+     */
+    public static String getPROP_PID() {
+        return PROP_PID;
+    }
+
+    /**
+     * @param aPROP_PID the PROP_PID to set
+     */
+    public static void setPROP_PID(String aPROP_PID) {
+        PROP_PID = aPROP_PID;
+    }
+
+    /**
+     * @return the PROP_SSID
+     */
+    public static String getPROP_SSID() {
+        return PROP_SSID;
+    }
+
+    /**
+     * @param aPROP_SSID the PROP_SSID to set
+     */
+    public static void setPROP_SSID(String aPROP_SSID) {
+        PROP_SSID = aPROP_SSID;
+    }
+
+    /**
+     * @return the PROP_DATE
+     */
+    public static String getPROP_DATE() {
+        return PROP_DATE;
+    }
+
+    /**
+     * @param aPROP_DATE the PROP_DATE to set
+     */
+    public static void setPROP_DATE(String aPROP_DATE) {
+        PROP_DATE = aPROP_DATE;
+    }
+
+    /**
+     * @return the PROP_TIME
+     */
+    public static String getPROP_TIME() {
+        return PROP_TIME;
+    }
+
+    /**
+     * @param aPROP_TIME the PROP_TIME to set
+     */
+    public static void setPROP_TIME(String aPROP_TIME) {
+        PROP_TIME = aPROP_TIME;
+    }
+
 }

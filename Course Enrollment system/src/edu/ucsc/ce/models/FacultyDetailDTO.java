@@ -13,7 +13,6 @@ public class FacultyDetailDTO {
     private Integer fdid;
     private FacultyDTO facultyDTO;
     private CourseDTO courseDTO;
-    private String startDate;
     private String intake;
 
     /**
@@ -34,20 +33,6 @@ public class FacultyDetailDTO {
      * @return the fid
      */
   
-
-    /**
-     * @return the startDate
-     */
-    public String getStartDate() {
-        return startDate;
-    }
-
-    /**
-     * @param startDate the startDate to set
-     */
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
 
     /**
      * @return the intake

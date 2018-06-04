@@ -13,6 +13,7 @@ public class LabDetailDTO {
     private Integer ldid;
     private LabDTO labDTO;
     private InstructorDTO instructorDTO;
+    private SubjectDTO subjectDTO;
 
     /**
      * @return the ldid
@@ -54,6 +55,20 @@ public class LabDetailDTO {
      */
     public void setInstructorDTO(InstructorDTO instructorDTO) {
         this.instructorDTO = instructorDTO;
+    }
+
+    /**
+     * @return the subjectDTO
+     */
+    public SubjectDTO getSubjectDTO() {
+        return subjectDTO;
+    }
+
+    /**
+     * @param subjectDTO the subjectDTO to set
+     */
+    public void setSubjectDTO(SubjectDTO subjectDTO) {
+        this.subjectDTO = subjectDTO;
     }
    
     

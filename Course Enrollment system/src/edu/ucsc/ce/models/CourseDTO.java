@@ -12,8 +12,13 @@ package edu.ucsc.ce.models;
 public class CourseDTO {
 
     private Integer cid;
+    private String name;
+    private String batch;
+    private Integer subjectPerSem1;
+    private Integer subjectPerSem2;
+    private Integer batchYear;         
     private String type;
-    private Integer credit;
+    private Integer creditForSem;
 
     /**
      * @return the cid
@@ -46,15 +51,90 @@ public class CourseDTO {
     /**
      * @return the credit
      */
-    public Integer getCredit() {
-        return credit;
+    
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param credit the credit to set
+     * @param name the name to set
      */
-    public void setCredit(Integer credit) {
-        this.credit = credit;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the batch
+     */
+    public String getBatch() {
+        return batch;
+    }
+
+    /**
+     * @param batch the batch to set
+     */
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
+
+    /**
+     * @return the subjectPerSem1
+     */
+    public Integer getSubjectPerSem1() {
+        return subjectPerSem1;
+    }
+
+    /**
+     * @param subjectPerSem1 the subjectPerSem1 to set
+     */
+    public void setSubjectPerSem1(Integer subjectPerSem1) {
+        this.subjectPerSem1 = subjectPerSem1;
+    }
+
+    /**
+     * @return the subjectPerSem2
+     */
+    public Integer getSubjectPerSem2() {
+        return subjectPerSem2;
+    }
+
+    /**
+     * @param subjectPerSem2 the subjectPerSem2 to set
+     */
+    public void setSubjectPerSem2(Integer subjectPerSem2) {
+        this.subjectPerSem2 = subjectPerSem2;
+    }
+
+    /**
+     * @return the batchYear
+     */
+    public Integer getBatchYear() {
+        return batchYear;
+    }
+
+    /**
+     * @param batchYear the batchYear to set
+     */
+    public void setBatchYear(Integer batchYear) {
+        this.batchYear = batchYear;
+    }
+
+    /**
+     * @return the creditForSem
+     */
+    public Integer getCreditForSem() {
+        return creditForSem;
+    }
+
+    /**
+     * @param creditForSem the creditForSem to set
+     */
+    public void setCreditForSem(Integer creditForSem) {
+        this.creditForSem = creditForSem;
     }
 
 }

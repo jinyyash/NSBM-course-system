@@ -12,8 +12,9 @@ package edu.ucsc.ce.models;
 public class StudentDTO {
     private Integer sid;
     private CourseDTO courseDTO;
-    private String NIC;
+   
     private FacultyDTO facultyDTO;
+     private String NIC;
     private String name;
     private String address;
     private String dob;

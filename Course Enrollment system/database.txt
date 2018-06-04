@@ -1,0 +1,115 @@
+create table course(
+	CID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
+	name varchar(25),
+	batch VARCHAR(10),	
+	subjectPerSem1 INT,
+	subjectPerSem2 INT,
+	batchYear int,
+	type varchar(20),
+	creditsForSem int
+); 
+create table faculty(
+	FID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
+	name varchar(25),
+	startDate varchar(20)
+	
+); 
+
+create table student(
+	SID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	CID int NOT NULL,
+	FID int NOT NULL,
+	nic varchar(15),
+	name varchar(25),
+	address varchar(50),
+	dob varchar(10),
+	FOREIGN KEY (CID) REFERENCES Courses(CID),
+	FOREIGN KEY (FID) REFERENCES Facult(FID)
+);
+create table facultyDetails(
+	FDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
+	FID int NOT NULL,
+	CID int NOT NULL,
+	intake varchar(20),
+	FOREIGN KEY (CID) REFERENCES Courses(CID),
+	FOREIGN KEY (FID) REFERENCES Facult(FID)
+);
+create table Lecturer(
+	LID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nic varchar(15),
+	name varchar(25),
+	qualification varchar(50),
+	speciality varchar(30)
+	
+);
+create table subject(
+	SSID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	LID int NOT NULL,
+	name varchar(25),
+	semester varchar(10),
+	credits int,
+	price decimal(10),
+	duration varchar(10),
+	FOREIGN KEY (LID) REFERENCES Lecturer(LID)
+	
+);	
+create table Exam(
+	EID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	LID int NOT NULL,
+	name varchar(25),
+	semester varchar(10),
+	credits int,
+	price decimal(10),
+	duration varchar(10),
+	FOREIGN KEY (LID) REFERENCES Lecturer(LID)
+	
+);
+create table Instructor(
+	IID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nic varchar(15),
+	name varchar(25),
+	address varchar(25),
+	qualification varchar(50),
+	tel integer
+	
+);
+create table InstructorDetails(
+	IDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	IID int NOT NULL,
+	SSID int NOT NULL,
+	name varchar(25),
+	semester varchar(10),
+	credits int,
+	price decimal(10),
+	duration varchar(10),
+	FOREIGN KEY (IID) REFERENCES Instructor(IID),
+	FOREIGN KEY (SSID) REFERENCES Subject(SSID)
+	
+);
+create table Lab(
+	LID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name varchar(25),
+	type varchar(25),
+	numOfO int,
+	numOfCom int	
+);
+create table LabDetails(
+	LDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	LID int NOT NULL,
+	IID int NOT NULL,
+	SSID int NOT NULL,
+	FOREIGN KEY (LID) REFERENCES Lab(LID),
+	FOREIGN KEY (IID) REFERENCES Instructor(IID),
+	FOREIGN KEY (SSID) REFERENCES Subject(SSID)
+	
+);
+create table Payment(
+	PID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	SID int NOT NULL,
+	SSID int NOT NULL,
+	date varchar(10),
+	time varchar(10),
+	FOREIGN KEY (SID) REFERENCES Student(SID),
+	FOREIGN KEY (SSID) REFERENCES Subject(SSID)
+	
+);	

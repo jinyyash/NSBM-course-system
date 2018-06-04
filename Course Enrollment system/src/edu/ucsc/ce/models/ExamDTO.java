@@ -11,6 +11,7 @@ package edu.ucsc.ce.models;
  */
 public class ExamDTO {
     private Integer eid;
+    private SubjectDTO subjectDTO;
     private String examType;
     private String date;
     private Double Stime;
@@ -84,6 +85,20 @@ public class ExamDTO {
      */
     public void setEtime(Double Etime) {
         this.Etime = Etime;
+    }
+
+    /**
+     * @return the subjectDTO
+     */
+    public SubjectDTO getSubjectDTO() {
+        return subjectDTO;
+    }
+
+    /**
+     * @param subjectDTO the subjectDTO to set
+     */
+    public void setSubjectDTO(SubjectDTO subjectDTO) {
+        this.subjectDTO = subjectDTO;
     }
     
     
