@@ -35,7 +35,7 @@ create table facultyDetails(
 	FOREIGN KEY (FID) REFERENCES Facult(FID)
 );
 create table Lecturer(
-	LID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	LID varchar(10) NOT NULL PRIMARY KEY ,
 	nic varchar(15),
 	name varchar(25),
 	qualification varchar(50),
