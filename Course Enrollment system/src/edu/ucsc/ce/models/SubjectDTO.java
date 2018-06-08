@@ -11,7 +11,7 @@ package edu.ucsc.ce.models;
  */
 public class SubjectDTO {
     private Integer sid;
-    private LectureDTO lectureDTO;
+    private LecturerDTO lectureDTO;
     private String name;
     private String semester;
     private Integer credits;
@@ -93,14 +93,14 @@ public class SubjectDTO {
     /**
      * @return the lectureDTO
      */
-    public LectureDTO getLectureDTO() {
+    public LecturerDTO getLectureDTO() {
         return lectureDTO;
     }
 
     /**
      * @param lectureDTO the lectureDTO to set
      */
-    public void setLectureDTO(LectureDTO lectureDTO) {
+    public void setLectureDTO(LecturerDTO lectureDTO) {
         this.lectureDTO = lectureDTO;
     }
 

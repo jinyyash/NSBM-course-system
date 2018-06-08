@@ -5,8 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.LecturerController;
+import edu.ucsc.ce.models.LecturerDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,13 +53,15 @@ public class AddLecturerForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtNIC = new javax.swing.JTextField();
+        txtq = new javax.swing.JTextField();
         txtNIC1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtNIC2 = new javax.swing.JTextField();
+        txtspeci = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
 
@@ -212,37 +220,45 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 180, 80));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 180, 80));
 
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 330, 50));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 330, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Qualification");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 180, 80));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 80));
 
-        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 330, 50));
+        txtq.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtq, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 330, 50));
 
         txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 330, 50));
+        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 330, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel11.setText("NIC");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 180, 80));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 180, 80));
 
-        txtNIC2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 330, 50));
+        txtspeci.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtspeci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtspeciActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtspeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 330, 50));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel12.setText("Speciality");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 180, 80));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 180, 80));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setText("            Add");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel18MouseEntered(evt);
             }
@@ -265,6 +281,13 @@ public class AddLecturerForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("ID");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 180, 80));
+
+        txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 330, 50));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 620, 10));
@@ -372,6 +395,14 @@ public class AddLecturerForm extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+       addLecturer();
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void txtspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeciActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtspeciActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -413,6 +444,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -430,13 +462,34 @@ public class AddLecturerForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtNIC;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNIC1;
-    private javax.swing.JTextField txtNIC2;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtq;
+    private javax.swing.JTextField txtspeci;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
 
+    }
+
+    private void addLecturer() {
+        try {
+            String id=txtID.getText();
+            String name=txtName.getText();
+            String nic=txtNIC1.getText();
+            String qua=txtq.getText();
+            String speciality=txtspeci.getText();
+            LecturerDTO lecturerDTO=new LecturerDTO(id, nic, name, qua, speciality);
+            boolean add=LecturerController.addLecturer(lecturerDTO);
+            if(add){
+                JOptionPane.showMessageDialog(null,"Lecturer Added sucessfully");
+            }else{
+                JOptionPane.showMessageDialog(null,"OOPz!Try Again");
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+             JOptionPane.showMessageDialog(null,"OOPz!Try Again");
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

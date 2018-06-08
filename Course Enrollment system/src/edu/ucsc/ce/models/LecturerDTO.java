@@ -9,26 +9,26 @@ package edu.ucsc.ce.models;
  *
  * @author Jinadi
  */
-public class LectureDTO {
-    private Integer lid;
+public class LecturerDTO {
+    private String lid;
     private String NIC;
     private String name;
     private String quali;
     private String speciality;
 
-    /**
-     * @return the lid
-     */
-    public Integer getLid() {
-        return lid;
+    public LecturerDTO(String lid, String NIC, String name, String quali, String speciality) {
+        this.lid = lid;
+        this.NIC = NIC;
+        this.name = name;
+        this.quali = quali;
+        this.speciality = speciality;
     }
 
-    /**
-     * @param lid the lid to set
-     */
-    public void setLid(Integer lid) {
-        this.lid = lid;
-    }
+    
+    
+    
+
+   
 
     /**
      * @return the name
@@ -84,6 +84,20 @@ public class LectureDTO {
      */
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
+    }
+
+    /**
+     * @return the lid
+     */
+    public String getLid() {
+        return lid;
+    }
+
+    /**
+     * @param lid the lid to set
+     */
+    public void setLid(String lid) {
+        this.lid = lid;
     }
     
 }
