@@ -5,8 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.InstructorControll;
+import edu.ucsc.ce.models.InstructorDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,13 +41,13 @@ public class AddInstructorForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        txtNIC = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAdd = new javax.swing.JTextArea();
-        txtNIC2 = new javax.swing.JTextField();
+        txtQ = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtNIC1 = new javax.swing.JTextField();
-        txtNIC3 = new javax.swing.JTextField();
+        txtTel = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -78,8 +84,8 @@ public class AddInstructorForm extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 320, 40));
 
-        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 580, 320, 40));
+        txtEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 580, 320, 40));
 
         txtAdd.setColumns(20);
         txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -88,8 +94,8 @@ public class AddInstructorForm extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 320, 110));
 
-        txtNIC2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 320, 40));
+        txtQ.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 320, 40));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
@@ -99,8 +105,8 @@ public class AddInstructorForm extends javax.swing.JFrame {
         txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 320, 40));
 
-        txtNIC3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 320, 40));
+        txtTel.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 320, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Telphone");
@@ -278,6 +284,9 @@ public class AddInstructorForm extends javax.swing.JFrame {
         jLabel18.setText("            Add");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel18MouseEntered(evt);
             }
@@ -411,6 +420,10 @@ public class AddInstructorForm extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+       addInstructor();
+    }//GEN-LAST:event_jLabel18MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -475,12 +488,12 @@ public class AddInstructorForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
     private javax.swing.JTextArea txtAdd;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIID;
-    private javax.swing.JTextField txtNIC;
     private javax.swing.JTextField txtNIC1;
-    private javax.swing.JTextField txtNIC2;
-    private javax.swing.JTextField txtNIC3;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtQ;
+    private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
@@ -488,12 +501,41 @@ public class AddInstructorForm extends javax.swing.JFrame {
     }
 
     private void loadInstructurID() {
-        Str
-         if (lecID.equals("")) {
-                txtID.setText("LEC001");
+        try {
+            String id=InstructorControll.getLastInstrucorDTOID();
+            if (id==null) {
+                txtIID.setText("IN001");
             } else {
-                String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+                String iid = id.substring(id.length() - 1, id.length());
+                txtIID.setText(id.substring(0, id.length()-1) + (Integer.parseInt(iid) + 1));
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddInstructorForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddInstructorForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void addInstructor() {
+        try {
+            String id=txtIID.getText();
+            String name=txtName.getText();
+            String nic=txtNIC1.getText();
+            String add=txtAdd.getText();
+            String qua=txtQ.getText();
+            int tel=Integer.parseInt(txtTel.getText());
+            String email=txtEmail.getText();
+            InstructorDTO dTO=new InstructorDTO(id, name, nic, add, qua, tel, email);
+            boolean ad=InstructorControll.addLecturer(dTO);
+            if(ad){
+                JOptionPane.showMessageDialog(null,"Instructor added sucessfully");
+            }else{
+                  JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+            Logger.getLogger(AddInstructorForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

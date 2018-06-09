@@ -21,7 +21,7 @@ import java.sql.Statement;
 public class InstructorControll {
 
     public static boolean addLecturer(InstructorDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into instructor values(?,?,?,?,?)";
+        String sql = "insert into instructor values(?,?,?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getIid());
@@ -34,20 +34,20 @@ public class InstructorControll {
         return stm.executeUpdate() > 0;
     }
 
-    public static LecturerDTO searchLecturerDTO(String LecturerDTOID) throws SQLException, ClassNotFoundException {
-        String sql = "select * from lecturer where LecturerDTOID='" + LecturerDTOID + "'";
+    public static InstructorDTO searchLecturerDTO(String iid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from instructor where iid='" + iid + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
-        LecturerDTO lec = null;
+        InstructorDTO idto=null;
         if (rst.next()) {
-            lec = new LecturerDTO(LecturerDTOID, rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
+            idto = new InstructorDTO(iid, rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5),Integer.parseInt(rst.getString(6)),rst.getString(7));
         }
-        return lec;
+        return idto;
     }
 
-    public static String getLastLecturerDTOID() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM lecturer ORDER BY LID DESC LIMIT 1";
+    public static String getLastInstrucorDTOID() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM instructor ORDER BY IID DESC LIMIT 1";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);

@@ -11,28 +11,26 @@ package edu.ucsc.ce.models;
  */
 public class InstructorDTO {
     private String  iid;
-    private Integer name;
+    private String name;
     private String nic;
     private String address;
     private String qualification;
     private Integer tel;
     private String email;
 
-    
-    /**
-     * @return the name
-     */
-    public Integer getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(Integer name) {
+    public InstructorDTO(String iid, String name, String nic, String address, String qualification, Integer tel, String email) {
+        this.iid = iid;
         this.name = name;
+        this.nic = nic;
+        this.address = address;
+        this.qualification = qualification;
+        this.tel = tel;
+        this.email = email;
     }
 
+    
+    
+   
     /**
      * @return the nic
      */
@@ -115,6 +113,20 @@ public class InstructorDTO {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
     
     
