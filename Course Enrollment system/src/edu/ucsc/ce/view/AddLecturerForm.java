@@ -26,6 +26,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
     public AddLecturerForm() {
         initComponents();
         enchan();
+        setLecID();
     }
 
     /**
@@ -287,7 +288,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 180, 80));
 
         txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 330, 50));
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 320, 50));
 
         jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 620, 10));
@@ -348,31 +349,31 @@ public class AddLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStudeMouseExited
 
     private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-    lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblLecMouseExited
 
     private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-    lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblinsMouseExited
 
     private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-    lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblPaymentMouseExited
 
     private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-    lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-    lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
     private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-           lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
     }//GEN-LAST:event_lblExamMouseExited
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-    lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -396,7 +397,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseExited
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-       addLecturer();
+        addLecturer();
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void txtspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeciActionPerformed
@@ -475,20 +476,37 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
     private void addLecturer() {
         try {
-            String id=txtID.getText();
-            String name=txtName.getText();
-            String nic=txtNIC1.getText();
-            String qua=txtq.getText();
-            String speciality=txtspeci.getText();
-            LecturerDTO lecturerDTO=new LecturerDTO(id, nic, name, qua, speciality);
-            boolean add=LecturerController.addLecturer(lecturerDTO);
-            if(add){
-                JOptionPane.showMessageDialog(null,"Lecturer Added sucessfully");
-            }else{
-                JOptionPane.showMessageDialog(null,"OOPz!Try Again");
+            String id = txtID.getText();
+            String name = txtName.getText();
+            String nic = txtNIC1.getText();
+            String qua = txtq.getText();
+            String speciality = txtspeci.getText();
+            LecturerDTO lecturerDTO = new LecturerDTO(id, nic, name, qua, speciality);
+            boolean add = LecturerController.addLecturer(lecturerDTO);
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Lecturer Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
             }
         } catch (SQLException | ClassNotFoundException ex) {
-             JOptionPane.showMessageDialog(null,"OOPz!Try Again");
+            JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setLecID() {
+
+        try {
+            String lecID = LecturerController.getLastLecturerDTOID();
+            if (lecID.equals("")) {
+                txtID.setText("LEC001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

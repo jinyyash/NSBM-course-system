@@ -66,4 +66,26 @@ public class LecturerController {
         return courseList;
 
     }
+     public static String getLastLecturerDTOID() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM lecturer ORDER BY LID DESC LIMIT 1";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        String lec = null;
+        if (rst.next()) {
+           lec=rst.getString(1);
+        }
+        return lec ;
+    }
+      public static boolean updateLecture(LecturerDTO ldto) throws SQLException, ClassNotFoundException {
+        String sql = "Update lecturer set nic=?, name=?, qualification=?,speciality=? where LID="+ldto.getLid()+"'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(1, ldto.getNIC());
+        stm.setObject(2, ldto.getName());
+        stm.setObject(3, ldto.getQuali());
+        stm.setObject(4, ldto.getSpeciality());
+        int res = stm.executeUpdate();
+        return res > 0;
+    }
 }
