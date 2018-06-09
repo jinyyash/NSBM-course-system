@@ -5,8 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.InstructorControll;
+import edu.ucsc.ce.models.InstructorDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,14 +39,14 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtNIC = new javax.swing.JTextField();
+        txtNIC1 = new javax.swing.JTextField();
+        txtEma = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAdd = new javax.swing.JTextArea();
-        txtNIC2 = new javax.swing.JTextField();
+        txtQ = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtNIC1 = new javax.swing.JTextField();
-        txtNIC3 = new javax.swing.JTextField();
+        txtIID = new javax.swing.JTextField();
+        txtTel = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -62,6 +68,8 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtName2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,54 +79,64 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 180, 70));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 180, 70));
 
-        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 320, 40));
+        txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 320, 40));
 
-        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 320, 40));
+        txtEma.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtEma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtEma, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 580, 320, 40));
 
         txtAdd.setColumns(20);
         txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtAdd.setRows(5);
         jScrollPane3.setViewportView(txtAdd);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 320, 110));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 320, 110));
 
-        txtNIC2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 320, 40));
+        txtQ.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 320, 40));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
         jLabel11.setText("Instructor");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 230, 50));
 
-        txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 260, 40));
+        txtIID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtIID, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 260, 40));
 
-        txtNIC3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 320, 40));
+        txtTel.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 510, 320, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Telphone");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 160, 50));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, 160, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel8.setText("E-Mail");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 160, 50));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 570, 160, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel7.setText("Qualification");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 120, 60));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 60));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel6.setText("Address");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 160, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 160, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel5.setText("NIC");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 190, 60));
+        jLabel5.setText("Instructor id");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 190, 60));
 
         pnlDash.setBackground(new java.awt.Color(0, 0, 0));
         pnlDash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,6 +294,9 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         jLabel18.setText("            Update");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel18MouseEntered(evt);
             }
@@ -304,10 +325,22 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         jLabel12.setText("jLabel7");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel12.setOpaque(true);
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, 50, 40));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 50, 40));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("NIC");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 190, 60));
+
+        txtName2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 320, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 720));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -409,6 +442,22 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+       searchInstructor();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void txtEmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmaActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+update();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -452,6 +501,7 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -475,14 +525,55 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
     private javax.swing.JTextArea txtAdd;
-    private javax.swing.JTextField txtNIC;
+    private javax.swing.JTextField txtEma;
+    private javax.swing.JTextField txtIID;
     private javax.swing.JTextField txtNIC1;
-    private javax.swing.JTextField txtNIC2;
-    private javax.swing.JTextField txtNIC3;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtName2;
+    private javax.swing.JTextField txtQ;
+    private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
+
+    }
+
+    private void searchInstructor() {
+        try {
+            String id=txtIID.getText();
+            InstructorDTO instructorDTO=InstructorControll.searchInstructor(id);
+            txtNIC1.setText(instructorDTO.getNic());
+            txtName2.setText(instructorDTO.getName());
+            txtAdd.setText(instructorDTO.getAddress());
+            txtQ.setText(instructorDTO.getQualification());
+            txtTel.setText(instructorDTO.getTel()+"");
+            txtEma.setText(instructorDTO.getEmail());
+            
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UpdateInstructorForm1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void update() {
+        try {
+            String id=txtIID.getText();
+            String name=txtName2.getText();
+            String nic=txtNIC1.getText();
+            String add=txtAdd.getText();
+            String qua=txtQ.getText();
+            int tel=Integer.parseInt(txtTel.getText());
+            String email=txtEma.getText();
+            InstructorDTO dTO=new InstructorDTO(id, nic,name,add, qua, tel, email);
+            boolean up=InstructorControll.updateInstructor(dTO);
+            if(up){
+                JOptionPane.showMessageDialog(null,"Instructor updated sucessfully");
+            }else{
+                JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+                
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+            Logger.getLogger(UpdateInstructorForm1.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 }

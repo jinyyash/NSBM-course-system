@@ -34,7 +34,7 @@ public class InstructorControll {
         return stm.executeUpdate() > 0;
     }
 
-    public static InstructorDTO searchLecturerDTO(String iid) throws SQLException, ClassNotFoundException {
+    public static InstructorDTO searchInstructor(String iid) throws SQLException, ClassNotFoundException {
         String sql = "select * from instructor where iid='" + iid + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
@@ -56,5 +56,18 @@ public class InstructorControll {
             lec = rst.getString(1);
         }
         return lec;
+    }
+    public static boolean updateInstructor(InstructorDTO c) throws SQLException, ClassNotFoundException {
+        String sql = "Update instructor set nic=?, name=?,address=?, qualification=?,tel=?,email=? where IID='"+c.getIid()+"'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(1, c.getNic());
+        stm.setObject(2, c.getName());
+        stm.setObject(3, c.getAddress());
+        stm.setObject(4, c.getQualification());
+        stm.setObject(5, c.getTel());
+        stm.setObject(6, c.getEmail());
+        int res = stm.executeUpdate();
+        return res > 0;
     }
 }
