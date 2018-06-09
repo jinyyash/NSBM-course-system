@@ -65,12 +65,13 @@ create table Exam(
 	
 );
 create table Instructor(
-	IID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	IID varchar(10) NOT NULL PRIMARY KEY,
 	nic varchar(15),
 	name varchar(25),
 	address varchar(25),
 	qualification varchar(50),
-	tel integer
+	tel integer,
+	email varchar(100)
 	
 );
 create table InstructorDetails(

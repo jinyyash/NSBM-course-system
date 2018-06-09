@@ -20,6 +20,7 @@ public class AddInstructorForm extends javax.swing.JFrame {
     public AddInstructorForm() {
         initComponents();
         enchan();
+        loadInstructurID();
     }
 
     /**
@@ -61,6 +62,8 @@ public class AddInstructorForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtIID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,23 +73,23 @@ public class AddInstructorForm extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 180, 70));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 180, 70));
 
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 320, 40));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 320, 40));
 
         txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, 320, 40));
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 580, 320, 40));
 
         txtAdd.setColumns(20);
         txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtAdd.setRows(5);
         jScrollPane3.setViewportView(txtAdd);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, 320, 110));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 320, 110));
 
         txtNIC2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 320, 40));
+        jPanel1.add(txtNIC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 450, 320, 40));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
@@ -94,30 +97,30 @@ public class AddInstructorForm extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 230, 50));
 
         txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 320, 40));
+        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 320, 40));
 
         txtNIC3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 320, 40));
+        jPanel1.add(txtNIC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 510, 320, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Telphone");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 160, 50));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, 160, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel8.setText("E-Mail");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 160, 50));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, 160, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel7.setText("Qualification");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 120, 60));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 120, 60));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel6.setText("Address");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 160, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 160, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel5.setText("NIC");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 190, 60));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 190, 60));
 
         pnlDash.setBackground(new java.awt.Color(0, 0, 0));
         pnlDash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -298,8 +301,15 @@ public class AddInstructorForm extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 170, 50));
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel12.setText("Instructor ID");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 270, 70));
+
+        txtIID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtIID, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 320, 40));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1000, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -441,6 +451,7 @@ public class AddInstructorForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -464,6 +475,7 @@ public class AddInstructorForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
     private javax.swing.JTextArea txtAdd;
+    private javax.swing.JTextField txtIID;
     private javax.swing.JTextField txtNIC;
     private javax.swing.JTextField txtNIC1;
     private javax.swing.JTextField txtNIC2;
@@ -473,5 +485,15 @@ public class AddInstructorForm extends javax.swing.JFrame {
 
     private void enchan() {
 
+    }
+
+    private void loadInstructurID() {
+        Str
+         if (lecID.equals("")) {
+                txtID.setText("LEC001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
     }
 }
