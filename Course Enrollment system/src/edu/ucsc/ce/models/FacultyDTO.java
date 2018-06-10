@@ -10,37 +10,14 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class FacultyDTO {
-    private Integer fid;
+    private String fid;
     private String name;
     private String startDate;
 
-    public FacultyDTO(Integer fid, String name, String startDate) {
+    public FacultyDTO(String fid, String name, String startDate) {
         this.fid = fid;
         this.name = name;
         this.startDate = startDate;
-    }
-    
-    
-
-    /**
-     * @return the fid
-     */
-    public Integer getFid() {
-        return fid;
-    }
-
-    /**
-     * @param fid the fid to set
-     */
-    public void setFid(Integer fid) {
-        this.fid = fid;
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
     }
 
     /**
@@ -62,5 +39,26 @@ public class FacultyDTO {
      */
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+    }
+
+    /**
+     * @param fid the fid to set
+     */
+    public void setFid(String fid) {
+        this.fid = fid;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the fid
+     */
+    public String getFid() {
+        return fid;
     }
 }
