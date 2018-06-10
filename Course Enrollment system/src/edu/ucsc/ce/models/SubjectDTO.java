@@ -10,28 +10,16 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class SubjectDTO {
-    private Integer sid;
+    private String sid;
     private LecturerDTO lectureDTO;
+    private CourseDTO courseDTO;
     private String name;
     private String semester;
     private Integer credits;
     private Double price;
     private String duration;
 
-    /**
-     * @return the sid
-     */
-    public Integer getSid() {
-        return sid;
-    }
-
-    /**
-     * @param sid the sid to set
-     */
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
+    
     
 
     /**
@@ -116,5 +104,33 @@ public class SubjectDTO {
      */
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    /**
+     * @return the courseDTO
+     */
+    public CourseDTO getCourseDTO() {
+        return courseDTO;
+    }
+
+    /**
+     * @param courseDTO the courseDTO to set
+     */
+    public void setCourseDTO(CourseDTO courseDTO) {
+        this.courseDTO = courseDTO;
+    }
+
+    /**
+     * @return the sid
+     */
+    public String getSid() {
+        return sid;
+    }
+
+    /**
+     * @param sid the sid to set
+     */
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 }

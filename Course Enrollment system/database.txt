@@ -1,10 +1,9 @@
 create table course(
-	CID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
-	name varchar(25),
-	batch VARCHAR(10),	
+	CID varchar(10) NOT NULL PRIMARY KEY,	
+	name varchar(25),	
 	subjectPerSem1 INT,
 	subjectPerSem2 INT,
-	batchYear int,
+	Year int,
 	type varchar(20),
 	creditsForSem int
 ); 
@@ -21,6 +20,7 @@ create table student(
 	FID int NOT NULL,
 	nic varchar(15),
 	name varchar(25),
+	batch varchar(10),
 	address varchar(50),
 	dob varchar(10),
 	FOREIGN KEY (CID) REFERENCES Courses(CID),
@@ -43,14 +43,15 @@ create table Lecturer(
 	
 );
 create table subject(
-	SSID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	LID int NOT NULL,
+	SSID varchar(10) NOT NULL PRIMARY KEY,
+	LID varchar(10) NOT NULL,
 	name varchar(25),
 	semester varchar(10),
 	credits int,
 	price decimal(10),
 	duration varchar(10),
 	FOREIGN KEY (LID) REFERENCES Lecturer(LID)
+	
 	
 );	
 create table Exam(

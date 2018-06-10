@@ -12,12 +12,12 @@ import java.awt.Font;
  *
  * @author Jinadi
  */
-public class AddSubjectForm extends javax.swing.JFrame {
+public class LabForm extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
-    public AddSubjectForm() {
+    public LabForm() {
         initComponents();
         enchan();
     }
@@ -44,25 +44,11 @@ public class AddSubjectForm extends javax.swing.JFrame {
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtCredit = new javax.swing.JTextField();
-        txtSem = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
-        txtDuration = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        cmbLec = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
-        txtSid = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        cmbLec1 = new javax.swing.JComboBox<>();
+        pnlMain = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -215,56 +201,23 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
-        jLabel3.setText("Subject");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 200, 50));
+        jLabel3.setText("Lab Managing");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 280, 50));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 180, 80));
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
 
-        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 330, 50));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel10.setText("No Of Credits");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 180, 80));
-
-        txtCredit.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtCredit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 140, 50));
-
-        txtSem.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 330, 50));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel11.setText("Semester");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 180, 80));
-
-        txtPrice.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 190, 50));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel12.setText("Price");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 180, 90));
-
-        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("            Add");
-        jLabel18.setOpaque(true);
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel18MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
+        pnlMain.setOpaque(false);
+        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 740, 420));
 
         jLabel17.setBackground(new java.awt.Color(153, 153, 153));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("           Cancel");
+        jLabel17.setText("           Update");
         jLabel17.setOpaque(true);
         jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel17MouseEntered(evt);
             }
@@ -272,38 +225,38 @@ public class AddSubjectForm extends javax.swing.JFrame {
                 jLabel17MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 150, 30));
 
-        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 620, 10));
+        jLabel20.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel20.setText("            Add");
+        jLabel20.setOpaque(true);
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel20MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel20MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 150, 30));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel13.setText("Duration");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 180, 90));
-
-        txtDuration.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, 190, 50));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel14.setText("Lecturer");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 170, 80));
-
-        cmbLec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 230, 50));
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel15.setText("Subject ID");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 130, 80));
-
-        txtSid.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSid, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 160, 200, 50));
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel16.setText("Course");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, 80));
-
-        cmbLec1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbLec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 230, 50));
+        jLabel19.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setText("    delete");
+        jLabel19.setOpaque(true);
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel19MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel19MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 130, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
@@ -388,15 +341,15 @@ public class AddSubjectForm extends javax.swing.JFrame {
     lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
-    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
-        jLabel18.setBackground(Color.BLACK);
-        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel18MouseEntered
+    private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
+        jLabel20.setBackground(Color.BLACK);
+        jLabel20.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseEntered
 
-    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
-        jLabel18.setBackground(Color.GRAY);
-        jLabel18.setForeground(Color.BLACK);
-    }//GEN-LAST:event_jLabel18MouseExited
+    private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
+        jLabel20.setBackground(Color.GRAY);
+        jLabel20.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel20MouseExited
 
     private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
         jLabel17.setBackground(Color.BLACK);
@@ -407,6 +360,34 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel17.setBackground(Color.GRAY);
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
+        jLabel19.setBackground(Color.BLACK);
+        jLabel19.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseEntered
+
+    private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
+        jLabel19.setBackground(Color.GRAY);
+        jLabel19.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel19MouseExited
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+         pnlMain.removeAll();
+        AddLabPanel form = new  AddLabPanel();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+       pnlMain.removeAll();
+        LabUpdateForm form = new  LabUpdateForm();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     /**
      * @param args the command line arguments
@@ -425,13 +406,13 @@ public class AddSubjectForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddSubjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LabForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddSubjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LabForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddSubjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LabForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddSubjectForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LabForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -441,27 +422,18 @@ public class AddSubjectForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddSubjectForm().setVisible(true);
+                new LabForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbLec;
-    private javax.swing.JComboBox<String> cmbLec1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDash;
@@ -474,12 +446,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtCredit;
-    private javax.swing.JTextField txtDuration;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtSem;
-    private javax.swing.JTextField txtSid;
+    private javax.swing.JPanel pnlMain;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {

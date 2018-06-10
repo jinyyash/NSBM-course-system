@@ -210,7 +210,7 @@ public class UpdateStudentSubjectSelecForm extends javax.swing.JFrame {
         });
         pnlDash.add(lblsub, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 200, 50));
 
-        jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 710));
+        jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 210, 730));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e89c(7)_48.png"))); // NOI18N
@@ -338,7 +338,7 @@ public class UpdateStudentSubjectSelecForm extends javax.swing.JFrame {
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 170, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 1000, 710));
 
         jLabel19.setBackground(new java.awt.Color(153, 153, 153));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
