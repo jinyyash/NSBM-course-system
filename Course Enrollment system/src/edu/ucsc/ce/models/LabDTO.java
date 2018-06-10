@@ -10,26 +10,23 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class LabDTO {
-    private Integer lid;
+    private String lid;
     private String name;
     private String type;
     private Integer numOfOc;
     private Integer numOfCom;
 
-    /**
-     * @return the lid
-     */
-    public Integer getLid() {
-        return lid;
-    }
-
-    /**
-     * @param lid the lid to set
-     */
-    public void setLid(Integer lid) {
+    public LabDTO(String lid, String name, String type, Integer numOfOc, Integer numOfCom) {
         this.lid = lid;
+        this.name = name;
+        this.type = type;
+        this.numOfOc = numOfOc;
+        this.numOfCom = numOfCom;
     }
 
+    
+    
+    
     /**
      * @return the name
      */
@@ -84,6 +81,20 @@ public class LabDTO {
      */
     public void setNumOfCom(Integer numOfCom) {
         this.numOfCom = numOfCom;
+    }
+
+    /**
+     * @return the lid
+     */
+    public String getLid() {
+        return lid;
+    }
+
+    /**
+     * @param lid the lid to set
+     */
+    public void setLid(String lid) {
+        this.lid = lid;
     }
     
 }
