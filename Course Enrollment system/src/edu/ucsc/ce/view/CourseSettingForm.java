@@ -5,7 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.LecturerController;
+import edu.ucsc.ce.models.CourseDTO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +25,7 @@ public class CourseSettingForm extends javax.swing.JPanel {
      */
     public CourseSettingForm() {
         initComponents();
+        loadCourseID();
     }
 
     /**
@@ -34,15 +42,15 @@ public class CourseSettingForm extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtNIC1 = new javax.swing.JTextField();
+        txtss1 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtq = new javax.swing.JTextField();
+        txtss2 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtspeci = new javax.swing.JTextField();
-        txtspeci1 = new javax.swing.JTextField();
+        txtyear = new javax.swing.JTextField();
+        txttype = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        txtspeci2 = new javax.swing.JTextField();
+        txtcreaditPerSem = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
 
@@ -67,35 +75,35 @@ public class CourseSettingForm extends javax.swing.JPanel {
         jLabel11.setText("Subject per sem 1");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 70));
 
-        txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, 40));
+        txtss1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        add(txtss1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Subject per sem 2");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 160, 70));
 
-        txtq.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        add(txtq, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 110, 40));
+        txtss2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        add(txtss2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 110, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel12.setText("Year");
         add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 160, 80));
 
-        txtspeci.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtspeci.addActionListener(new java.awt.event.ActionListener() {
+        txtyear.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtyear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtspeciActionPerformed(evt);
+                txtyearActionPerformed(evt);
             }
         });
-        add(txtspeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 310, 40));
+        add(txtyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 310, 40));
 
-        txtspeci1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtspeci1.addActionListener(new java.awt.event.ActionListener() {
+        txttype.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txttype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtspeci1ActionPerformed(evt);
+                txttypeActionPerformed(evt);
             }
         });
-        add(txtspeci1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 310, 40));
+        add(txttype, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 310, 40));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel14.setText("Type");
@@ -105,19 +113,22 @@ public class CourseSettingForm extends javax.swing.JPanel {
         jLabel15.setText("Creadit per sem");
         add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, 80));
 
-        txtspeci2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtspeci2.addActionListener(new java.awt.event.ActionListener() {
+        txtcreaditPerSem.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        txtcreaditPerSem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtspeci2ActionPerformed(evt);
+                txtcreaditPerSemActionPerformed(evt);
             }
         });
-        add(txtspeci2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 310, 40));
+        add(txtcreaditPerSem, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 310, 40));
 
         jLabel20.setBackground(new java.awt.Color(153, 153, 153));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel20.setText("            Add");
         jLabel20.setOpaque(true);
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel20MouseEntered(evt);
             }
@@ -142,17 +153,17 @@ public class CourseSettingForm extends javax.swing.JPanel {
         add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 150, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeciActionPerformed
+    private void txtyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtyearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtspeciActionPerformed
+    }//GEN-LAST:event_txtyearActionPerformed
 
-    private void txtspeci1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeci1ActionPerformed
+    private void txttypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtspeci1ActionPerformed
+    }//GEN-LAST:event_txttypeActionPerformed
 
-    private void txtspeci2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeci2ActionPerformed
+    private void txtcreaditPerSemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcreaditPerSemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtspeci2ActionPerformed
+    }//GEN-LAST:event_txtcreaditPerSemActionPerformed
 
     private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
         jLabel20.setBackground(Color.BLACK);
@@ -174,6 +185,10 @@ public class CourseSettingForm extends javax.swing.JPanel {
         jLabel20.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel21MouseExited
 
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+    add();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -186,11 +201,42 @@ public class CourseSettingForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNIC1;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtq;
-    private javax.swing.JTextField txtspeci;
-    private javax.swing.JTextField txtspeci1;
-    private javax.swing.JTextField txtspeci2;
+    private javax.swing.JTextField txtcreaditPerSem;
+    private javax.swing.JTextField txtss1;
+    private javax.swing.JTextField txtss2;
+    private javax.swing.JTextField txttype;
+    private javax.swing.JTextField txtyear;
     // End of variables declaration//GEN-END:variables
+
+    private void add() {
+        try {
+            CourseDTO cdto=new CourseDTO(txtID.getText(), txtName.getText(),Integer.parseInt(txtss1.getText()), Integer.parseInt(txtss2.getText()), Integer.parseInt(txtyear.getText()),txttype.getText(),Integer.parseInt(txtcreaditPerSem.getText()));
+            boolean add=CourseController.addCourse(cdto);
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Course Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadCourseID() {
+        try {
+            String lecID = CourseController.getLastCourseID();
+            if (lecID.equals("")) {
+                txtID.setText("LEC001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ }
 }

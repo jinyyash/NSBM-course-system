@@ -11,7 +11,7 @@ package edu.ucsc.ce.models;
  */
 public class Student_SubDTO {
 
-    private Integer ssid;
+    private String ssid;
     private StudentDTO studentDTO;; 
     private SubjectDTO subjectDTO;
 
@@ -50,15 +50,17 @@ public class Student_SubDTO {
     /**
      * @return the ssid
      */
-    public Integer getSsid() {
+    public String getSsid() {
         return ssid;
     }
 
     /**
      * @param ssid the ssid to set
      */
-    public void setSsid(Integer ssid) {
+    public void setSsid(String ssid) {
         this.ssid = ssid;
     }
+
+  
 
 }

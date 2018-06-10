@@ -42,6 +42,7 @@ public class LabUpdateForm extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
 
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N

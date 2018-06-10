@@ -5,7 +5,13 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.Facultycontroller;
+import edu.ucsc.ce.controllers.LecturerController;
+import edu.ucsc.ce.models.FacultyDTO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +24,7 @@ public class FacultyForm extends javax.swing.JPanel {
      */
     public FacultyForm() {
         initComponents();
+        facID();
     }
 
     /**
@@ -64,6 +71,9 @@ public class FacultyForm extends javax.swing.JPanel {
         jLabel20.setText("            Add");
         jLabel20.setOpaque(true);
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel20MouseEntered(evt);
             }
@@ -109,6 +119,10 @@ public class FacultyForm extends javax.swing.JPanel {
         jLabel20.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel21MouseExited
 
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+       AddFaculty();
+    }//GEN-LAST:event_jLabel20MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.freixas.jcalendar.JCalendarCombo jCalendarCombo1;
@@ -120,4 +134,31 @@ public class FacultyForm extends javax.swing.JPanel {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+
+    private void facID() {
+         try {
+            String lecID = Facultycontroller.getLastLabID();
+            if (lecID==null) {
+                txtID.setText("Fac001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void AddFaculty() {
+        try {
+            FacultyDTO facultyDTO=new FacultyDTO(txtID.getText(),txtName.getText(),jCalendarCombo1.getDate()+"");
+            boolean add=Facultycontroller.addFaculty(facultyDTO);
+        } catch (SQLException ex) {
+            Logger.getLogger(FacultyForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FacultyForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -17,6 +17,15 @@ public class ExamDTO {
     private Double Stime;
     private Double Etime;
 
+    public ExamDTO(Integer eid, SubjectDTO subjectDTO, String examType, String date, Double Stime, Double Etime) {
+        this.eid = eid;
+        this.subjectDTO = subjectDTO;
+        this.examType = examType;
+        this.date = date;
+        this.Stime = Stime;
+        this.Etime = Etime;
+    }
+ 
     /**
      * @return the eid
      */

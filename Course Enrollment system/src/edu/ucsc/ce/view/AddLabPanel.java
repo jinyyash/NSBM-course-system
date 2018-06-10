@@ -5,7 +5,13 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.LabController;
+import edu.ucsc.ce.models.LabDTO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +24,7 @@ public class AddLabPanel extends javax.swing.JPanel {
      */
     public AddLabPanel() {
         initComponents();
+        getLabID();
     }
 
     /**
@@ -79,6 +86,9 @@ public class AddLabPanel extends javax.swing.JPanel {
         jLabel20.setText("            Add");
         jLabel20.setOpaque(true);
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel20MouseEntered(evt);
             }
@@ -196,6 +206,10 @@ public class AddLabPanel extends javax.swing.JPanel {
         jLabel20.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel21MouseExited
 
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        AddLab(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel10;
@@ -211,4 +225,33 @@ public class AddLabPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtSize;
     private javax.swing.JTextField txtType;
     // End of variables declaration//GEN-END:variables
+
+    private void AddLab() {
+        try {
+            LabDTO dTO = new LabDTO(txtID.getText(), txtName.getText(), txtType.getText(), Integer.parseInt(txtSize.getName()), Integer.parseInt(txtCom.getText()));
+            boolean add = LabController.addLab(dTO);
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Lecturer Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            Logger.getLogger(AddLabPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getLabID() {
+        try {
+            String lecID = LabController.getLastLabID();
+            if (lecID.equals("")) {
+                txtID.setText("Lab001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length() - 1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

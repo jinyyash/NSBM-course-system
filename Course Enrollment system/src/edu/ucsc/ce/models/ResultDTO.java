@@ -10,26 +10,21 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class ResultDTO {
-    private Integer rid;
+    private String rid;
     private ExamDTO examDTO;
     private StudentDTO studentDTO;
-    private SubjectDTO subjectDTO;
     private Double result;
     private Double grade;
 
-    /**
-     * @return the rid
-     */
-    public Integer getRid() {
-        return rid;
+    public ResultDTO(String rid, ExamDTO examDTO, StudentDTO studentDTO, Double result, Double grade) {
+        this.rid = rid;
+        this.examDTO = examDTO;
+        this.studentDTO = studentDTO;
+        this.result = result;
+        this.grade = grade;
     }
 
-    /**
-     * @param rid the rid to set
-     */
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
+    
 
     /**
      * @return the examDTO
@@ -59,20 +54,7 @@ public class ResultDTO {
         this.studentDTO = studentDTO;
     }
 
-    /**
-     * @return the subjectDTO
-     */
-    public SubjectDTO getSubjectDTO() {
-        return subjectDTO;
-    }
-
-    /**
-     * @param subjectDTO the subjectDTO to set
-     */
-    public void setSubjectDTO(SubjectDTO subjectDTO) {
-        this.subjectDTO = subjectDTO;
-    }
-
+    
     /**
      * @return the result
      */
