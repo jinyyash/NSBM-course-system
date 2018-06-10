@@ -11,29 +11,24 @@ package edu.ucsc.ce.models;
  */
 public class CourseDTO {
 
-    private Integer cid;
+    private String cid;
     private String name;
-    private String batch;
     private Integer subjectPerSem1;
     private Integer subjectPerSem2;
     private Integer batchYear;         
     private String type;
     private Integer creditForSem;
 
-    /**
-     * @return the cid
-     */
-    public Integer getCid() {
-        return cid;
-    }
-
-    /**
-     * @param cid the cid to set
-     */
-    public void setCid(Integer cid) {
+    public CourseDTO(String cid, String name, Integer subjectPerSem1, Integer subjectPerSem2, Integer batchYear, String type, Integer creditForSem) {
         this.cid = cid;
+        this.name = name;
+        this.subjectPerSem1 = subjectPerSem1;
+        this.subjectPerSem2 = subjectPerSem2;
+        this.batchYear = batchYear;
+        this.type = type;
+        this.creditForSem = creditForSem;
     }
-
+ 
     /**
      * @return the type
      */
@@ -67,19 +62,7 @@ public class CourseDTO {
         this.name = name;
     }
 
-    /**
-     * @return the batch
-     */
-    public String getBatch() {
-        return batch;
-    }
-
-    /**
-     * @param batch the batch to set
-     */
-    public void setBatch(String batch) {
-        this.batch = batch;
-    }
+   
 
     /**
      * @return the subjectPerSem1
@@ -135,6 +118,20 @@ public class CourseDTO {
      */
     public void setCreditForSem(Integer creditForSem) {
         this.creditForSem = creditForSem;
+    }
+
+    /**
+     * @return the cid
+     */
+    public String getCid() {
+        return cid;
+    }
+
+    /**
+     * @param cid the cid to set
+     */
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
 }

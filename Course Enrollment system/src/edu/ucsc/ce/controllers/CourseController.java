@@ -7,10 +7,12 @@ package edu.ucsc.ce.controllers;
 
 import edu.ucsc.ce.dbconnection.DBConnection;
 import edu.ucsc.ce.models.CourseDTO;
-import edu.ucsc.ce.models.InstructorDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,5 +31,39 @@ public class CourseController {
         stm.setObject(6, c.getType());
         stm.setObject(7, c.getCreditForSem());
         return stm.executeUpdate() > 0;
+    }
+      public static CourseDTO searchCourse(String iid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from course where iid='" + iid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        CourseDTO cdto=null;
+        if (rst.next()) {
+           cdto=new CourseDTO(iid, rst.getString(2), Integer.parseInt(rst.getString(3)),Integer.parseInt( rst.getString(4)),Integer.parseInt( rst.getString(5)),rst.getString(6),Integer.parseInt(rst.getString(7)));
+        }
+        return cdto;
+    }
+ public static String getLastCourseID() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM course ORDER BY CID DESC LIMIT 1";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        String lec = null;
+        if (rst.next()) {
+            lec = rst.getString(1);
+        }
+        return lec;
+    }
+   public static ArrayList<CourseDTO> getAll() throws SQLException, ClassNotFoundException {
+        String sql = "select * from course";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<CourseDTO> list = new ArrayList<>();
+        while (rst.next()) {
+          CourseDTO cdto=new CourseDTO(rst.getString(1), rst.getString(2), Integer.parseInt(rst.getString(3)),Integer.parseInt( rst.getString(4)),Integer.parseInt( rst.getString(5)),rst.getString(6),Integer.parseInt(rst.getString(7)));
+            list.add(cdto);
+        }
+        return list;
     }
 }
