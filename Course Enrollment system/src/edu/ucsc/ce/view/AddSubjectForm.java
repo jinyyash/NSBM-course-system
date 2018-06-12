@@ -5,8 +5,21 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.InstructorControll;
+import edu.ucsc.ce.controllers.LecturerController;
+import edu.ucsc.ce.controllers.SubjectController;
+import edu.ucsc.ce.methods.ComboBoxFilling;
+import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.LecturerDTO;
+import edu.ucsc.ce.models.SubjectDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,9 +30,15 @@ public class AddSubjectForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
+    ArrayList<CourseDTO> al=new ArrayList<>();
+     ArrayList<LecturerDTO> lec=new ArrayList<>();
     public AddSubjectForm() {
         initComponents();
         enchan();
+        loadCourseCombo();
+        loadLecCombo();
+       // getSubID();
+      
     }
 
     /**
@@ -251,6 +270,9 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel18.setText("            Add");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel18MouseEntered(evt);
             }
@@ -288,7 +310,6 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel14.setText("Lecturer");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 170, 80));
 
-        cmbLec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(cmbLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 230, 50));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
@@ -302,7 +323,21 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel16.setText("Course");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, 80));
 
-        cmbLec1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbLec1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbLec1ItemStateChanged(evt);
+            }
+        });
+        cmbLec1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbLec1MouseClicked(evt);
+            }
+        });
+        cmbLec1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLec1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbLec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 230, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
@@ -408,6 +443,22 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void cmbLec1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLec1ItemStateChanged
+      getSubID();
+    }//GEN-LAST:event_cmbLec1ItemStateChanged
+
+    private void cmbLec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLec1ActionPerformed
+//        getSubID(); // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLec1ActionPerformed
+
+    private void cmbLec1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbLec1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLec1MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+add();
+    }//GEN-LAST:event_jLabel18MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -484,5 +535,70 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
     private void enchan() {
 
+    }
+
+    private void loadCourseCombo() {
+        try {
+             al=CourseController.getAll();
+            for (CourseDTO courseDTO : al) {
+                cmbLec1.addItem(courseDTO.getName());
+            }
+           ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbLec1, true, "No Course found");
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadLecCombo() {
+        try {
+            lec=LecturerController.getAllLecturerDTO();
+            for (LecturerDTO courseDTO : lec) {
+                cmbLec.addItem(courseDTO.getName());
+            }
+            ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbLec1, true, "No Lecturer found");
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getSubID() {
+        try {
+             CourseDTO cdto=al.get(cmbLec1.getSelectedIndex());
+            String id=SubjectController.getLastID(cdto.getCid());
+            if (id==null) {
+               
+                txtSid.setText(cdto.getCid()+"001");
+            } else {
+                String iid = id.substring(id.length() - 1, id.length());
+                txtSid.setText(id.substring(0, id.length()-1) + (Integer.parseInt(iid) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void add() {
+        try {
+            SubjectDTO dTO=new SubjectDTO(txtSid.getText(),lec.get(cmbLec.getSelectedIndex()),al.get(cmbLec1.getSelectedIndex()),txtName.getText(),txtSem.getText(),Integer.parseInt(txtCredit.getText()),Double.parseDouble(txtPrice.getText()),txtDuration.getText());
+           
+            boolean add=SubjectController.addSubject(dTO);
+             if (add) {
+                JOptionPane.showMessageDialog(null, "Subject Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

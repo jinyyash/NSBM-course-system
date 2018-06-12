@@ -53,6 +53,8 @@ public class CourseSettingForm extends javax.swing.JPanel {
         txtcreaditPerSem = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,11 +64,11 @@ public class CourseSettingForm extends javax.swing.JPanel {
         add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -10, 160, 70));
 
         txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 300, 40));
+        add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 170, 40));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel9.setText("Name");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 70));
+        jLabel9.setText("Faculty");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 160, 70));
 
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 310, 40));
@@ -151,6 +153,12 @@ public class CourseSettingForm extends javax.swing.JPanel {
             }
         });
         add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 150, 30));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel16.setText("Name");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 70));
+
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 180, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtyearActionPerformed
@@ -191,12 +199,14 @@ public class CourseSettingForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel9;

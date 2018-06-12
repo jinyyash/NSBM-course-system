@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,6 +16,15 @@ public class UndergraduateDTO {
     private String rank;
     private Double z;
 
+    public UndergraduateDTO(StudentDTO studentDTO, Integer yearOfExam, String al_result, String rank, Double z) {
+        this.studentDTO = studentDTO;
+        this.yearOfExam = yearOfExam;
+        this.al_result = al_result;
+        this.rank = rank;
+        this.z = z;
+    }
+
+    
     /**
      * @return the studentDTO
      */

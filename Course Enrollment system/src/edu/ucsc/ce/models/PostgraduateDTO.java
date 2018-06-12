@@ -15,6 +15,14 @@ public class PostgraduateDTO {
     private String quali;
     private String institute;
 
+    public PostgraduateDTO(StudentDTO studentDTO, Integer year, String quali, String institute) {
+        this.studentDTO = studentDTO;
+        this.year = year;
+        this.quali = quali;
+        this.institute = institute;
+    }
+
+    
     /**
      * @return the studentDTO
      */

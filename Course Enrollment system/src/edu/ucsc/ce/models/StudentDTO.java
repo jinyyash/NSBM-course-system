@@ -10,32 +10,44 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class StudentDTO {
-    private Integer sid;
+    private String sid;
     private CourseDTO courseDTO;
     private FacultyDTO facultyDTO;
      private String NIC;
+     private String batch;
     private String name;
     private String address;
     private String dob;
+
+    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String address, String dob) {
+        this.sid = sid;
+        this.courseDTO = courseDTO;
+        this.facultyDTO = facultyDTO;
+        this.NIC = NIC;
+        this.name = name;
+        this.address = address;
+        this.dob = dob;
+    }
+
+    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String batch, String name, String address, String dob) {
+        this.sid = sid;
+        this.courseDTO = courseDTO;
+        this.facultyDTO = facultyDTO;
+        this.NIC = NIC;
+        this.batch = batch;
+        this.name = name;
+        this.address = address;
+        this.dob = dob;
+    }
+    
+
+   
 
    
     
     
 
-    /**
-     * @return the sid
-     */
-    public Integer getSid() {
-        return sid;
-    }
-
-    /**
-     * @param sid the sid to set
-     */
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
+    
     
     /**
      * @return the name
@@ -119,6 +131,34 @@ public class StudentDTO {
      */
     public void setCourseDTO(CourseDTO courseDTO) {
         this.courseDTO = courseDTO;
+    }
+
+    /**
+     * @return the sid
+     */
+    public String getSid() {
+        return sid;
+    }
+
+    /**
+     * @param sid the sid to set
+     */
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
+    /**
+     * @return the batch
+     */
+    public String getBatch() {
+        return batch;
+    }
+
+    /**
+     * @param batch the batch to set
+     */
+    public void setBatch(String batch) {
+        this.batch = batch;
     }
     
 }

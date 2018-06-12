@@ -15,7 +15,7 @@ create table faculty(
 ); 
 
 create table student(
-	SID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	SID varchar(10) NOT NULL PRIMARY KEY ,
 	CID int NOT NULL,
 	FID int NOT NULL,
 	nic varchar(15),
@@ -45,11 +45,13 @@ create table Lecturer(
 create table subject(
 	SSID varchar(10) NOT NULL PRIMARY KEY,
 	LID varchar(10) NOT NULL,
+	CID varchar(10) NOT NULL,
 	name varchar(25),
 	semester varchar(10),
 	credits int,
 	price decimal(10),
 	duration varchar(10),
+	FOREIGN KEY (CID) REFERENCES course(CID),
 	FOREIGN KEY (LID) REFERENCES Lecturer(LID)
 	
 	

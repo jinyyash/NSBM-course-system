@@ -10,8 +10,11 @@ import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.models.FacultyDTO;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,6 +28,7 @@ public class FacultyForm extends javax.swing.JPanel {
     public FacultyForm() {
         initComponents();
         facID();
+        setDate();
     }
 
     /**
@@ -120,7 +124,7 @@ public class FacultyForm extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel21MouseExited
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-       AddFaculty();
+        AddFaculty();
     }//GEN-LAST:event_jLabel20MouseClicked
 
 
@@ -136,13 +140,13 @@ public class FacultyForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void facID() {
-         try {
+        try {
             String lecID = Facultycontroller.getLastLabID();
-            if (lecID==null) {
+            if (lecID == null) {
                 txtID.setText("Fac001");
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+                txtID.setText(lecID.substring(0, lecID.length() - 1) + (Integer.parseInt(id) + 1));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,12 +157,23 @@ public class FacultyForm extends javax.swing.JPanel {
 
     private void AddFaculty() {
         try {
-            FacultyDTO facultyDTO=new FacultyDTO(txtID.getText(),txtName.getText(),jCalendarCombo1.getDate()+"");
-            boolean add=Facultycontroller.addFaculty(facultyDTO);
+           
+            FacultyDTO facultyDTO = new FacultyDTO(txtID.getText(), txtName.getText(), (String)jCalendarCombo1.getSelectedItem());
+            boolean add = Facultycontroller.addFaculty(facultyDTO);
+             if (add) {
+                JOptionPane.showMessageDialog(null, "Faculty Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(FacultyForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FacultyForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void setDate() {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        jCalendarCombo1.setDateFormat(format);
     }
 }

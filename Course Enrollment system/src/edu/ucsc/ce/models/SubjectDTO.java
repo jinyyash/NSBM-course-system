@@ -19,6 +19,17 @@ public class SubjectDTO {
     private Double price;
     private String duration;
 
+    public SubjectDTO(String sid, LecturerDTO lectureDTO, CourseDTO courseDTO, String name, String semester, Integer credits, Double price, String duration) {
+        this.sid = sid;
+        this.lectureDTO = lectureDTO;
+        this.courseDTO = courseDTO;
+        this.name = name;
+        this.semester = semester;
+        this.credits = credits;
+        this.price = price;
+        this.duration = duration;
+    }
+
     
     
 

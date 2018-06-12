@@ -5,6 +5,15 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.models.StudentDTO;
+import edu.ucsc.ce.models.UndergraduateDTO;
+import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jinadi
@@ -37,6 +46,8 @@ public class UnderGraduate extends javax.swing.JPanel {
         txtResult = new javax.swing.JTextArea();
         txtZ = new javax.swing.JTextField();
         txtrank = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         pnlUnder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlUnder.setOpaque(false);
@@ -58,7 +69,7 @@ public class UnderGraduate extends javax.swing.JPanel {
         jLabel8.setText("Rank");
         pnlUnder.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 150, 50));
 
-        cmbYearOf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbYearOf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018", "2017", "2016", "2015" }));
         pnlUnder.add(cmbYearOf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 230, 40));
 
         txtResult.setColumns(20);
@@ -66,40 +77,98 @@ public class UnderGraduate extends javax.swing.JPanel {
         jScrollPane1.setViewportView(txtResult);
 
         pnlUnder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 260, 110));
-
-        txtZ.setText("jTextField1");
         pnlUnder.add(txtZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 140, 40));
-
-        txtrank.setText("jTextField1");
         pnlUnder.add(txtrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 140, 40));
+
+        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("            Add");
+        jLabel18.setOpaque(true);
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
+            }
+        });
+
+        jLabel17.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel17.setText("           Cancel");
+        jLabel17.setOpaque(true);
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 730, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(35, Short.MAX_VALUE)
-                    .addComponent(pnlUnder, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pnlUnder, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlUnder, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlUnder, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
+        jLabel18.setBackground(Color.BLACK);
+        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseEntered
+
+    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
+        jLabel18.setBackground(Color.GRAY);
+        jLabel18.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        jLabel17.setBackground(Color.BLACK);
+        jLabel17.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jLabel17MouseEntered
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+        jLabel17.setBackground(Color.GRAY);
+        jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+      add();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbYearOf;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -108,4 +177,24 @@ public class UnderGraduate extends javax.swing.JPanel {
     private javax.swing.JTextField txtZ;
     private javax.swing.JTextField txtrank;
     // End of variables declaration//GEN-END:variables
+
+    private void add() {
+      
+        StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
+        UndergraduateDTO o=new UndergraduateDTO(dTO,Integer.parseInt(cmbYearOf.getSelectedItem().toString()), txtResult.getText(), txtrank.getText(), Double.parseDouble(txtZ.getText()));
+        try {
+            boolean a=StudentController.addUndergraduate(dTO, o);
+               if(a){
+                JOptionPane.showMessageDialog(null,"Student added sucessfully");
+            }else{
+                  JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UnderGraduate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UnderGraduate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

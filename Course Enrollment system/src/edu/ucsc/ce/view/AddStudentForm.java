@@ -5,8 +5,23 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.Facultycontroller;
+import edu.ucsc.ce.controllers.LecturerController;
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.methods.ComboBoxFilling;
+import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.FacultyDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.freixas.jcalendar.JCalendarCombo;
 
 /**
  *
@@ -17,9 +32,16 @@ public class AddStudentForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
+   public static ArrayList<CourseDTO> course=new ArrayList<>();
+   public static ArrayList<FacultyDTO> fac=new ArrayList<>();
+    public StudentDTO dTO;
     public AddStudentForm() {
         initComponents();
         enchan();
+        loadCourse();
+        loadFca();
+        setID();
+        setDate();
     }
 
     /**
@@ -32,6 +54,7 @@ public class AddStudentForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnlDash = new javax.swing.JPanel();
         lblrepo = new javax.swing.JLabel();
@@ -52,19 +75,19 @@ public class AddStudentForm extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAdd = new javax.swing.JTextArea();
         cmbCal = new org.freixas.jcalendar.JCalendarCombo();
         cmbfac = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
+        pnlMain = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtNIC = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cmbCourse = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
+        txtID = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -223,7 +246,7 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel4.setText("Address");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 180, 110));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 180, 110));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel5.setText("Date Of Birth");
@@ -235,10 +258,12 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 180, 70));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 180, 70));
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jRadioButton1.setText("Undergraduate");
+        jRadioButton1.setFocusPainted(false);
         jRadioButton1.setOpaque(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,71 +272,51 @@ public class AddStudentForm extends javax.swing.JFrame {
         });
         jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, 30));
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jRadioButton2.setText("Postgraduate");
         jRadioButton2.setOpaque(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, -1, 40));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel15.setText("Student State");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 160, 60));
 
-        jLabel17.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("           Cancel");
-        jLabel17.setOpaque(true);
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel17MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel17MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
-
-        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("            Add");
-        jLabel18.setOpaque(true);
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel18MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
-
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 320, 40));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 320, 40));
 
         txtAdd.setColumns(20);
         txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtAdd.setRows(5);
         jScrollPane3.setViewportView(txtAdd);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 310, 90));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 90));
         jPanel1.add(cmbCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 170, 40));
 
+        cmbfac.setEditable(true);
         cmbfac.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         jPanel1.add(cmbfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 170, 50));
 
-        jPanel2.setOpaque(false);
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 730, 220));
+        pnlMain.setOpaque(false);
+        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 730, 290));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("NIC");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 180, 70));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 70));
 
         txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 320, 40));
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 320, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel7.setText("Course");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 160, 50));
 
+        cmbCourse.setEditable(true);
         cmbCourse.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         cmbCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,6 +327,13 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
+
+        txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, 40));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel11.setText("Student ID");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 90, 70));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
@@ -408,32 +420,26 @@ public class AddStudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+        pnlMain.removeAll();
+        UnderGraduate form = new UnderGraduate();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate(); // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
-        jLabel17.setBackground(Color.BLACK);
-        jLabel17.setForeground(Color.WHITE);
-    }//GEN-LAST:event_jLabel17MouseEntered
-
-    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
-        jLabel18.setBackground(Color.BLACK);
-        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel18MouseEntered
-
-    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
-        jLabel18.setBackground(Color.GRAY);
-        jLabel18.setForeground(Color.BLACK);
-    }//GEN-LAST:event_jLabel18MouseExited
-
-    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
-        jLabel17.setBackground(Color.GRAY);
-        jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel17MouseExited
 
     private void cmbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCourseActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+       pnlMain.removeAll();
+        PostGraduate form = new PostGraduate();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();  // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -473,15 +479,15 @@ public class AddStudentForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private org.freixas.jcalendar.JCalendarCombo cmbCal;
-    private javax.swing.JComboBox<String> cmbCourse;
-    private javax.swing.JComboBox<String> cmbfac;
+    private javax.swing.ButtonGroup buttonGroup2;
+    public static org.freixas.jcalendar.JCalendarCombo cmbCal;
+    public static javax.swing.JComboBox<String> cmbCourse;
+    public static javax.swing.JComboBox<String> cmbfac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -489,7 +495,6 @@ public class AddStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -504,12 +509,63 @@ public class AddStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextArea txtAdd;
-    private javax.swing.JTextField txtNIC;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JPanel pnlMain;
+    public static javax.swing.JTextArea txtAdd;
+    public static javax.swing.JTextField txtID;
+    public static javax.swing.JTextField txtNIC;
+    public static javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
         setLocationRelativeTo(null);
+    }
+
+    private void loadCourse() {
+  try {
+             course=CourseController.getAll();
+            for (CourseDTO courseDTO : course) {
+                cmbCourse.addItem(courseDTO.getName());
+            }
+           ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbCourse, true, "No Course found");
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
+
+    private void loadFca() {
+  try {
+             fac=Facultycontroller.getAll();
+            for (FacultyDTO courseDTO : fac) {
+                cmbfac.addItem(courseDTO.getName());
+            }
+           ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbfac, true, "No Course found");
+        } catch (SQLException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
+
+    private void setID() {
+        try {
+            String lecID = StudentController.getLastID();
+            if (lecID==null) {
+                txtID.setText("S001");
+            } else {
+                String id = lecID.substring(lecID.length() - 1, lecID.length());
+                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddStudentForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddStudentForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setDate() {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        cmbCal.setDateFormat(format);
     }
 }

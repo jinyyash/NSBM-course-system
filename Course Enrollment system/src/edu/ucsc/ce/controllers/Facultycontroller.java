@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class Facultycontroller {
      public static boolean addFaculty(FacultyDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into lab  values(?,?,?)";
+        String sql = "insert into faculty  values(?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getFid());
