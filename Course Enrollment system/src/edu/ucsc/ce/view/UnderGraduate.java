@@ -46,6 +46,8 @@ public class UnderGraduate extends javax.swing.JPanel {
         txtResult = new javax.swing.JTextArea();
         txtZ = new javax.swing.JTextField();
         txtrank = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtbatch = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -63,7 +65,7 @@ public class UnderGraduate extends javax.swing.JPanel {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel12.setText("Z-score");
-        pnlUnder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 170, 50));
+        pnlUnder.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 170, 50));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel8.setText("Rank");
@@ -77,8 +79,19 @@ public class UnderGraduate extends javax.swing.JPanel {
         jScrollPane1.setViewportView(txtResult);
 
         pnlUnder.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 260, 110));
-        pnlUnder.add(txtZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 140, 40));
+        pnlUnder.add(txtZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 140, 40));
         pnlUnder.add(txtrank, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 140, 40));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("Batch");
+        pnlUnder.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 170, 50));
+
+        txtbatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbatchActionPerformed(evt);
+            }
+        });
+        pnlUnder.add(txtbatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 140, 40));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -162,11 +175,16 @@ public class UnderGraduate extends javax.swing.JPanel {
       add();  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
+    private void txtbatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbatchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbatchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbYearOf;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel7;
@@ -175,12 +193,13 @@ public class UnderGraduate extends javax.swing.JPanel {
     private javax.swing.JPanel pnlUnder;
     private javax.swing.JTextArea txtResult;
     private javax.swing.JTextField txtZ;
+    private javax.swing.JTextField txtbatch;
     private javax.swing.JTextField txtrank;
     // End of variables declaration//GEN-END:variables
 
     private void add() {
       
-        StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
+        StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtbatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
         UndergraduateDTO o=new UndergraduateDTO(dTO,Integer.parseInt(cmbYearOf.getSelectedItem().toString()), txtResult.getText(), txtrank.getText(), Double.parseDouble(txtZ.getText()));
         try {
             boolean a=StudentController.addUndergraduate(dTO, o);

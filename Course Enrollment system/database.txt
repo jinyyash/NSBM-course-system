@@ -16,8 +16,8 @@ create table faculty(
 
 create table student(
 	SID varchar(10) NOT NULL PRIMARY KEY ,
-	CID int NOT NULL,
-	FID int NOT NULL,
+	CID varchar(10) NOT NULL,
+	FID varchar(10) NOT NULL,
 	nic varchar(15),
 	name varchar(25),
 	batch varchar(10),

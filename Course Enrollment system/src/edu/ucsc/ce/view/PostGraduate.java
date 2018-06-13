@@ -5,7 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.models.PostgraduateDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,6 +44,8 @@ public class PostGraduate extends javax.swing.JPanel {
         txtInstitute = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtQuali = new javax.swing.JTextArea();
+        txtBatch = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
@@ -69,13 +78,23 @@ public class PostGraduate extends javax.swing.JPanel {
         txtQuali.setRows(5);
         jScrollPane2.setViewportView(txtQuali);
 
-        pnlPost.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 350, 90));
+        pnlPost.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 280, 90));
+
+        txtBatch.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        pnlPost.add(txtBatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 130, 30));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel11.setText("Batch");
+        pnlPost.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 90, 50));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel18.setText("            Add");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel18MouseEntered(evt);
             }
@@ -143,17 +162,41 @@ public class PostGraduate extends javax.swing.JPanel {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+addstudent();
+    }//GEN-LAST:event_jLabel18MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbYear;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlPost;
+    private javax.swing.JTextField txtBatch;
     private javax.swing.JTextField txtInstitute;
     private javax.swing.JTextArea txtQuali;
     // End of variables declaration//GEN-END:variables
+
+    private void addstudent() {
+        try {
+            StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtBatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
+            PostgraduateDTO dTO1=new PostgraduateDTO(dTO,(Integer)cmbYear.getSelectedItem(), txtQuali.getText(),txtInstitute.getText());
+            boolean add=StudentController.addPostGraduate(dTO, dTO1);
+             if(add){
+                JOptionPane.showMessageDialog(null,"Student added sucessfully");
+            }else{
+                  JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PostGraduate.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PostGraduate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

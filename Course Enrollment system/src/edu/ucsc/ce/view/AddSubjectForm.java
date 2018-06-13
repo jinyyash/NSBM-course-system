@@ -82,6 +82,8 @@ public class AddSubjectForm extends javax.swing.JFrame {
         txtSid = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         cmbLec1 = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        txtSem1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -252,7 +254,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jPanel1.add(txtCredit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 140, 50));
 
         txtSem.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 330, 50));
+        jPanel1.add(txtSem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 210, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel11.setText("Semester");
@@ -339,6 +341,13 @@ public class AddSubjectForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cmbLec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 230, 50));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel19.setText("year");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 180, 80));
+
+        txtSem1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtSem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 210, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
@@ -510,6 +519,7 @@ add();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
@@ -530,6 +540,7 @@ add();
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtSem;
+    private javax.swing.JTextField txtSem1;
     private javax.swing.JTextField txtSid;
     // End of variables declaration//GEN-END:variables
 
@@ -587,7 +598,7 @@ add();
 
     private void add() {
         try {
-            SubjectDTO dTO=new SubjectDTO(txtSid.getText(),lec.get(cmbLec.getSelectedIndex()),al.get(cmbLec1.getSelectedIndex()),txtName.getText(),txtSem.getText(),Integer.parseInt(txtCredit.getText()),Double.parseDouble(txtPrice.getText()),txtDuration.getText());
+            SubjectDTO dTO=new SubjectDTO(txtSid.getText(),lec.get(cmbLec.getSelectedIndex()),al.get(cmbLec1.getSelectedIndex()),txtName.getText(),txtSem.getText()+"?"+txtSem1.getText(),Integer.parseInt(txtCredit.getText()),Double.parseDouble(txtPrice.getText()),txtDuration.getText());
            
             boolean add=SubjectController.addSubject(dTO);
              if (add) {

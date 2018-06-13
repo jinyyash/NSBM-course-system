@@ -14,40 +14,22 @@ public class StudentDTO {
     private CourseDTO courseDTO;
     private FacultyDTO facultyDTO;
      private String NIC;
-     private String batch;
+    
     private String name;
+     private String batch;
     private String address;
     private String dob;
 
-    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String address, String dob) {
+    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String batch, String address, String dob) {
         this.sid = sid;
         this.courseDTO = courseDTO;
         this.facultyDTO = facultyDTO;
         this.NIC = NIC;
         this.name = name;
-        this.address = address;
-        this.dob = dob;
-    }
-
-    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String batch, String name, String address, String dob) {
-        this.sid = sid;
-        this.courseDTO = courseDTO;
-        this.facultyDTO = facultyDTO;
-        this.NIC = NIC;
         this.batch = batch;
-        this.name = name;
         this.address = address;
         this.dob = dob;
     }
-    
-
-   
-
-   
-    
-    
-
-    
     
     /**
      * @return the name

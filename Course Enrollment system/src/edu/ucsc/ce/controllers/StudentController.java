@@ -24,8 +24,9 @@ import javax.swing.JOptionPane;
  * @author Jinadi
  */
 public class StudentController {
+
     public static boolean addStudent(StudentDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into student values(?,?,?,?,?,?,?)";
+        String sql = "insert into student values(?,?,?,?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getSid());
@@ -33,11 +34,13 @@ public class StudentController {
         stm.setObject(3, c.getFacultyDTO().getFid());
         stm.setObject(4, c.getNIC());
         stm.setObject(5, c.getName());
-        stm.setObject(6, c.getAddress());
-        stm.setObject(7, c.getDob());
+        stm.setObject(6, c.getBatch());
+        stm.setObject(7, c.getAddress());
+        stm.setObject(8, c.getDob());
         return stm.executeUpdate() > 0;
-    } 
-     public static boolean addStudentUdergraduate(UndergraduateDTO c) throws SQLException, ClassNotFoundException {
+    }
+
+    public static boolean addStudentUdergraduate(UndergraduateDTO c) throws SQLException, ClassNotFoundException {
         String sql = "insert into undergraduate values(?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
@@ -46,9 +49,10 @@ public class StudentController {
         stm.setObject(3, c.getAl_result());
         stm.setObject(4, c.getRank());
         stm.setObject(5, c.getZ());
-       
+
         return stm.executeUpdate() > 0;
-    } 
+    }
+
     public static boolean addStudentPostgraduate(PostgraduateDTO c) throws SQLException, ClassNotFoundException {
         String sql = "insert into postgraduate values(?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
@@ -57,20 +61,20 @@ public class StudentController {
         stm.setObject(2, c.getYear());
         stm.setObject(3, c.getQuali());
         stm.setObject(4, c.getInstitute());
-       
-       
+
         return stm.executeUpdate() > 0;
-    } 
-     public static boolean addUndergraduate(StudentDTO sdto,UndergraduateDTO undergraduateDTO) throws SQLException, ClassNotFoundException {
+    }
+
+    public static boolean addUndergraduate(StudentDTO sdto, UndergraduateDTO undergraduateDTO) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDBConnection().getConnection();
         connection.setAutoCommit(false);
-        boolean add=false;
+        boolean add = false;
         try {
-            boolean ad=addStudent(sdto);
-            boolean ad1=addStudentUdergraduate(undergraduateDTO);
-            add=ad&ad1;
+            boolean ad = addStudent(sdto);
+            boolean ad1 = addStudentUdergraduate(undergraduateDTO);
+            add = ad & ad1;
         } catch (SQLException ex) {
-             
+
             try {
                 connection.rollback();
             } catch (Exception ex1) {
@@ -84,16 +88,17 @@ public class StudentController {
         }
         return add;
     }
-      public static boolean addPostGraduate(StudentDTO sdto,PostgraduateDTO postgraduateDTO) throws SQLException, ClassNotFoundException {
+
+    public static boolean addPostGraduate(StudentDTO sdto, PostgraduateDTO postgraduateDTO) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDBConnection().getConnection();
         connection.setAutoCommit(false);
-        boolean add=false;
+        boolean add = false;
         try {
-            boolean ad=addStudent(sdto);
-            boolean ad1=addStudentPostgraduate(postgraduateDTO);
-            add=ad&ad1;
+            boolean ad = addStudent(sdto);
+            boolean ad1 = addStudentPostgraduate(postgraduateDTO);
+            add = ad & ad1;
         } catch (SQLException ex) {
-             
+
             try {
                 connection.rollback();
             } catch (Exception ex1) {
@@ -107,7 +112,8 @@ public class StudentController {
         }
         return add;
     }
-       public static String getLastID() throws SQLException, ClassNotFoundException {
+
+    public static String getLastID() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM student ORDER BY SID DESC LIMIT 1";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
@@ -117,5 +123,16 @@ public class StudentController {
             lec = rst.getString(1);
         }
         return lec;
+    }
+     public static String getLastLecturerDTOID() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT * FROM student ORDER BY LID DESC LIMIT 1";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        String lec = null;
+        if (rst.next()) {
+           lec=rst.getString(1);
+        }
+        return lec ;
     }
 }
