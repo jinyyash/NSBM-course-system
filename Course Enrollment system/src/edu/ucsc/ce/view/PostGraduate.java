@@ -184,7 +184,7 @@ addstudent();
 
     private void addstudent() {
         try {
-            StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtBatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
+            StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtBatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"",2);
             PostgraduateDTO dTO1=new PostgraduateDTO(dTO,(Integer)cmbYear.getSelectedItem(), txtQuali.getText(),txtInstitute.getText());
             boolean add=StudentController.addPostGraduate(dTO, dTO1);
              if(add){

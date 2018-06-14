@@ -33,7 +33,7 @@ public class CourseController {
         return stm.executeUpdate() > 0;
     }
       public static CourseDTO searchCourse(String iid) throws SQLException, ClassNotFoundException {
-        String sql = "select * from course where iid='" + iid + "'";
+        String sql = "select * from course where cid='" + iid + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);

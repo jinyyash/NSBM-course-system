@@ -199,7 +199,7 @@ public class UnderGraduate extends javax.swing.JPanel {
 
     private void add() {
       
-        StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtbatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"");
+        StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtbatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"",1);
         UndergraduateDTO o=new UndergraduateDTO(dTO,Integer.parseInt(cmbYearOf.getSelectedItem().toString()), txtResult.getText(), txtrank.getText(), Double.parseDouble(txtZ.getText()));
         try {
             boolean a=StudentController.addUndergraduate(dTO, o);

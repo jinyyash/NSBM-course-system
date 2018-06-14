@@ -12,7 +12,10 @@ import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -569,10 +572,17 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     }
 
     private void loadStudentID() {
-  al=StudentController.get;
+        try {
+            al=StudentController.getAll();
             for (StudentDTO courseDTO : al) {
                 cmbID.addItem(courseDTO.getName());
             }
-           ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbID, true, "No Course found");    }
+            ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbID, true, "No Student found");
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentSubjectSelecFor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StudentSubjectSelecFor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ }
 }
