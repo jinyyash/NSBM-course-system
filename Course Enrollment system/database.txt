@@ -23,6 +23,7 @@ create table student(
 	batch varchar(10),
 	address varchar(50),
 	dob varchar(10),
+	type int,
 	FOREIGN KEY (CID) REFERENCES Courses(CID),
 	FOREIGN KEY (FID) REFERENCES Facult(FID)
 );

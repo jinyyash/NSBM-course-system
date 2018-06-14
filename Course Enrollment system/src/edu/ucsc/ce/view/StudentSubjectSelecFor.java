@@ -5,8 +5,14 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.methods.ComboBoxFilling;
+import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,9 +23,11 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
+    ArrayList<StudentDTO> al=new ArrayList<>();
     public StudentSubjectSelecFor() {
         initComponents();
         enchan();
+        loadStudentID();
     }
 
     /**
@@ -55,7 +63,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         txtNIC = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbID = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -266,9 +274,8 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         jLabel11.setText("Student ID");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 180, 70));
 
-        jComboBox1.setEditable(true);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 240, 40));
+        cmbID.setEditable(true);
+        jPanel2.add(cmbID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 240, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 780, 180));
 
@@ -519,8 +526,8 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbCourse;
+    private javax.swing.JComboBox<String> cmbID;
     private javax.swing.JComboBox<String> cmbfac;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -560,4 +567,12 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     private void enchan() {
 
     }
+
+    private void loadStudentID() {
+  al=StudentController.get;
+            for (StudentDTO courseDTO : al) {
+                cmbID.addItem(courseDTO.getName());
+            }
+           ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbID, true, "No Course found");    }
 }

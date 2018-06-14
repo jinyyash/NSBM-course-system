@@ -13,14 +13,14 @@ public class StudentDTO {
     private String sid;
     private CourseDTO courseDTO;
     private FacultyDTO facultyDTO;
-     private String NIC;
-    
+     private String NIC; 
     private String name;
      private String batch;
     private String address;
     private String dob;
+    private int state;
 
-    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String batch, String address, String dob) {
+    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String batch, String address, String dob, int state) {
         this.sid = sid;
         this.courseDTO = courseDTO;
         this.facultyDTO = facultyDTO;
@@ -29,7 +29,10 @@ public class StudentDTO {
         this.batch = batch;
         this.address = address;
         this.dob = dob;
+        this.state = state;
     }
+
+    
     
     /**
      * @return the name
@@ -141,6 +144,20 @@ public class StudentDTO {
      */
     public void setBatch(String batch) {
         this.batch = batch;
+    }
+
+    /**
+     * @return the state
+     */
+    public int getState() {
+        return state;
+    }
+
+    /**
+     * @param state the state to set
+     */
+    public void setState(int state) {
+        this.state = state;
     }
     
 }

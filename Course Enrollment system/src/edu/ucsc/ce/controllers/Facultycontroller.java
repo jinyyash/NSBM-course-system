@@ -6,6 +6,7 @@
 package edu.ucsc.ce.controllers;
 
 import edu.ucsc.ce.dbconnection.DBConnection;
+import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.LabDTO;
 import java.sql.Connection;
@@ -51,5 +52,16 @@ public class Facultycontroller {
             lec = rst.getString(1);
         }
         return lec;
+    }
+        public static FacultyDTO searchCourse(String iid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from faculty where fid='" + iid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        FacultyDTO cdto=null;
+        if (rst.next()) {
+           cdto=new FacultyDTO(iid, rst.getString(2), rst.getString(3));
+        }
+        return cdto;
     }
 }

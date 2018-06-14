@@ -6,7 +6,10 @@
 package edu.ucsc.ce.controllers;
 
 import edu.ucsc.ce.dbconnection.DBConnection;
+import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.InstructorDTO;
+import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.PostgraduateDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import edu.ucsc.ce.models.UndergraduateDTO;
@@ -15,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,7 +30,7 @@ import javax.swing.JOptionPane;
 public class StudentController {
 
     public static boolean addStudent(StudentDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into student values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into student values(?,?,?,?,?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getSid());
@@ -37,6 +41,7 @@ public class StudentController {
         stm.setObject(6, c.getBatch());
         stm.setObject(7, c.getAddress());
         stm.setObject(8, c.getDob());
+         stm.setObject(9, c.getState());
         return stm.executeUpdate() > 0;
     }
 
@@ -124,7 +129,7 @@ public class StudentController {
         }
         return lec;
     }
-     public static String getLastLecturerDTOID() throws SQLException, ClassNotFoundException {
+     public static String getLastDTOID() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM student ORDER BY LID DESC LIMIT 1";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
@@ -134,5 +139,24 @@ public class StudentController {
            lec=rst.getString(1);
         }
         return lec ;
+    }
+      public static ArrayList<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
+        String sql = "select * from student";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<StudentDTO> courseList = new ArrayList();
+        StudentDTO dTO=null;
+          CourseDTO courseDTO=null;
+          FacultyDTO facultyDTO=null;
+        while (rst.next()) {
+            courseDTO=CourseController.searchCourse(rst.getString(2));
+            facultyDTO=Facultycontroller.searchCourse(rst.getString(3));
+            dTO = new StudentDTO(rst.getString(1),courseDTO, facultyDTO, rst.getString(4), rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),Integer.parseInt(rst.getString(9)));
+
+            courseList.add(dTO);
+        }
+        return courseList;
+
     }
 }
