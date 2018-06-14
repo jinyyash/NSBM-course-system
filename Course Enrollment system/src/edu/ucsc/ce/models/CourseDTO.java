@@ -15,16 +15,16 @@ public class CourseDTO {
     private String name;
     private Integer subjectPerSem1;
     private Integer subjectPerSem2;
-    private Integer batchYear;         
+    private Integer Year;         
     private String type;
     private Integer creditForSem;
 
-    public CourseDTO(String cid, String name, Integer subjectPerSem1, Integer subjectPerSem2, Integer batchYear, String type, Integer creditForSem) {
+    public CourseDTO(String cid, String name, Integer subjectPerSem1, Integer subjectPerSem2, Integer Year, String type, Integer creditForSem) {
         this.cid = cid;
         this.name = name;
         this.subjectPerSem1 = subjectPerSem1;
         this.subjectPerSem2 = subjectPerSem2;
-        this.batchYear = batchYear;
+        this.Year = Year;
         this.type = type;
         this.creditForSem = creditForSem;
     }
@@ -95,15 +95,15 @@ public class CourseDTO {
     /**
      * @return the batchYear
      */
-    public Integer getBatchYear() {
-        return batchYear;
+    public Integer getYear() {
+        return Year;
     }
 
     /**
      * @param batchYear the batchYear to set
      */
-    public void setBatchYear(Integer batchYear) {
-        this.batchYear = batchYear;
+    public void setYear(Integer Year) {
+        this.Year = Year;
     }
 
     /**

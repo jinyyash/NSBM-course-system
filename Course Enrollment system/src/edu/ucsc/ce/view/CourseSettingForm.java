@@ -6,10 +6,16 @@
 package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.Facultycontroller;
 import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.FacultyDTO;
+import edu.ucsc.ce.models.FacultyDetailDTO;
+import static edu.ucsc.ce.view.AddStudentForm.cmbfac;
+import static edu.ucsc.ce.view.AddStudentForm.fac;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,9 +29,11 @@ public class CourseSettingForm extends javax.swing.JPanel {
     /**
      * Creates new form CourseSettingForm
      */
+    ArrayList<FacultyDTO> facultyDTOs=new ArrayList<>();
     public CourseSettingForm() {
         initComponents();
         loadCourseID();
+        loadFac();
     }
 
     /**
@@ -222,7 +230,9 @@ public class CourseSettingForm extends javax.swing.JPanel {
     private void add() {
         try {
             CourseDTO cdto=new CourseDTO(txtID.getText(), txtName.getText(),Integer.parseInt(txtss1.getText()), Integer.parseInt(txtss2.getText()), Integer.parseInt(txtyear.getText()),txttype.getText(),Integer.parseInt(txtcreaditPerSem.getText()));
-            boolean add=CourseController.addCourse(cdto);
+            FacultyDTO  o=facultyDTOs.get(jComboBox1.getSelectedIndex());
+            FacultyDetailDTO detailDTO=new FacultyDetailDTO(cdto.getCid()+o.getFid(), o, cdto,cdto.getBatchYear()+"");
+            boolean add=CourseController.addDetails(detailDTO, cdto);
             if (add) {
                 JOptionPane.showMessageDialog(null, "Course Added sucessfully");
             } else {
@@ -242,6 +252,19 @@ public class CourseSettingForm extends javax.swing.JPanel {
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());
                 txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ }
+
+    private void loadFac() {
+        try {
+            facultyDTOs=Facultycontroller.getAll();
+            for (FacultyDTO courseDTO : fac) {
+                jComboBox1.addItem(courseDTO.getName());
             }
         } catch (SQLException ex) {
             Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);

@@ -136,3 +136,11 @@ create table Student_Sub(
 	FOREIGN KEY (SID) REFERENCES Student(SID)
 	
 );		
+create table CourseDetails(
+	CDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
+	CID int NOT NULL,
+	SSID int NOT NULL,
+	semester varchar(20),
+	FOREIGN KEY (CID) REFERENCES Courses(CID),
+	FOREIGN KEY (SSID) REFERENCES Subject(SSID)
+);

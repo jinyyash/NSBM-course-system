@@ -30,15 +30,16 @@ public class AddSubjectForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
-    ArrayList<CourseDTO> al=new ArrayList<>();
-     ArrayList<LecturerDTO> lec=new ArrayList<>();
+    ArrayList<CourseDTO> al = new ArrayList<>();
+    ArrayList<LecturerDTO> lec = new ArrayList<>();
+
     public AddSubjectForm() {
         initComponents();
         enchan();
         loadCourseCombo();
         loadLecCombo();
-       // getSubID();
-      
+        // getSubID();
+
     }
 
     /**
@@ -81,7 +82,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         txtSid = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        cmbLec1 = new javax.swing.JComboBox<>();
+        cmbCourse = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         txtSem1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -325,22 +326,22 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel16.setText("Course");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, 80));
 
-        cmbLec1.addItemListener(new java.awt.event.ItemListener() {
+        cmbCourse.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbLec1ItemStateChanged(evt);
+                cmbCourseItemStateChanged(evt);
             }
         });
-        cmbLec1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cmbCourse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbLec1MouseClicked(evt);
+                cmbCourseMouseClicked(evt);
             }
         });
-        cmbLec1.addActionListener(new java.awt.event.ActionListener() {
+        cmbCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbLec1ActionPerformed(evt);
+                cmbCourseActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbLec1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 230, 50));
+        jPanel1.add(cmbCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 230, 50));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel19.setText("year");
@@ -405,31 +406,31 @@ public class AddSubjectForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStudeMouseExited
 
     private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-    lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblLecMouseExited
 
     private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-    lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblinsMouseExited
 
     private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-    lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblPaymentMouseExited
 
     private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-    lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-    lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
     private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-           lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
     }//GEN-LAST:event_lblExamMouseExited
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-    lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -452,20 +453,20 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
-    private void cmbLec1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLec1ItemStateChanged
-      getSubID();
-    }//GEN-LAST:event_cmbLec1ItemStateChanged
+    private void cmbCourseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCourseItemStateChanged
+        getSubID();
+    }//GEN-LAST:event_cmbCourseItemStateChanged
 
-    private void cmbLec1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLec1ActionPerformed
+    private void cmbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseActionPerformed
 //        getSubID(); // TODO add your handling code here:
-    }//GEN-LAST:event_cmbLec1ActionPerformed
+    }//GEN-LAST:event_cmbCourseActionPerformed
 
-    private void cmbLec1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbLec1MouseClicked
+    private void cmbCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbCourseMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbLec1MouseClicked
+    }//GEN-LAST:event_cmbCourseMouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-add();
+        add();
     }//GEN-LAST:event_jLabel18MouseClicked
 
     /**
@@ -507,8 +508,8 @@ add();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbCourse;
     private javax.swing.JComboBox<String> cmbLec;
-    private javax.swing.JComboBox<String> cmbLec1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -550,12 +551,12 @@ add();
 
     private void loadCourseCombo() {
         try {
-             al=CourseController.getAll();
+            al = CourseController.getAll();
             for (CourseDTO courseDTO : al) {
-                cmbLec1.addItem(courseDTO.getName());
+                cmbCourse.addItem(courseDTO.getName());
             }
-           ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbLec1, true, "No Course found");
+            ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbCourse, true, "No Course found");
         } catch (SQLException ex) {
             Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -565,12 +566,12 @@ add();
 
     private void loadLecCombo() {
         try {
-            lec=LecturerController.getAllLecturerDTO();
+            lec = LecturerController.getAllLecturerDTO();
             for (LecturerDTO courseDTO : lec) {
                 cmbLec.addItem(courseDTO.getName());
             }
             ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbLec1, true, "No Lecturer found");
+            combo.setSearchableCombo(cmbCourse, true, "No Lecturer found");
         } catch (SQLException ex) {
             Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -580,14 +581,14 @@ add();
 
     private void getSubID() {
         try {
-             CourseDTO cdto=al.get(cmbLec1.getSelectedIndex());
-            String id=SubjectController.getLastID(cdto.getCid());
-            if (id==null) {
-               
-                txtSid.setText(cdto.getCid()+"001");
+            CourseDTO cdto = al.get(cmbCourse.getSelectedIndex());
+            String id = SubjectController.getLastID(cdto.getCid());
+            if (id == null) {
+
+                txtSid.setText(cdto.getCid() + "001");
             } else {
                 String iid = id.substring(id.length() - 1, id.length());
-                txtSid.setText(id.substring(0, id.length()-1) + (Integer.parseInt(iid) + 1));
+                txtSid.setText(id.substring(0, id.length() - 1) + (Integer.parseInt(iid) + 1));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -598,10 +599,10 @@ add();
 
     private void add() {
         try {
-            SubjectDTO dTO=new SubjectDTO(txtSid.getText(),lec.get(cmbLec.getSelectedIndex()),al.get(cmbLec1.getSelectedIndex()),txtName.getText(),txtSem.getText()+"?"+txtSem1.getText(),Integer.parseInt(txtCredit.getText()),Double.parseDouble(txtPrice.getText()),txtDuration.getText());
-           
-            boolean add=SubjectController.addSubject(dTO);
-             if (add) {
+            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem.getText() + "?" + txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText());
+
+            boolean add = SubjectController.addSubject(dTO);
+            if (add) {
                 JOptionPane.showMessageDialog(null, "Subject Added sucessfully");
             } else {
                 JOptionPane.showMessageDialog(null, "OOPz!Try Again");

@@ -10,28 +10,22 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class FacultyDetailDTO {
-    private Integer fdid;
+    private String fdid;
     private FacultyDTO facultyDTO;
     private CourseDTO courseDTO;
     private String intake;
 
-    /**
-     * @return the fdid
-     */
-    public Integer getFdid() {
-        return fdid;
-    }
-
-    /**
-     * @param fdid the fdid to set
-     */
-    public void setFdid(Integer fdid) {
+    public FacultyDetailDTO(String fdid, FacultyDTO facultyDTO, CourseDTO courseDTO, String intake) {
         this.fdid = fdid;
+        this.facultyDTO = facultyDTO;
+        this.courseDTO = courseDTO;
+        this.intake = intake;
     }
 
-    /**
-     * @return the fid
-     */
+    
+
+    
+   
   
 
     /**
@@ -74,6 +68,20 @@ public class FacultyDetailDTO {
      */
     public void setCourseDTO(CourseDTO courseDTO) {
         this.courseDTO = courseDTO;
+    }
+
+    /**
+     * @param fdid the fdid to set
+     */
+    public void setFdid(String fdid) {
+        this.fdid = fdid;
+    }
+
+    /**
+     * @return the fdid
+     */
+    public String getFdid() {
+        return fdid;
     }
     
 }

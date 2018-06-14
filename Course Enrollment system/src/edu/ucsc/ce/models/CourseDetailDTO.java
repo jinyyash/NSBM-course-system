@@ -10,25 +10,12 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class CourseDetailDTO {
-    private Integer cdid;
+    private String cdid;
     private CourseDTO courseDTO;
     private SubjectDTO subjectDTO;
     private String semester;
 
-    /**
-     * @return the cdid
-     */
-    public Integer getCdid() {
-        return cdid;
-    }
-
-    /**
-     * @param cdid the cdid to set
-     */
-    public void setCdid(Integer cdid) {
-        this.cdid = cdid;
-    }
-
+  
     
     /**
      * @return the semester
@@ -70,5 +57,19 @@ public class CourseDetailDTO {
      */
     public void setSubjectDTO(SubjectDTO subjectDTO) {
         this.subjectDTO = subjectDTO;
+    }
+
+    /**
+     * @return the cdid
+     */
+    public String getCdid() {
+        return cdid;
+    }
+
+    /**
+     * @param cdid the cdid to set
+     */
+    public void setCdid(String cdid) {
+        this.cdid = cdid;
     }
 }
