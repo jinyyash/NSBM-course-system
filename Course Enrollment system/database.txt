@@ -48,7 +48,7 @@ create table subject(
 	LID varchar(10) NOT NULL,
 	CID varchar(10) NOT NULL,
 	name varchar(25),
-	semester varchar(10),
+	year varchar(10),
 	credits int,
 	price decimal(10),
 	duration varchar(10),
@@ -137,9 +137,9 @@ create table Student_Sub(
 	
 );		
 create table CourseDetails(
-	CDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
-	CID int NOT NULL,
-	SSID int NOT NULL,
+	CDID varchar(10) NOT NULL PRIMARY KEY ,	
+	CID varchar(10) NOT NULL,
+	SSID varchar(10) NOT NULL,
 	semester varchar(20),
 	FOREIGN KEY (CID) REFERENCES Courses(CID),
 	FOREIGN KEY (SSID) REFERENCES Subject(SSID)

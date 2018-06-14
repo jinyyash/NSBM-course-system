@@ -231,7 +231,7 @@ public class CourseSettingForm extends javax.swing.JPanel {
         try {
             CourseDTO cdto=new CourseDTO(txtID.getText(), txtName.getText(),Integer.parseInt(txtss1.getText()), Integer.parseInt(txtss2.getText()), Integer.parseInt(txtyear.getText()),txttype.getText(),Integer.parseInt(txtcreaditPerSem.getText()));
             FacultyDTO  o=facultyDTOs.get(jComboBox1.getSelectedIndex());
-            FacultyDetailDTO detailDTO=new FacultyDetailDTO(cdto.getCid()+o.getFid(), o, cdto,cdto.getBatchYear()+"");
+            FacultyDetailDTO detailDTO=new FacultyDetailDTO(cdto.getCid()+o.getFid(), o, cdto,cdto.getYear()+"");
             boolean add=CourseController.addDetails(detailDTO, cdto);
             if (add) {
                 JOptionPane.showMessageDialog(null, "Course Added sucessfully");

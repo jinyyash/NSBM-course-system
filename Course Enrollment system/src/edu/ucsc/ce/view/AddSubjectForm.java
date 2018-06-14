@@ -11,6 +11,7 @@ import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.controllers.SubjectController;
 import edu.ucsc.ce.methods.ComboBoxFilling;
 import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.CourseDetailDTO;
 import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.SubjectDTO;
 import java.awt.Color;
@@ -599,9 +600,10 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
     private void add() {
         try {
-            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem.getText() + "?" + txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText());
-
-            boolean add = SubjectController.addSubject(dTO);
+            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText());
+            CourseDTO courseDTO=al.get(cmbCourse.getSelectedIndex());
+            CourseDetailDTO courseDetailDTO=new CourseDetailDTO(dTO.getSid()+courseDTO.getCid(), courseDTO, dTO,txtSem.getText());
+            boolean add = SubjectController.addDetails(dTO, courseDetailDTO);
             if (add) {
                 JOptionPane.showMessageDialog(null, "Subject Added sucessfully");
             } else {

@@ -15,6 +15,13 @@ public class CourseDetailDTO {
     private SubjectDTO subjectDTO;
     private String semester;
 
+    public CourseDetailDTO(String cdid, CourseDTO courseDTO, SubjectDTO subjectDTO, String semester) {
+        this.cdid = cdid;
+        this.courseDTO = courseDTO;
+        this.subjectDTO = subjectDTO;
+        this.semester = semester;
+    }
+
   
     
     /**

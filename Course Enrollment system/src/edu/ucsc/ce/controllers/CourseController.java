@@ -89,9 +89,10 @@ public class CourseController {
         try {
             boolean ad = addCourse(cdto);
             boolean ad1 = addFacultyDetails(c);
+            connection.commit();
             add = ad & ad1; 
+            
         } catch (SQLException ex) {
-
             try {
                 connection.rollback();
             } catch (Exception ex1) {
