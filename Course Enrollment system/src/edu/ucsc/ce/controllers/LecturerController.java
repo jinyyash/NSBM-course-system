@@ -33,7 +33,7 @@ public class LecturerController {
     }
 
     public static LecturerDTO searchLecturerDTO(String LecturerDTOID) throws SQLException, ClassNotFoundException {
-        String sql = "select * from lecturer where LecturerDTOID='" + LecturerDTOID + "'";
+        String sql = "select * from lecturer where LID='" + LecturerDTOID + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);

@@ -6,13 +6,18 @@
 package edu.ucsc.ce.controllers;
 
 import edu.ucsc.ce.dbconnection.DBConnection;
+import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.CourseDetailDTO;
+import edu.ucsc.ce.models.FacultyDTO;
+import edu.ucsc.ce.models.LecturerDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import edu.ucsc.ce.models.SubjectDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,6 +69,19 @@ public class SubjectController {
         }
         return lec;
     }
+     public static SubjectDTO searchSubjectDTO(String LecturerDTOID) throws SQLException, ClassNotFoundException {
+        String sql = "select * from subject where SSID='" + LecturerDTOID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        SubjectDTO subjectDTO = null;
+        if (rst.next()) {
+            LecturerDTO  dTO=LecturerController.searchLecturerDTO(rst.getString(2));
+            CourseDTO courseDTO=CourseController.searchCourse( rst.getString(3));
+            subjectDTO = new SubjectDTO(LecturerDTOID,dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8));
+        }
+        return subjectDTO ;
+    }
 
     public static boolean addCourseDetails(CourseDetailDTO c) throws SQLException, ClassNotFoundException {
         String sql = "insert into courseDetails values(?,?,?,?)";
@@ -104,5 +122,24 @@ public class SubjectController {
             System.out.println(" commit gweyey ");
         }
         return add;
+    }
+     public static ArrayList<CourseDetailDTO> getAllSubjectDetail() throws SQLException, ClassNotFoundException {
+        String sql = "select * from courseDetails";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<CourseDetailDTO> courseSubList = new ArrayList();
+          CourseDTO courseDTO=null;
+          SubjectDTO subjectDTO=null;
+        while (rst.next()) {
+            courseDTO=CourseController.searchCourse(rst.getString(2));
+            subjectDTO=searchSubjectDTO(rst.getString(3));
+ 
+            CourseDetailDTO courseDetailDTO=new CourseDetailDTO(rst.getString(1),courseDTO,subjectDTO, rst.getString(4));
+
+            courseSubList.add(courseDetailDTO);
+        }
+        return courseSubList;
+
     }
 }
