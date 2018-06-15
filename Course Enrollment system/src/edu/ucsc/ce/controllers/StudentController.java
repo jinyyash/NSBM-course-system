@@ -7,6 +7,7 @@ package edu.ucsc.ce.controllers;
 
 import edu.ucsc.ce.dbconnection.DBConnection;
 import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.CourseDetailDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.InstructorDTO;
 import edu.ucsc.ce.models.LecturerDTO;
@@ -41,7 +42,7 @@ public class StudentController {
         stm.setObject(6, c.getBatch());
         stm.setObject(7, c.getAddress());
         stm.setObject(8, c.getDob());
-         stm.setObject(9, c.getState());
+        stm.setObject(9, c.getState());
         return stm.executeUpdate() > 0;
     }
 
@@ -129,34 +130,87 @@ public class StudentController {
         }
         return lec;
     }
-     public static String getLastDTOID() throws SQLException, ClassNotFoundException {
+
+    public static String getLastDTOID() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM student ORDER BY LID DESC LIMIT 1";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
         String lec = null;
         if (rst.next()) {
-           lec=rst.getString(1);
+            lec = rst.getString(1);
         }
-        return lec ;
+        return lec;
     }
-      public static ArrayList<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
+
+    public static ArrayList<StudentDTO> getAll() throws SQLException, ClassNotFoundException {
         String sql = "select * from student";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
         ArrayList<StudentDTO> courseList = new ArrayList();
-        StudentDTO dTO=null;
-          CourseDTO courseDTO=null;
-          FacultyDTO facultyDTO=null;
+        StudentDTO dTO = null;
+        CourseDTO courseDTO = null;
+        FacultyDTO facultyDTO = null;
         while (rst.next()) {
-            courseDTO=CourseController.searchCourse(rst.getString(2));
-            facultyDTO=Facultycontroller.searchCourse(rst.getString(3));
-            dTO = new StudentDTO(rst.getString(1),courseDTO, facultyDTO, rst.getString(4), rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(8),Integer.parseInt(rst.getString(9)));
+            courseDTO = CourseController.searchCourse(rst.getString(2));
+            facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
 
             courseList.add(dTO);
         }
         return courseList;
 
     }
+
+    public static boolean addStudentSubject(ArrayList<CourseDetailDTO> courseDetailDTOs, StudentDTO sdto) throws SQLException, ClassNotFoundException {
+        String sql = "insert into student_sub values(?,?,?)";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        conn.setAutoCommit(false);
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(2, sdto.getSid());
+        //stm.setObject(2, c.getCourseDTO().getCid());
+        for (CourseDetailDTO courseDetailDTO : courseDetailDTOs) {
+            stm.setObject(1, sdto.getSid() + courseDetailDTO.getSubjectDTO().getSid());
+            stm.setObject(2, sdto.getSid());
+            stm.setObject(3, courseDetailDTO.getSubjectDTO().getSid());
+            stm.addBatch();
+        }
+
+       
+        int[] c= stm.executeBatch();
+       Boolean check= checkUpdateCounts(c);
+       try{
+       if(check){
+           conn.commit();
+       }else{
+           conn.rollback();
+       }
+       }finally{
+           conn.setAutoCommit(true);
+       }
+       return check;
+    }
+    public static Boolean checkUpdateCounts(int[] updateCounts) {
+        boolean [] co=new boolean[updateCounts.length];
+    for (int i=0; i<updateCounts.length; i++) {
+        if (updateCounts[i] >= 0) {
+            System.out.println("OK; updateCount="+updateCounts[i]);
+            co[i]=true;
+        }
+        else if (updateCounts[i] == Statement.SUCCESS_NO_INFO) {
+            System.out.println("OK; updateCount=Statement.SUCCESS_NO_INFO");
+            co[i]=true;
+        }
+        else if (updateCounts[i] == Statement.EXECUTE_FAILED) {
+            System.out.println("Failure; updateCount=Statement.EXECUTE_FAILED");
+            co[i]=false;
+        }
+    }
+      for (int i=0; i<updateCounts.length; i++) {
+       co[0]&=co[i];
+      }
+      return co[0];
+}  
+
 }

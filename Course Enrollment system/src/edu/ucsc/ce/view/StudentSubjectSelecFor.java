@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,7 +33,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
      */
     ArrayList<StudentDTO> studentList = new ArrayList<>();
     ArrayList<CourseDetailDTO> courseDetailList = new ArrayList<>();
-     ArrayList<CourseDetailDTO> selectedList = new ArrayList<>();
+    ArrayList<CourseDetailDTO> selectedList = new ArrayList<>();
     DefaultTableModel dtm1;
     int total = 0;
 
@@ -574,11 +575,13 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
-        // TODO add your handling code here:
+        jLabel20.setBackground(Color.BLACK);
+        jLabel20.setForeground(Color.WHITE);
     }//GEN-LAST:event_jLabel20MouseEntered
 
     private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
-        // TODO add your handling code here:
+        jLabel20.setBackground(Color.GRAY);
+        jLabel20.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel20MouseExited
 
     private void cmbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIDActionPerformed
@@ -590,7 +593,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         dtm1.setRowCount(0);
         courseDetailList.clear();
         selectedList.clear();
-        total=0;
+        total = 0;
         loadDetails();
     }//GEN-LAST:event_cmbIDItemStateChanged
 
@@ -601,7 +604,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-      //  getDetailsOfRow();
+        //  getDetailsOfRow();
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
@@ -613,14 +616,28 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-       int r=jTable2.getSelectedRow();
-       selectedList.remove(r);
-       jTable1.remove(r);
+        int r = jTable2.getSelectedRow();
+        System.out.println(r);
+        CourseDetailDTO courseDetailDTO = selectedList.get(r);
+        selectedList.remove(courseDetailDTO);
+        dtm1.removeRow(r);
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-      StudentDTO studentDTO=studentList.get(cmbID.getSelectedIndex());
-      
+        try {
+            StudentDTO studentDTO = studentList.get(cmbID.getSelectedIndex());
+            boolean add = StudentController.addStudentSubject(selectedList, studentDTO);
+            if(add){
+                JOptionPane.showMessageDialog(null,"Subject added");
+            }else{
+                 JOptionPane.showMessageDialog(null,"faild");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentSubjectSelecFor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(StudentSubjectSelecFor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jLabel19MouseClicked
 
     /**
@@ -765,17 +782,20 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         if (cddto.getSubjectDTO().getSemester().equals("1")) {
             if (total <= cddto.getCourseDTO().getSubjectPerSem1()) {
                 Object[] row = {cddto.getSubjectDTO().getName(), cddto.getSubjectDTO().getLectureDTO().getName(), cddto.getSubjectDTO().getCredits(), cddto.getSubjectDTO().getDuration(), cddto.getSubjectDTO().getPrice()};
-                dtm1.addRow(row);
                 selectedList.add(cddto);
+                dtm1.addRow(row);
+
                 jLabel5.setText(total + "");
             }
         } else if (cddto.getSubjectDTO().getSemester().equals("2")) {
-            if (total <=cddto.getCourseDTO().getSubjectPerSem2()) {
+            if (total <= cddto.getCourseDTO().getSubjectPerSem2()) {
                 Object[] row = {cddto.getSubjectDTO().getName(), cddto.getSubjectDTO().getLectureDTO().getName(), cddto.getSubjectDTO().getCredits(), cddto.getSubjectDTO().getDuration(), cddto.getSubjectDTO().getPrice()};
-                dtm1.addRow(row);
                 selectedList.add(cddto);
+                dtm1.addRow(row);
+
                 jLabel5.setText(total + "");
             }
         }
     }
+
 }
