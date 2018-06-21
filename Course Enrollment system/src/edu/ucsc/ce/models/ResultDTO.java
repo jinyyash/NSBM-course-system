@@ -14,9 +14,9 @@ public class ResultDTO {
     private ExamDTO examDTO;
     private StudentDTO studentDTO;
     private Double result;
-    private Double grade;
+    private String grade;
 
-    public ResultDTO(String rid, ExamDTO examDTO, StudentDTO studentDTO, Double result, Double grade) {
+    public ResultDTO(String rid, ExamDTO examDTO, StudentDTO studentDTO, Double result, String grade) {
         this.rid = rid;
         this.examDTO = examDTO;
         this.studentDTO = studentDTO;
@@ -24,6 +24,7 @@ public class ResultDTO {
         this.grade = grade;
     }
 
+    
     
 
     /**
