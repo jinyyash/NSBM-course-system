@@ -13,6 +13,8 @@ import edu.ucsc.ce.models.InstructorDTO;
 import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.PostgraduateDTO;
 import edu.ucsc.ce.models.StudentDTO;
+import edu.ucsc.ce.models.Student_SubDTO;
+import edu.ucsc.ce.models.SubjectDTO;
 import edu.ucsc.ce.models.UndergraduateDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -177,40 +179,74 @@ public class StudentController {
             stm.addBatch();
         }
 
-       
-        int[] c= stm.executeBatch();
-       Boolean check= checkUpdateCounts(c);
-       try{
-       if(check){
-           conn.commit();
-       }else{
-           conn.rollback();
-       }
-       }finally{
-           conn.setAutoCommit(true);
-       }
-       return check;
+        int[] c = stm.executeBatch();
+        Boolean check = checkUpdateCounts(c);
+        try {
+            if (check) {
+                conn.commit();
+            } else {
+                conn.rollback();
+            }
+        } finally {
+            conn.setAutoCommit(true);
+        }
+        return check;
     }
+
     public static Boolean checkUpdateCounts(int[] updateCounts) {
-        boolean [] co=new boolean[updateCounts.length];
-    for (int i=0; i<updateCounts.length; i++) {
-        if (updateCounts[i] >= 0) {
-            System.out.println("OK; updateCount="+updateCounts[i]);
-            co[i]=true;
+        boolean[] co = new boolean[updateCounts.length];
+        for (int i = 0; i < updateCounts.length; i++) {
+            if (updateCounts[i] >= 0) {
+                System.out.println("OK; updateCount=" + updateCounts[i]);
+                co[i] = true;
+            } else if (updateCounts[i] == Statement.SUCCESS_NO_INFO) {
+                System.out.println("OK; updateCount=Statement.SUCCESS_NO_INFO");
+                co[i] = true;
+            } else if (updateCounts[i] == Statement.EXECUTE_FAILED) {
+                System.out.println("Failure; updateCount=Statement.EXECUTE_FAILED");
+                co[i] = false;
+            }
         }
-        else if (updateCounts[i] == Statement.SUCCESS_NO_INFO) {
-            System.out.println("OK; updateCount=Statement.SUCCESS_NO_INFO");
-            co[i]=true;
+        for (int i = 0; i < updateCounts.length; i++) {
+            co[0] &= co[i];
         }
-        else if (updateCounts[i] == Statement.EXECUTE_FAILED) {
-            System.out.println("Failure; updateCount=Statement.EXECUTE_FAILED");
-            co[i]=false;
-        }
+        return co[0];
     }
-      for (int i=0; i<updateCounts.length; i++) {
-       co[0]&=co[i];
-      }
-      return co[0];
-}  
+
+    public static ArrayList<Student_SubDTO> getAllStudentSub() throws SQLException, ClassNotFoundException {
+        String sql = "select * from Student_Sub";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<Student_SubDTO> courseList = new ArrayList();
+        StudentDTO dTO = null;
+        Student_SubDTO student_SubDTO = null;
+        SubjectDTO sdto = null;
+        while (rst.next()) {
+            dTO=searchStudentDTO(rst.getString(2));
+            sdto=SubjectController.searchSubjectDTO(rst.getString(3));
+            student_SubDTO=new Student_SubDTO(rst.getString(1), dTO, sdto);
+
+            courseList.add(student_SubDTO);
+        }
+        return courseList;
+
+    }
+
+    public static StudentDTO searchStudentDTO(String ID) throws SQLException, ClassNotFoundException {
+        String sql = "select * from student where SID='" + ID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        StudentDTO dTO = null;
+        CourseDTO courseDTO = null;
+        FacultyDTO facultyDTO = null;
+        if (rst.next()) {
+            courseDTO = CourseController.searchCourse(rst.getString(2));
+            facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
+        }
+        return dTO;
+    }
 
 }

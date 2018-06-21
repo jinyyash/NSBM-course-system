@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -69,5 +70,20 @@ public class InstructorControll {
         stm.setObject(6, c.getEmail());
         int res = stm.executeUpdate();
         return res > 0;
+    }
+    public static ArrayList<InstructorDTO> getAlDTO() throws SQLException, ClassNotFoundException {
+        String sql = "select * from instructor";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<InstructorDTO> courseList = new ArrayList();
+        InstructorDTO lec;
+        while (rst.next()) {
+            lec = new InstructorDTO(rst.getString(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5),Integer.parseInt(rst.getString(6)),rst.getString(7));
+
+            courseList.add(lec);
+        }
+        return courseList;
+
     }
 }

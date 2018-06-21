@@ -15,6 +15,13 @@ public class Student_SubDTO {
     private StudentDTO studentDTO;; 
     private SubjectDTO subjectDTO;
 
+    public Student_SubDTO(String ssid, StudentDTO studentDTO, SubjectDTO subjectDTO) {
+        this.ssid = ssid;
+        this.studentDTO = studentDTO;
+        this.subjectDTO = subjectDTO;
+    }
+    
+
     /**
      * @return the sid
      */

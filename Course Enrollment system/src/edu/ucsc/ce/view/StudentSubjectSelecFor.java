@@ -304,14 +304,14 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         jPanel2.add(lblBatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 170, 40));
 
         lblFac.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jPanel2.add(lblFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 160, 40));
+        jPanel2.add(lblFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 190, 50));
 
         lblCourse.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jPanel2.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 170, 40));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel8.setText("Faculty");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 90, 70));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 140, 50));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI Light", 3, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));

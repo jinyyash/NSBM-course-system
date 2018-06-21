@@ -5,8 +5,25 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.Facultycontroller;
+import edu.ucsc.ce.controllers.InstructorControll;
+import edu.ucsc.ce.controllers.LabController;
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.methods.ComboBoxFilling;
+import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.CourseDetailDTO;
+import edu.ucsc.ce.models.FacultyDTO;
+import edu.ucsc.ce.models.FacultyDetailDTO;
+import edu.ucsc.ce.models.InstructorDTO;
+import edu.ucsc.ce.models.LabDTO;
+import edu.ucsc.ce.models.Student_SubDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,9 +34,18 @@ public class LabAssigninForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
+    ArrayList<FacultyDTO> facultyDTOsList = new ArrayList<>();
+    ArrayList<FacultyDetailDTO> DetailDTOs = new ArrayList<>();
+    ArrayList<CourseDetailDTO> courseDetailDTOs=new ArrayList<>();
+    ArrayList<InstructorDTO> instructorDTOs=new ArrayList<>();
+     ArrayList<Student_SubDTO> al=new ArrayList<>();
+     ArrayList<LabDTO> labDTOs=new ArrayList<>();
     public LabAssigninForm() {
         initComponents();
         enchan();
+        loadFac();
+        loadInst();
+        loadLabs();
     }
 
     /**
@@ -43,7 +69,31 @@ public class LabAssigninForm extends javax.swing.JFrame {
         lblExam = new javax.swing.JLabel();
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel16 = new javax.swing.JLabel();
+        cmbFac = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtOc = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        cmbSub = new javax.swing.JComboBox<>();
+        lblName = new javax.swing.JLabel();
+        cmbInstructor = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        cmbLab = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel22 = new javax.swing.JLabel();
+        cmbCourse = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtSt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -193,8 +243,208 @@ public class LabAssigninForm extends javax.swing.JFrame {
 
         jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 710));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
+        jLabel3.setText("Lab Managing ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 330, 50));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel16.setText("Faculty");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 180, 80));
+
+        cmbFac.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbFac.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbFacItemStateChanged(evt);
+            }
+        });
+        cmbFac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbFacMouseClicked(evt);
+            }
+        });
+        cmbFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbFacActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbFac, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 230, 50));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel9.setText("Lecturer");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 100, 80));
+
+        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 280, 50));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel11.setText("Number of labs");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 180, 80));
+
+        txtOc.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtOc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 70, 50));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel17.setText("Subject");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 80));
+
+        cmbSub.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbSub.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSubItemStateChanged(evt);
+            }
+        });
+        cmbSub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbSubMouseClicked(evt);
+            }
+        });
+        cmbSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSubActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 230, 50));
+
+        lblName.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 280, 80));
+
+        cmbInstructor.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbInstructor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbInstructorItemStateChanged(evt);
+            }
+        });
+        cmbInstructor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbInstructorMouseClicked(evt);
+            }
+        });
+        cmbInstructor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbInstructorActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbInstructor, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 230, 50));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel19.setText("Lab");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 180, 80));
+
+        cmbLab.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbLab.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbLabItemStateChanged(evt);
+            }
+        });
+        cmbLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbLabMouseClicked(evt);
+            }
+        });
+        cmbLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbLabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 230, 50));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel20.setText("Instructors ID");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 180, 80));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel21.setText("Name");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 60, 80));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Lab ID", "Number of occuptation"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 470, 150));
+
+        jLabel22.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel22.setText("            Add to table");
+        jLabel22.setOpaque(true);
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel22MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel22MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 240, 50));
+
+        cmbCourse.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbCourse.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCourseItemStateChanged(evt);
+            }
+        });
+        cmbCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbCourseMouseClicked(evt);
+            }
+        });
+        cmbCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCourseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 230, 50));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel23.setText("Course");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 180, 80));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("Number of student");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 180, 80));
+
+        txtSt.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtSt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 70, 50));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1000, 710));
+
+        jLabel24.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel24.setText("            Add");
+        jLabel24.setOpaque(true);
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel24MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel24MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -249,32 +499,119 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStudeMouseExited
 
     private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-    lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblLecMouseExited
 
     private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-    lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblinsMouseExited
 
     private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-    lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblPaymentMouseExited
 
     private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-    lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-    lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
     private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-           lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
     }//GEN-LAST:event_lblExamMouseExited
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-    lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
+
+    private void cmbFacItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbFacItemStateChanged
+        setCourse();
+    }//GEN-LAST:event_cmbFacItemStateChanged
+
+    private void cmbFacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbFacMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbFacMouseClicked
+
+    private void cmbFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFacActionPerformed
+        //        getSubID(); // TODO add your handling code here:
+    }//GEN-LAST:event_cmbFacActionPerformed
+
+    private void cmbSubItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSubItemStateChanged
+       txtName.setText( courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getLectureDTO().getName());
+      setStudentS();// TODO add your handling code here:
+    }//GEN-LAST:event_cmbSubItemStateChanged
+
+    private void cmbSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbSubMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSubMouseClicked
+
+    private void cmbSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubActionPerformed
+       
+    }//GEN-LAST:event_cmbSubActionPerformed
+
+    private void cmbInstructorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbInstructorItemStateChanged
+      lblName.setText(instructorDTOs.get(cmbInstructor.getSelectedIndex()).getName() );  // TODO add your handling code here:
+    }//GEN-LAST:event_cmbInstructorItemStateChanged
+
+    private void cmbInstructorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbInstructorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbInstructorMouseClicked
+
+    private void cmbInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbInstructorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbInstructorActionPerformed
+
+    private void cmbLabItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLabItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLabItemStateChanged
+
+    private void cmbLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbLabMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLabMouseClicked
+
+    private void cmbLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbLabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbLabActionPerformed
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseEntered
+        lblName.setBackground(Color.BLACK);
+        lblName.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel22MouseEntered
+
+    private void jLabel22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseExited
+        lblName.setBackground(Color.GRAY);
+        lblName.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel22MouseExited
+
+    private void cmbCourseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCourseItemStateChanged
+      setSub(); // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCourseItemStateChanged
+
+    private void cmbCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbCourseMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCourseMouseClicked
+
+    private void cmbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCourseActionPerformed
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel24MouseEntered
+
+    private void jLabel24MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel24MouseExited
 
     /**
      * @param args the command line arguments
@@ -313,12 +650,33 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbCourse;
+    private javax.swing.JComboBox<String> cmbFac;
+    private javax.swing.JComboBox<String> cmbInstructor;
+    private javax.swing.JComboBox<String> cmbLab;
+    private javax.swing.JComboBox<String> cmbSub;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
     private javax.swing.JLabel lblLec;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPayment;
     private javax.swing.JLabel lblSett;
     private javax.swing.JLabel lblStude;
@@ -326,9 +684,103 @@ public class LabAssigninForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtOc;
+    private javax.swing.JTextField txtSt;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
 
+    }
+
+    private void loadFac() {
+        try {
+            facultyDTOsList = Facultycontroller.getAll();
+            for (FacultyDTO courseDTO : facultyDTOsList) {
+                cmbFac.addItem(courseDTO.getName());
+            }
+            ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbFac, true, "No Course found");
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setCourse() {
+        try {
+            cmbCourse.removeAll();
+            FacultyDTO dTO = facultyDTOsList.get(cmbFac.getSelectedIndex());
+            DetailDTOs = CourseController.getAllFacultyDetails(dTO.getFid());
+            for (FacultyDetailDTO DetailDTO : DetailDTOs) {
+                cmbCourse.addItem(DetailDTO.getCourseDTO().getName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setSub() {
+        try {
+            cmbSub.removeAll();
+            CourseDTO courseDTO = DetailDTOs.get(cmbCourse.getSelectedIndex()).getCourseDTO();
+            courseDetailDTOs = CourseController.getAllCourseDetailsWithSub(courseDTO.getCid());
+            for (CourseDetailDTO courseDetailDTO : courseDetailDTOs) {
+                cmbSub.addItem(courseDetailDTO.getSubjectDTO().getName() );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadInst() {
+ 
+        try {
+            instructorDTOs=InstructorControll.getAlDTO();
+            for (InstructorDTO courseDetailDTO : instructorDTOs) {
+                cmbInstructor.addItem(courseDetailDTO.getIid() );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ }
+
+    private void setStudentS() {
+        try {
+           al=StudentController.getAllStudentSub();
+            System.out.println(al.size());
+            int count=0;
+            for (Student_SubDTO student_SubDTO : al) {
+                  System.out.println(al.size());
+                if(student_SubDTO.getSubjectDTO().getSid().equals(courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getSid())){
+                    count++;
+                }
+            }
+            txtSt.setText(count+"");
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadLabs() {
+        try {
+            labDTOs=LabController.getAll();
+            for (LabDTO labDTO : labDTOs) {
+                cmbLab.addItem(labDTO.getName()+" : occupied  : "+labDTO.getNumOfOc());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
