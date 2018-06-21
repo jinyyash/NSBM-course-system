@@ -71,16 +71,35 @@ public class ResultDTO {
     }
 
     /**
+     * @return the rid
+     */
+    public String getRid() {
+        return rid;
+    }
+
+    /**
+     * @param rid the rid to set
+     */
+    public void setRid(String rid) {
+        this.rid = rid;
+    }
+
+    /**
      * @return the grade
      */
-    public Double getGrade() {
+    public String getGrade() {
         return grade;
     }
 
     /**
      * @param grade the grade to set
      */
-    public void setGrade(Double grade) {
+    public void setGrade(String grade) {
         this.grade = grade;
     }
+
+    /**
+     * @return the grade
+     */
+   
 }

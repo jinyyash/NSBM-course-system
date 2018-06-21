@@ -11,12 +11,15 @@ import edu.ucsc.ce.methods.ComboBoxFilling;
 import edu.ucsc.ce.models.ExamDTO;
 import edu.ucsc.ce.models.ResultDTO;
 import edu.ucsc.ce.models.StudentDTO;
+import static edu.ucsc.ce.view.AddStudentForm.txtID;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,7 +32,9 @@ public class ResultForm extends javax.swing.JFrame {
      */
     ArrayList<StudentDTO> studentList = new ArrayList<>();
     ArrayList<ExamDTO> examList = new ArrayList<>();
-     ArrayList<ResultDTO> resultList = new ArrayList<>();
+    ArrayList<ResultDTO> resultList = new ArrayList<>();
+    String newID = "";
+    String id = getLatID();
 
     public ResultForm() {
         initComponents();
@@ -307,28 +312,31 @@ public class ResultForm extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTable1.setBackground(new java.awt.Color(153, 153, 153));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Exam ID", "Student ID", "result", "grade"
+                "Result ID", "Exam ID", "Student ID", "result", "grade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 560, 220));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 580, 220));
 
         jLabel20.setBackground(new java.awt.Color(153, 153, 153));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -474,9 +482,9 @@ public class ResultForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbExamActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-     ExamDTO ex=examList.get(cmbExam.getSelectedIndex());
-     StudentDTO studentDTO=studentList.get(cmbStudent.getSelectedIndex());
-     addToTable(ex,studentDTO);
+        ExamDTO ex = examList.get(cmbExam.getSelectedIndex());
+        StudentDTO studentDTO = studentList.get(cmbStudent.getSelectedIndex());
+        addToTable(ex, studentDTO);
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -490,7 +498,9 @@ public class ResultForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseExited
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-
+       DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.removeRow(jTable1.getSelectedRow());
+        resultList.remove(jTable1.getSelectedRow());
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
@@ -504,17 +514,17 @@ public class ResultForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel20MouseExited
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-
+        addResult();
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
-        jLabel18.setBackground(Color.BLACK);
-        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
+        jLabel19.setBackground(Color.BLACK);
+        jLabel19.setForeground(Color.WHITE);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel19MouseEntered
 
     private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
-        jLabel18.setBackground(Color.GRAY);
-        jLabel18.setForeground(Color.BLACK);
+        jLabel19.setBackground(Color.GRAY);
+        jLabel19.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel19MouseExited
 
     /**
@@ -585,7 +595,7 @@ public class ResultForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-
+        setLocationRelativeTo(null);
     }
 
     private void loadExam() {
@@ -613,44 +623,86 @@ public class ResultForm extends javax.swing.JFrame {
             Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     private void addToTable(ExamDTO ex, StudentDTO studentDTO) {
-        int result=Integer.parseInt(txtRst.getText()); 
-        String grade="";
-        if(result>=90){
-            grade="A+";
-        }else if(result>80){
-            grade="A";
-        }else if(result>=75){
-            grade="A-";
-         }else if(result>=72){
-            grade="B+";
-        } else if(result>=70){
-            grade="B";
-        }else if(result>=65){
-            grade="B-";
-        }else if(result>=62){
-            grade="C+";
-        }else if(result>=60){
-            grade="C";
-        }else if(result>=55){
-            grade="C-";
-        }else if(result>=42){
-            grade="D+";
-        }else if(result>=40){
-            grade="D";
-        }else if(result>=35){
-            grade="D";
-        }else {
-            grade="F";
+        Double result = Double.parseDouble(txtRst.getText());
+        String grade = "";
+        if (result >= 90) {
+            grade = "A+";
+        } else if (result > 80) {
+            grade = "A";
+        } else if (result >= 75) {
+            grade = "A-";
+        } else if (result >= 72) {
+            grade = "B+";
+        } else if (result >= 70) {
+            grade = "B";
+        } else if (result >= 65) {
+            grade = "B-";
+        } else if (result >= 62) {
+            grade = "C+";
+        } else if (result >= 60) {
+            grade = "C";
+        } else if (result >= 55) {
+            grade = "C-";
+        } else if (result >= 42) {
+            grade = "D+";
+        } else if (result >= 40) {
+            grade = "D";
+        } else if (result >= 35) {
+            grade = "D";
+        } else {
+            grade = "F";
         }
-        String id=getLatID();
-        ResultDTO resultDTO=new ResultDTO(is , ex, studentDTO, (Double)result, grade);
-            
+
+        if (id == null) {
+            id = "1";
+        } else {
+            String did = Integer.parseInt(id)+1+"";
+          /*  if (newID.equals("")) {
+                newID = id.substring(0, id.length() - 1) + (Integer.parseInt(did) + 1);
+                id = newID;
+            } else {
+                newID = id.substring(0, id.length() - 1) + (Integer.parseInt(did) + resultList.size() + 1);
+                System.out.println(resultList.size());
+                id = newID;
+            }*/
+          id=did;
+        }
+        ResultDTO r = new ResultDTO(id, ex, studentDTO, result, grade);
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+      
+        Object[] row = {r.getRid(), r.getStudentDTO().getSid(), r.getExamDTO().getEid(), r.getResult(), r.getGrade()};
+        resultList.add(r);
+        dtm.addRow(row);
+
     }
 
     private String getLatID() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String id = "";
+        try {
+            id = ExamController.getLastDTOID();
+        } catch (SQLException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
+    private void addResult() {
+        try {
+            boolean add=ExamController.Addresult(resultList);
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Result Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
