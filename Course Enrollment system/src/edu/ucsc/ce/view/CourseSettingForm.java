@@ -7,11 +7,9 @@ package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.CourseController;
 import edu.ucsc.ce.controllers.Facultycontroller;
-import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
-import static edu.ucsc.ce.view.AddStudentForm.cmbfac;
 import static edu.ucsc.ce.view.AddStudentForm.fac;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -32,7 +30,6 @@ public class CourseSettingForm extends javax.swing.JPanel {
     ArrayList<FacultyDTO> facultyDTOs=new ArrayList<>();
     public CourseSettingForm() {
         initComponents();
-        loadCourseID();
         loadFac();
     }
 
@@ -245,25 +242,13 @@ public class CourseSettingForm extends javax.swing.JPanel {
     }
 
     private void loadCourseID() {
-        try {
-            String lecID = CourseController.getLastCourseID();
-            if (lecID.equals("")) {
-                txtID.setText("LEC001");
-            } else {
-                String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CourseSettingForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
  }
 
     private void loadFac() {
         try {
             facultyDTOs=Facultycontroller.getAll();
-            for (FacultyDTO courseDTO : fac) {
+            for (FacultyDTO courseDTO : facultyDTOs) {
                 jComboBox1.addItem(courseDTO.getName());
             }
         } catch (SQLException ex) {

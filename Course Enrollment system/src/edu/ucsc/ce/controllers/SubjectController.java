@@ -142,4 +142,20 @@ public class SubjectController {
         return courseSubList;
 
     }
+     public static ArrayList<SubjectDTO> AllSubjects(String cid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from subject where CID='" + cid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        SubjectDTO subjectDTO = null;
+        ArrayList<SubjectDTO> arrayList=new ArrayList<>();
+        if (rst.next()) {
+            LecturerDTO  dTO=LecturerController.searchLecturerDTO(rst.getString(2));
+            CourseDTO courseDTO=CourseController.searchCourse( rst.getString(3));
+        
+            subjectDTO = new SubjectDTO(rst.getString(1),dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8));
+            arrayList.add(subjectDTO);
+        }
+        return arrayList ;
+    }
 }

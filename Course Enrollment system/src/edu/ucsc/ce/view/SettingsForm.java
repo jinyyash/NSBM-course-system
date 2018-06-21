@@ -372,7 +372,7 @@ public class SettingsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-         pnlMain.removeAll();
+        pnlMain.removeAll();
         CourseSettingForm form = new CourseSettingForm();
         form.setSize(pnlMain.getSize());
         pnlMain.add(form);

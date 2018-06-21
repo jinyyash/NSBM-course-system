@@ -28,9 +28,9 @@ create table student(
 	FOREIGN KEY (FID) REFERENCES Facult(FID)
 );
 create table facultyDetails(
-	FDID int NOT NULL PRIMARY KEY AUTO_INCREMENT,	
-	FID int NOT NULL,
-	CID int NOT NULL,
+	FDID varchar(10) NOT NULL PRIMARY KEY ,	
+	FID varchar(10) NOT NULL,
+	CID varchar(10) NOT NULL,
 	intake varchar(20),
 	FOREIGN KEY (CID) REFERENCES Courses(CID),
 	FOREIGN KEY (FID) REFERENCES Facult(FID)

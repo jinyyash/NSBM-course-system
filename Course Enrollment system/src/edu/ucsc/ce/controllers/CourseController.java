@@ -9,6 +9,7 @@ import static edu.ucsc.ce.controllers.StudentController.addStudent;
 import static edu.ucsc.ce.controllers.StudentController.addStudentPostgraduate;
 import edu.ucsc.ce.dbconnection.DBConnection;
 import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,8 +77,8 @@ public class CourseController {
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getFdid());
-        stm.setObject(2, c.getCourseDTO().getCid());
-        stm.setObject(3, c.getFacultyDTO().getFid());
+        stm.setObject(3, c.getCourseDTO().getCid());
+        stm.setObject(2, c.getFacultyDTO().getFid());
         stm.setObject(4, c.getIntake());
        
         return stm.executeUpdate() > 0;
@@ -105,5 +106,21 @@ public class CourseController {
             connection.setAutoCommit(true);
         }
         return add;
+    }
+     public static ArrayList<FacultyDetailDTO> getAllFacultyDetails(String FID) throws SQLException, ClassNotFoundException {
+        String sql = "select * from facultyDetails where FID='"+FID+"'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<FacultyDetailDTO> list = new ArrayList<>();
+         FacultyDTO facultyDTO=null;
+         CourseDTO courseDTO=null;
+        while (rst.next()) {
+            facultyDTO=Facultycontroller.searchCourse(rst.getString(2));
+            courseDTO=searchCourse(rst.getString(3));
+            FacultyDetailDTO detailDTO=new FacultyDetailDTO(rst.getString(1), facultyDTO, courseDTO,rst.getString(4));
+            list.add(detailDTO);
+        }
+        return list;
     }
 }

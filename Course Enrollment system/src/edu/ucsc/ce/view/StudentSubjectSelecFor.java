@@ -600,7 +600,10 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         StudentDTO dTO = studentList.get(cmbID.getSelectedIndex());
         // TODO add your handling code here:
+         dtm1 = (DefaultTableModel) jTable2.getModel();
+        
         loadSubjectToTable(dTO.getCourseDTO(), dTO.getBatch());
+        
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
