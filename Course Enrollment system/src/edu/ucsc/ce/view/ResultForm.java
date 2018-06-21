@@ -322,7 +322,7 @@ public class ResultForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Result ID", "Exam ID", "Student ID", "result", "grade"
+                "Result ID", "Student Name", "Exam ID", "result", "grade"
             }
         ) {
             Class[] types = new Class [] {
@@ -673,7 +673,7 @@ public class ResultForm extends javax.swing.JFrame {
 
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
       
-        Object[] row = {r.getRid(), r.getStudentDTO().getSid(), r.getExamDTO().getEid(), r.getResult(), r.getGrade()};
+        Object[] row = {r.getRid(), r.getStudentDTO().getName(), r.getExamDTO().getEid(), r.getResult(), r.getGrade()};
         resultList.add(r);
         dtm.addRow(row);
 
