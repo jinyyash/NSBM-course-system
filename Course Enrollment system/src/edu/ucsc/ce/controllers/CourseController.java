@@ -9,8 +9,10 @@ import static edu.ucsc.ce.controllers.StudentController.addStudent;
 import static edu.ucsc.ce.controllers.StudentController.addStudentPostgraduate;
 import edu.ucsc.ce.dbconnection.DBConnection;
 import edu.ucsc.ce.models.CourseDTO;
+import edu.ucsc.ce.models.CourseDetailDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
+import edu.ucsc.ce.models.SubjectDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -120,6 +122,22 @@ public class CourseController {
             courseDTO=searchCourse(rst.getString(3));
             FacultyDetailDTO detailDTO=new FacultyDetailDTO(rst.getString(1), facultyDTO, courseDTO,rst.getString(4));
             list.add(detailDTO);
+        }
+        return list;
+    }
+     public static ArrayList<CourseDetailDTO> getAllCourseDetailsWithSub(String cid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from courseDetails where CID='"+cid+"'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        CourseDTO cdto=null;
+         SubjectDTO sdto=null;
+        ArrayList<CourseDetailDTO> list = new ArrayList<>();
+        while (rst.next()) {
+           cdto=CourseController.searchCourse(rst.getString(2));
+           sdto=SubjectController.searchSubjectDTO(rst.getString(3));
+          CourseDetailDTO cddto=new CourseDetailDTO(cid, cdto, sdto,rst.getString(4));
+            list.add(cddto);
         }
         return list;
     }

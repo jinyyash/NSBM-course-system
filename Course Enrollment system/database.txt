@@ -111,7 +111,7 @@ create table Payment(
 create table Exam(
 	EID varchar(10) NOT NULL PRIMARY KEY ,
 	SSID varchar(10) NOT NULL,
-	examType varchar(10),
+	examType varchar(110),
 	date varchar(10),
 	Stime varchar(10),
 	Etime varchar(10),

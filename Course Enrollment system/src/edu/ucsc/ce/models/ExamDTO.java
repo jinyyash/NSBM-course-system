@@ -10,14 +10,14 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class ExamDTO {
-    private Integer eid;
+    private String eid;
     private SubjectDTO subjectDTO;
     private String examType;
     private String date;
     private Double Stime;
     private Double Etime;
 
-    public ExamDTO(Integer eid, SubjectDTO subjectDTO, String examType, String date, Double Stime, Double Etime) {
+    public ExamDTO(String eid, SubjectDTO subjectDTO, String examType, String date, Double Stime, Double Etime) {
         this.eid = eid;
         this.subjectDTO = subjectDTO;
         this.examType = examType;
@@ -25,21 +25,12 @@ public class ExamDTO {
         this.Stime = Stime;
         this.Etime = Etime;
     }
- 
+
+   
     /**
      * @return the eid
      */
-    public Integer getEid() {
-        return eid;
-    }
-
-    /**
-     * @param eid the eid to set
-     */
-    public void setEid(Integer eid) {
-        this.eid = eid;
-    }
-
+   
     /**
      * @return the examType
      */
@@ -108,6 +99,20 @@ public class ExamDTO {
      */
     public void setSubjectDTO(SubjectDTO subjectDTO) {
         this.subjectDTO = subjectDTO;
+    }
+
+    /**
+     * @param eid the eid to set
+     */
+    public void setEid(String eid) {
+        this.eid = eid;
+    }
+
+    /**
+     * @return the eid
+     */
+    public String getEid() {
+        return eid;
     }
     
     

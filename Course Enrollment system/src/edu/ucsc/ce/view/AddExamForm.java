@@ -6,10 +6,12 @@
 package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.ExamController;
 import edu.ucsc.ce.controllers.Facultycontroller;
 import edu.ucsc.ce.methods.ComboBoxFilling;
 import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.CourseDetailDTO;
+import edu.ucsc.ce.models.ExamDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
 import java.awt.Color;
@@ -18,6 +20,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,9 +31,9 @@ public class AddExamForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminHomeForm
      */
-  
-    ArrayList<FacultyDTO>facultyDTOsList=new ArrayList<>();
-    ArrayList<FacultyDetailDTO> DetailDTOs=new ArrayList<>();
+    ArrayList<FacultyDTO> facultyDTOsList = new ArrayList<>();
+    ArrayList<FacultyDetailDTO> DetailDTOs = new ArrayList<>();
+    ArrayList<CourseDetailDTO> courseDetailDTOs = new ArrayList<>();
 
     public AddExamForm() {
         initComponents();
@@ -63,10 +66,10 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtCredit = new javax.swing.JTextField();
-        txtSem = new javax.swing.JTextField();
+        txtStartTime = new javax.swing.JTextField();
+        txtBame = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
+        txtend = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -74,15 +77,15 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtDuration = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtSid = new javax.swing.JTextField();
+        txtEid = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         cmbCourse = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        txtSem1 = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        cmbCourse1 = new javax.swing.JComboBox<>();
+        cmbSubject = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
-        txtSem2 = new javax.swing.JTextField();
+        txtType = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         cmbFacul = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -244,18 +247,18 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel10.setText("Start Time");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 180, 80));
 
-        txtCredit.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtCredit, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 100, 50));
+        txtStartTime.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 100, 50));
 
-        txtSem.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 210, 50));
+        txtBame.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtBame, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 210, 50));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel11.setText("Exam Name");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 180, 80));
 
-        txtPrice.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 110, 50));
+        txtend.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtend, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 110, 50));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel12.setText("End Time");
@@ -306,8 +309,8 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel15.setText("Exam ID");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 130, 80));
 
-        txtSid.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSid, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 200, 50));
+        txtEid.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtEid, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 200, 50));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel16.setText("Course");
@@ -334,36 +337,36 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel19.setText("Date");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 90, 80));
 
-        txtSem1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 230, 50));
+        txtDate.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 440, 230, 50));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel20.setText("Subject");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 180, 80));
 
-        cmbCourse1.addItemListener(new java.awt.event.ItemListener() {
+        cmbSubject.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCourse1ItemStateChanged(evt);
+                cmbSubjectItemStateChanged(evt);
             }
         });
-        cmbCourse1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cmbSubject.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbCourse1MouseClicked(evt);
+                cmbSubjectMouseClicked(evt);
             }
         });
-        cmbCourse1.addActionListener(new java.awt.event.ActionListener() {
+        cmbSubject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCourse1ActionPerformed(evt);
+                cmbSubjectActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbCourse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 620, 50));
+        jPanel1.add(cmbSubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 620, 50));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel21.setText("Exam type");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 180, 80));
 
-        txtSem2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 210, 50));
+        txtType.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtType, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 210, 50));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel22.setText("Faculty");
@@ -490,11 +493,11 @@ public class AddExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseExited
 
     private void cmbCourseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCourseItemStateChanged
-      
+        setSubject();
     }//GEN-LAST:event_cmbCourseItemStateChanged
 
     private void cmbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseActionPerformed
-        FacultyDetailDTO detailDTO=DetailDTOs.get(cmbCourse.getSelectedIndex());
+        FacultyDetailDTO detailDTO = DetailDTOs.get(cmbCourse.getSelectedIndex());
         loadSubject(detailDTO);
 
     }//GEN-LAST:event_cmbCourseActionPerformed
@@ -504,23 +507,23 @@ public class AddExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbCourseMouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-       
+        addExam();
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void cmbCourse1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCourse1ItemStateChanged
+    private void cmbSubjectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSubjectItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCourse1ItemStateChanged
+    }//GEN-LAST:event_cmbSubjectItemStateChanged
 
-    private void cmbCourse1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbCourse1MouseClicked
+    private void cmbSubjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbSubjectMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCourse1MouseClicked
+    }//GEN-LAST:event_cmbSubjectMouseClicked
 
-    private void cmbCourse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourse1ActionPerformed
+    private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubjectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCourse1ActionPerformed
+    }//GEN-LAST:event_cmbSubjectActionPerformed
 
     private void cmbFaculItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbFaculItemStateChanged
-       getCourse(facultyDTOsList.get(cmbFacul.getSelectedIndex()));
+        getCourse(facultyDTOsList.get(cmbFacul.getSelectedIndex()));
     }//GEN-LAST:event_cmbFaculItemStateChanged
 
     private void cmbFaculMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbFaculMouseClicked
@@ -528,7 +531,7 @@ public class AddExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbFaculMouseClicked
 
     private void cmbFaculActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbFaculActionPerformed
-      getCourse(facultyDTOsList.get(cmbFacul.getSelectedIndex()));
+        getCourse(facultyDTOsList.get(cmbFacul.getSelectedIndex()));
     }//GEN-LAST:event_cmbFaculActionPerformed
 
     /**
@@ -575,8 +578,8 @@ public class AddExamForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbCourse;
-    private javax.swing.JComboBox<String> cmbCourse1;
     private javax.swing.JComboBox<String> cmbFacul;
+    private javax.swing.JComboBox<String> cmbSubject;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -604,20 +607,21 @@ public class AddExamForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtCredit;
+    private javax.swing.JTextField txtBame;
+    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDuration;
-    private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtSem;
-    private javax.swing.JTextField txtSem1;
-    private javax.swing.JTextField txtSem2;
-    private javax.swing.JTextField txtSid;
+    private javax.swing.JTextField txtEid;
+    private javax.swing.JTextField txtStartTime;
+    private javax.swing.JTextField txtType;
+    private javax.swing.JTextField txtend;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
 
     }
+
     private void loadSubject(FacultyDetailDTO courseDTO) {
-       /* ArrayList<CourseDetailDTO> courseDetailDTOs = 
+        /* ArrayList<CourseDetailDTO> courseDetailDTOs = 
             
             for (CourseDTO cddto : cddtos) {
                cmbCourse.addItem(cddto.getName());
@@ -627,22 +631,22 @@ public class AddExamForm extends javax.swing.JFrame {
 
     private void loadFca() {
         try {
-           facultyDTOsList=Facultycontroller.getAll();
+            facultyDTOsList = Facultycontroller.getAll();
             for (FacultyDTO courseDTO : facultyDTOsList) {
                 cmbFacul.addItem(courseDTO.getName());
             }
-           ComboBoxFilling combo = new ComboBoxFilling();
+            ComboBoxFilling combo = new ComboBoxFilling();
             combo.setSearchableCombo(cmbFacul, true, "No Course found");
         } catch (SQLException ex) {
             Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
- }
+    }
 
     private void getCourse(FacultyDTO get) {
         try {
-            DetailDTOs=CourseController.getAllFacultyDetails(get.getFid());
+            DetailDTOs = CourseController.getAllFacultyDetails(get.getFid());
             for (FacultyDetailDTO DetailDTO : DetailDTOs) {
                 cmbCourse.addItem(DetailDTO.getCourseDTO().getName());
             }
@@ -653,5 +657,36 @@ public class AddExamForm extends javax.swing.JFrame {
         }
     }
 
-  
+    private void setSubject() {
+        try {
+            CourseDTO courseDTO = DetailDTOs.get(cmbCourse.getSelectedIndex()).getCourseDTO();
+            courseDetailDTOs = CourseController.getAllCourseDetailsWithSub(courseDTO.getCid());
+            for (CourseDetailDTO courseDetailDTO : courseDetailDTOs) {
+                cmbSubject.addItem(courseDetailDTO.getSubjectDTO().getName() + " :Semester " + courseDetailDTO.getCourseDTO().getName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void addExam() {
+        try {
+            String EId = txtEid.getText();
+            ExamDTO examDTO = new ExamDTO(EId, courseDetailDTOs.get(cmbSubject.getSelectedIndex()).getSubjectDTO(), txtBame.getText() + " $" + txtType.getText(), txtDate.getText(), Double.parseDouble(txtStartTime.getText()), Double.parseDouble(txtStartTime.getText()));
+            Boolean add = ExamController.addExam(examDTO);
+             if (add) {
+                JOptionPane.showMessageDialog(null, "Exam Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddExamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
 }
