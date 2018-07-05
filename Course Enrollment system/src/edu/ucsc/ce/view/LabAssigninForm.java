@@ -75,7 +75,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
         cmbFac = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        lblRemain = new javax.swing.JLabel();
         txtOc = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         cmbSub = new javax.swing.JComboBox<>();
@@ -92,8 +92,10 @@ public class LabAssigninForm extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtSt = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,9 +282,8 @@ public class LabAssigninForm extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 280, 50));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel11.setText("Number of labs");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 180, 80));
+        lblRemain.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(lblRemain, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, 120, 80));
 
         txtOc.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtOc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 350, 70, 50));
@@ -350,7 +351,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
                 cmbLabActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 230, 50));
+        jPanel1.add(cmbLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 400, 50));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel20.setText("Instructors ID");
@@ -395,7 +396,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
                 jLabel22MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 240, 50));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 180, 50));
 
         cmbCourse.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         cmbCourse.addItemListener(new java.awt.event.ItemListener() {
@@ -426,9 +427,6 @@ public class LabAssigninForm extends javax.swing.JFrame {
         txtSt.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtSt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 70, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1000, 710));
-
         jLabel24.setBackground(new java.awt.Color(153, 153, 153));
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel24.setText("            Add");
@@ -445,6 +443,17 @@ public class LabAssigninForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel12.setText("Number of labs");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 340, 180, 80));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel14.setText("Remain Student");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, 180, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1000, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -576,7 +585,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbLabActionPerformed
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-
+        addToTable();
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseEntered
@@ -656,8 +665,9 @@ public class LabAssigninForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbLab;
     private javax.swing.JComboBox<String> cmbSub;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -678,6 +688,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblLec;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPayment;
+    private javax.swing.JLabel lblRemain;
     private javax.swing.JLabel lblSett;
     private javax.swing.JLabel lblStude;
     private javax.swing.JLabel lblins;
@@ -782,5 +793,9 @@ public class LabAssigninForm extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void addToTable() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

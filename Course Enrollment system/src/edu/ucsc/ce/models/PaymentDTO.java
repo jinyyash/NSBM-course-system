@@ -20,8 +20,20 @@ public class PaymentDTO {
     private String time;
 
     /**
+     * @param pid
+     * @param subjectDTO
+     * @param studentDTO
      * @return the pid
      */
+    
+    public PaymentDTO(Integer pid, SubjectDTO subjectDTO, StudentDTO studentDTO, String date, String time) {
+        this.pid = pid;
+        this.subjectDTO = subjectDTO;
+        this.studentDTO = studentDTO;
+        this.date = date;
+        this.time = time;
+    }
+
     public Integer getPid() {
         return pid;
     }

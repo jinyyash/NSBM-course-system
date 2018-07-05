@@ -100,10 +100,10 @@ create table LabDetails(
 );
 create table Payment(
 	PID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	SID int NOT NULL,
-	SSID int NOT NULL,
-	date varchar(10),
-	time varchar(10),
+	SID varchar(10) NOT NULL,
+	SSID varchar(10) NOT NULL,
+	date varchar(100),
+	time varchar(100),
 	FOREIGN KEY (SID) REFERENCES Student(SID),
 	FOREIGN KEY (SSID) REFERENCES Subject(SSID)
 	

@@ -248,5 +248,25 @@ public class StudentController {
         }
         return dTO;
     }
+     public static ArrayList<Student_SubDTO> getAllStudentSubForstudent(String id) throws SQLException, ClassNotFoundException {
+        String sql = "select * from Student_Sub where SSID='"+id+"'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<Student_SubDTO> courseList = new ArrayList();
+        StudentDTO dTO = null;
+        Student_SubDTO student_SubDTO = null;
+        SubjectDTO sdto = null;
+        while (rst.next()) {
+            dTO=searchStudentDTO(rst.getString(2));
+            sdto=SubjectController.searchSubjectDTO(rst.getString(3));
+            student_SubDTO=new Student_SubDTO(rst.getString(1), dTO, sdto);
+
+            courseList.add(student_SubDTO);
+        }
+        return courseList;
+
+    }
+
 
 }
