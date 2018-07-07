@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author Jinadi
  */
-public class StudentMainPnl extends javax.swing.JPanel {
+public class LecturerMainPnl extends javax.swing.JPanel {
 
     /**
      * Creates new form StudentMainPnl
      */
-    public StudentMainPnl() {
+    public LecturerMainPnl() {
         initComponents();
            setBackground(new Color(0, 0, 0, 102));
     }
