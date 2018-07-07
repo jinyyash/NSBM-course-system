@@ -41,25 +41,25 @@ public class LecturerMainPnl extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e722(2)_128.png"))); // NOI18N
-        jLabel1.setText("Student details");
+        jLabel1.setText("Lecturer details");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 340, 100));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e700(3)_128.png"))); // NOI18N
-        jLabel2.setText("Add Student");
+        jLabel2.setText("Add Lecturer");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 340, 88));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e729(1)_128.png"))); // NOI18N
-        jLabel3.setText("Remove Student");
+        jLabel3.setText("Remove Lecturer");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 340, 94));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_d83d(0)_128.png"))); // NOI18N
-        jLabel4.setText("Update Student");
+        jLabel4.setText("Update Lecturer");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 340, 100));
     }// </editor-fold>//GEN-END:initComponents
 

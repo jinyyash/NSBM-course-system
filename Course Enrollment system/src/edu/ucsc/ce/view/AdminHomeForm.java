@@ -109,6 +109,9 @@ public class AdminHomeForm extends javax.swing.JFrame {
         lblLec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/icomoon_e657(3)_48.png"))); // NOI18N
         lblLec.setText("    Lecturer");
         lblLec.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLecMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblLecMouseEntered(evt);
             }
@@ -293,6 +296,14 @@ public class AdminHomeForm extends javax.swing.JFrame {
         jPanel2.repaint();
         jPanel2.revalidate();
     }//GEN-LAST:event_lblStudeMouseClicked
+
+    private void lblLecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseClicked
+        jPanel2.removeAll();
+        LecturerMainPnl form = new LecturerMainPnl();
+        form.setSize(jLabel2.getSize());
+        jPanel2.add(form);
+        jPanel2.repaint();
+        jPanel2.revalidate();    }//GEN-LAST:event_lblLecMouseClicked
 
     /**
      * @param args the command line arguments
