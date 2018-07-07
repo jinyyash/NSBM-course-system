@@ -208,7 +208,7 @@ public class LabForm extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
 
         pnlMain.setOpaque(false);
-        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 740, 420));
+        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 740, 480));
 
         jLabel17.setBackground(new java.awt.Color(153, 153, 153));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -225,7 +225,7 @@ public class LabForm extends javax.swing.JFrame {
                 jLabel17MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 150, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 170, 30));
 
         jLabel20.setBackground(new java.awt.Color(153, 153, 153));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -242,7 +242,7 @@ public class LabForm extends javax.swing.JFrame {
                 jLabel20MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 150, 30));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 180, 30));
 
         jLabel19.setBackground(new java.awt.Color(153, 153, 153));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -432,7 +432,7 @@ public class LabForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
+    public javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
@@ -446,7 +446,7 @@ public class LabForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JPanel pnlMain;
+    public static javax.swing.JPanel pnlMain;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {

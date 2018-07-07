@@ -7,6 +7,7 @@ package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.LabController;
 import edu.ucsc.ce.models.LabDTO;
+import static edu.ucsc.ce.view.LabForm.pnlMain;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -228,10 +229,17 @@ public class AddLabPanel extends javax.swing.JPanel {
 
     private void AddLab() {
         try {
-            LabDTO dTO = new LabDTO(txtID.getText(), txtName.getText(), txtType.getText(), Integer.parseInt(txtSize.getName()), Integer.parseInt(txtCom.getText()));
+            LabDTO dTO = new LabDTO(txtID.getText(), txtName.getText(), txtType.getText(), Integer.parseInt(txtSize.getText()), Integer.parseInt(txtCom.getText()));
             boolean add = LabController.addLab(dTO);
             if (add) {
-                JOptionPane.showMessageDialog(null, "Lecturer Added sucessfully");
+                JOptionPane.showMessageDialog(null, "Lab Added sucessfully");
+                pnlMain.removeAll();
+                AddLabPanel form = new AddLabPanel();
+                form.setSize(pnlMain.getSize());
+                pnlMain.add(form);
+                pnlMain.repaint();
+                pnlMain.revalidate();
+
             } else {
                 JOptionPane.showMessageDialog(null, "OOPz!Try Again");
             }
@@ -244,7 +252,7 @@ public class AddLabPanel extends javax.swing.JPanel {
     private void getLabID() {
         try {
             String lecID = LabController.getLastLabID();
-            if (lecID.equals("")) {
+            if (lecID == null) {
                 txtID.setText("Lab001");
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());
