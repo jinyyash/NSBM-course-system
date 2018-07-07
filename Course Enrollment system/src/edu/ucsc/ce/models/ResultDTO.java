@@ -13,6 +13,7 @@ public class ResultDTO {
     private String rid;
     private ExamDTO examDTO;
     private StudentDTO studentDTO;
+    private String examType;
     private Double result;
     private String grade;
 
@@ -20,6 +21,15 @@ public class ResultDTO {
         this.rid = rid;
         this.examDTO = examDTO;
         this.studentDTO = studentDTO;
+        this.result = result;
+        this.grade = grade;
+    }
+
+    public ResultDTO(String rid, ExamDTO examDTO, StudentDTO studentDTO, String examType, Double result, String grade) {
+        this.rid = rid;
+        this.examDTO = examDTO;
+        this.studentDTO = studentDTO;
+        this.examType = examType;
         this.result = result;
         this.grade = grade;
     }
@@ -96,6 +106,20 @@ public class ResultDTO {
      */
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    /**
+     * @return the examType
+     */
+    public String getExamType() {
+        return examType;
+    }
+
+    /**
+     * @param examType the examType to set
+     */
+    public void setExamType(String examType) {
+        this.examType = examType;
     }
 
     /**

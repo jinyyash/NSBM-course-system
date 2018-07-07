@@ -9,6 +9,7 @@ import edu.ucsc.ce.dbconnection.DBConnection;
 import edu.ucsc.ce.models.ExamDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.ResultDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -71,9 +72,10 @@ public class ExamController {
         }
         return lec;
     }
-    public static boolean Addresult(ResultDTO c,Connection conn) throws SQLException, ClassNotFoundException {
+
+    public static boolean Addresult(ResultDTO c, Connection conn) throws SQLException, ClassNotFoundException {
         String sql = "insert into result  values(?,?,?,?,?,?)";
-       // Connection conn = DBConnection.getDBConnection().getConnection();
+        // Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getRid());
         stm.setObject(2, c.getExamDTO().getEid());
@@ -83,22 +85,96 @@ public class ExamController {
         stm.setObject(6, c.getGrade());
         return stm.executeUpdate() > 0;
     }
-     public static boolean Addresult(ArrayList<ResultDTO> c) throws SQLException, ClassNotFoundException {
-      Connection conn = DBConnection.getDBConnection().getConnection();
-      conn.setAutoCommit(false);
-      int addC=0;
-         for (ResultDTO resultDTO : c) {
-             boolean add=Addresult(resultDTO, conn);
-             if(add){
-                 addC++;
-             }
-         }
-         if(addC==c.size()){
-             conn.commit();
-             return true;
-         }else{
-             conn.rollback();
-             return false;
-         }
+
+    public static boolean Addresult(ArrayList<ResultDTO> c) throws SQLException, ClassNotFoundException {
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        conn.setAutoCommit(false);
+        int addC = 0;
+        for (ResultDTO resultDTO : c) {
+            boolean add = Addresult(resultDTO, conn);
+            if (add) {
+                addC++;
+            }
+        }
+        if (addC == c.size()) {
+            conn.commit();
+            return true;
+        } else {
+            conn.rollback();
+            return false;
+        }
     }
+
+    public static ArrayList<ResultDTO> getAllResult() throws SQLException, ClassNotFoundException {
+        String sql = "select * from result";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<ResultDTO> list = new ArrayList<>();
+        ExamDTO examDTO = null;
+        StudentDTO studentDTO = null;
+        ResultDTO dTO = null;
+        while (rst.next()) {
+            examDTO = searchExam(rst.getString(2));
+            studentDTO = StudentController.searchStudentDTO(rst.getString(3));
+            dTO = new ResultDTO(rst.getString(1), examDTO, studentDTO, Double.parseDouble(rst.getString(4)), rst.getString(5));
+            list.add(dTO);
+        }
+        return list;
+    }
+
+    public static ArrayList<ResultDTO> getAllResultForStudent(String sid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from result where SID='" + sid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<ResultDTO> list = new ArrayList<>();
+        ExamDTO examDTO = null;
+        StudentDTO studentDTO = null;
+        ResultDTO dTO = null;
+        while (rst.next()) {
+            examDTO = searchExam(rst.getString(2));
+            studentDTO = StudentController.searchStudentDTO(rst.getString(3));
+            dTO = new ResultDTO(rst.getString(1), examDTO, studentDTO, Double.parseDouble(rst.getString(5)), rst.getString(6));
+            list.add(dTO);
+        }
+        return list;
+    }
+
+    public static ArrayList<ResultDTO> getAllResultStudent() throws SQLException, ClassNotFoundException {
+        String sql = "select * from result";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<ResultDTO> list = new ArrayList<>();
+        ExamDTO examDTO = null;
+        StudentDTO studentDTO = null;
+        ResultDTO dTO = null;
+        while (rst.next()) {
+            examDTO = searchExam(rst.getString(2));
+            studentDTO = StudentController.searchStudentDTO(rst.getString(3));
+            dTO = new ResultDTO(rst.getString(1), examDTO, studentDTO, Double.parseDouble(rst.getString(5)), rst.getString(6));
+            list.add(dTO);
+        }
+        return list;
+    }
+
+    public static ArrayList<ResultDTO> getAllResultForStudentExam(String sid, String eid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from result where eid='" + eid + "' && sid='" + sid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<ResultDTO> list = new ArrayList<>();
+        ExamDTO examDTO = null;
+        StudentDTO studentDTO = null;
+        ResultDTO dTO = null;
+        while (rst.next()) {
+            examDTO = searchExam(rst.getString(2));
+            studentDTO = StudentController.searchStudentDTO(rst.getString(3));
+            dTO = new ResultDTO(rst.getString(1), examDTO, studentDTO, Double.parseDouble(rst.getString(5)), rst.getString(6));
+            list.add(dTO);
+        }
+        return list;
+    }
+
 }
