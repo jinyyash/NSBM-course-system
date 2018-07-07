@@ -176,5 +176,22 @@ public class ExamController {
         }
         return list;
     }
+     public static ArrayList<ResultDTO> getAllResultForExam(String eid) throws SQLException, ClassNotFoundException {
+        String sql = "select * from result where eid='" + eid + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<ResultDTO> list = new ArrayList<>();
+        ExamDTO examDTO = null;
+        StudentDTO studentDTO = null;
+        ResultDTO dTO = null;
+        while (rst.next()) {
+            examDTO = searchExam(rst.getString(2));
+            studentDTO = StudentController.searchStudentDTO(rst.getString(3));
+            dTO = new ResultDTO(rst.getString(1), examDTO, studentDTO, Double.parseDouble(rst.getString(5)), rst.getString(6));
+            list.add(dTO);
+        }
+        return list;
+    }
 
 }

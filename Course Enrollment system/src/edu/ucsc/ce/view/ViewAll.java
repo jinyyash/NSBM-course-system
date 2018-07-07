@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jinadi
  */
-public class ViewIndividual extends javax.swing.JPanel {
+public class ViewAll extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewUndergraduates
@@ -33,7 +33,7 @@ public class ViewIndividual extends javax.swing.JPanel {
     ArrayList<StudentDTO> studentDTOs = new ArrayList<>();
     ArrayList<ExamDTO> examDTOs = new ArrayList<>();
 
-    public ViewIndividual() {
+    public ViewAll() {
         initComponents();
 
         loadStudent();
@@ -247,9 +247,9 @@ public class ViewIndividual extends javax.swing.JPanel {
                 dtm.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -263,9 +263,9 @@ public class ViewIndividual extends javax.swing.JPanel {
                 dtm.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -278,9 +278,9 @@ public class ViewIndividual extends javax.swing.JPanel {
             ComboBoxFilling combo = new ComboBoxFilling();
             combo.setSearchableCombo(cmbExam, true, "No eXAM found");
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -293,9 +293,9 @@ public class ViewIndividual extends javax.swing.JPanel {
             ComboBoxFilling combo = new ComboBoxFilling();
             combo.setSearchableCombo(cmbSt, true, "No Student found");
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -320,9 +320,9 @@ public class ViewIndividual extends javax.swing.JPanel {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -344,9 +344,9 @@ public class ViewIndividual extends javax.swing.JPanel {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
