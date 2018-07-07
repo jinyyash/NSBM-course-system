@@ -223,9 +223,9 @@ public class StudentController {
         Student_SubDTO student_SubDTO = null;
         SubjectDTO sdto = null;
         while (rst.next()) {
-            dTO=searchStudentDTO(rst.getString(2));
-            sdto=SubjectController.searchSubjectDTO(rst.getString(3));
-            student_SubDTO=new Student_SubDTO(rst.getString(1), dTO, sdto);
+            dTO = searchStudentDTO(rst.getString(2));
+            sdto = SubjectController.searchSubjectDTO(rst.getString(3));
+            student_SubDTO = new Student_SubDTO(rst.getString(1), dTO, sdto);
 
             courseList.add(student_SubDTO);
         }
@@ -248,8 +248,9 @@ public class StudentController {
         }
         return dTO;
     }
-     public static ArrayList<Student_SubDTO> getAllStudentSubForstudent(String id) throws SQLException, ClassNotFoundException {
-        String sql = "select * from Student_Sub where SSID='"+id+"'";
+
+    public static ArrayList<Student_SubDTO> getAllStudentSubForstudent(String id) throws SQLException, ClassNotFoundException {
+        String sql = "select * from Student_Sub where SSID='" + id + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -258,9 +259,9 @@ public class StudentController {
         Student_SubDTO student_SubDTO = null;
         SubjectDTO sdto = null;
         while (rst.next()) {
-            dTO=searchStudentDTO(rst.getString(2));
-            sdto=SubjectController.searchSubjectDTO(rst.getString(3));
-            student_SubDTO=new Student_SubDTO(rst.getString(1), dTO, sdto);
+            dTO = searchStudentDTO(rst.getString(2));
+            sdto = SubjectController.searchSubjectDTO(rst.getString(3));
+            student_SubDTO = new Student_SubDTO(rst.getString(1), dTO, sdto);
 
             courseList.add(student_SubDTO);
         }
@@ -268,5 +269,38 @@ public class StudentController {
 
     }
 
+    public static ArrayList<UndergraduateDTO> getAllUndergraduate() throws SQLException, ClassNotFoundException {
+        String sql = "select * from undergraduate";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<UndergraduateDTO> courseList = new ArrayList();
+        StudentDTO dTO = null;
+        UndergraduateDTO udto = null;
+        while (rst.next()) {
+            dTO = searchStudentDTO(rst.getString("sid"));
+            udto = new UndergraduateDTO(dTO, Integer.parseInt(rst.getString("yearOfExam")), rst.getString("alResult"), rst.getString("rank"), Double.parseDouble(rst.getString("z")));
+            courseList.add(udto);
+        }
+        return courseList;
 
+    }
+     public static ArrayList<PostgraduateDTO> getAllPostgraduate() throws SQLException, ClassNotFoundException {
+        String sql = "select * from postgraduate";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<PostgraduateDTO> courseList = new ArrayList();
+        StudentDTO dTO = null;
+        PostgraduateDTO udto = null;
+        while (rst.next()) {
+            dTO = searchStudentDTO(rst.getString("sid"));
+            udto = new PostgraduateDTO(dTO, Integer.parseInt(rst.getString(2)),rst.getString(3),rst.getString(4));
+            courseList.add(udto);
+        }
+        return courseList;
+
+    }
+
+   
 }

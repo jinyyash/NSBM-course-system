@@ -6,6 +6,10 @@
 package edu.ucsc.ce.view;
 
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import jdk.nashorn.internal.parser.TokenType;
 
 /**
  *
@@ -16,9 +20,11 @@ public class StudentMainPnl extends javax.swing.JPanel {
     /**
      * Creates new form StudentMainPnl
      */
+    JFrame frame;
+
     public StudentMainPnl() {
         initComponents();
-           setBackground(new Color(0, 0, 0, 102));
+        setBackground(new Color(0, 0, 0, 102));
     }
 
     /**
@@ -35,33 +41,117 @@ public class StudentMainPnl extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(718, 480));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e722(2)_128.png"))); // NOI18N
         jLabel1.setText("Student details");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 340, 100));
+        jLabel1.setOpaque(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 620, 100));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e700(3)_128.png"))); // NOI18N
         jLabel2.setText("Add Student");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 340, 88));
+        jLabel2.setOpaque(true);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 620, 90));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_e729(1)_128.png"))); // NOI18N
         jLabel3.setText("Remove Student");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 90, 340, 94));
+        jLabel3.setOpaque(true);
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
+        });
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 620, 94));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Entypo_d83d(0)_128.png"))); // NOI18N
         jLabel4.setText("Update Student");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 340, 100));
+        jLabel4.setOpaque(true);
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 620, 100));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        frame.setVisible(false);
+        //  frame.dispose();
+        new AddStudentForm().setVisible(true);
+
+
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+
+        jLabel2.setBackground(Color.BLUE);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        jLabel2.setBackground(Color.BLACK);    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        jLabel3.setBackground(Color.BLUE);
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        jLabel3.setBackground(Color.BLACK);
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        jLabel4.setBackground(Color.BLUE);
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+        jLabel4.setBackground(Color.BLACK);
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setBackground(Color.BLUE);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setBackground(Color.BLACK);
+    }//GEN-LAST:event_jLabel1MouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
