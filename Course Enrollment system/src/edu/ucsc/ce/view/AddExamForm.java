@@ -646,6 +646,7 @@ public class AddExamForm extends javax.swing.JFrame {
 
     private void getCourse(FacultyDTO get) {
         try {
+            
             DetailDTOs = CourseController.getAllFacultyDetails(get.getFid());
             for (FacultyDetailDTO DetailDTO : DetailDTOs) {
                 cmbCourse.addItem(DetailDTO.getCourseDTO().getName());
@@ -658,6 +659,7 @@ public class AddExamForm extends javax.swing.JFrame {
     }
 
     private void setSubject() {
+        cmbSubject.removeAllItems();
         try {
             CourseDTO courseDTO = DetailDTOs.get(cmbCourse.getSelectedIndex()).getCourseDTO();
             courseDetailDTOs = CourseController.getAllCourseDetailsWithSub(courseDTO.getCid());
