@@ -63,7 +63,6 @@ public class AddExamForm extends javax.swing.JFrame {
         lblSett = new javax.swing.JLabel();
         lblExam = new javax.swing.JLabel();
         lblsub = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtStartTime = new javax.swing.JTextField();
@@ -232,9 +231,6 @@ public class AddExamForm extends javax.swing.JFrame {
             }
         });
         pnlDash.add(lblsub, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 200, 50));
-
-        jLabel1.setText("profile");
-        pnlDash.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 90));
 
         jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 710));
 
@@ -580,7 +576,6 @@ public class AddExamForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCourse;
     private javax.swing.JComboBox<String> cmbFacul;
     private javax.swing.JComboBox<String> cmbSubject;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

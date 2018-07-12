@@ -6,6 +6,7 @@
 package edu.ucsc.ce.view;
 
 import static edu.ucsc.ce.view.LabForm.pnlMain;
+import static edu.ucsc.ce.view.ViewStudent.jLabel2;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
@@ -38,17 +39,6 @@ public class AdminHomeForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlDash = new javax.swing.JPanel();
-        lblrepo = new javax.swing.JLabel();
-        lblDash = new javax.swing.JLabel();
-        lblStude = new javax.swing.JLabel();
-        lblLec = new javax.swing.JLabel();
-        lblins = new javax.swing.JLabel();
-        lblPayment = new javax.swing.JLabel();
-        lblSett = new javax.swing.JLabel();
-        lblExam = new javax.swing.JLabel();
-        lblsub = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,167 +49,8 @@ public class AdminHomeForm extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlDash.setBackground(new java.awt.Color(0, 0, 0));
-        pnlDash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblrepo.setBackground(new java.awt.Color(0, 0, 0));
-        lblrepo.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblrepo.setForeground(new java.awt.Color(255, 255, 255));
-        lblrepo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/icomoon_e653(1)_48.png"))); // NOI18N
-        lblrepo.setText("   Report");
-        lblrepo.setOpaque(true);
-        lblrepo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblrepoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblrepoMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblrepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 200, 50));
-
-        lblDash.setBackground(new java.awt.Color(0, 0, 0));
-        lblDash.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblDash.setForeground(new java.awt.Color(255, 255, 255));
-        lblDash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/FontAwesome_f009(14)_48.png"))); // NOI18N
-        lblDash.setText("    DashBoard");
-        lblDash.setOpaque(true);
-        lblDash.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblDashMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblDashMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 50));
-
-        lblStude.setBackground(new java.awt.Color(0, 0, 0));
-        lblStude.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblStude.setForeground(new java.awt.Color(255, 255, 255));
-        lblStude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/FontAwesome_f0c0(12)_48.png"))); // NOI18N
-        lblStude.setText("    Student");
-        lblStude.setOpaque(true);
-        lblStude.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblStudeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblStudeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblStudeMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblStude, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 50));
-
-        lblLec.setBackground(new java.awt.Color(0, 0, 0));
-        lblLec.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblLec.setForeground(new java.awt.Color(255, 255, 255));
-        lblLec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/icomoon_e657(3)_48.png"))); // NOI18N
-        lblLec.setText("    Lecturer");
-        lblLec.setOpaque(true);
-        lblLec.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLecMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblLecMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblLecMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 200, 50));
-
-        lblins.setBackground(new java.awt.Color(0, 0, 0));
-        lblins.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblins.setForeground(new java.awt.Color(255, 255, 255));
-        lblins.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/octicons_f037(4)_48.png"))); // NOI18N
-        lblins.setText("   Instructor");
-        lblins.setOpaque(true);
-        lblins.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblinsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblinsMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblins, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 200, 50));
-
-        lblPayment.setBackground(new java.awt.Color(0, 0, 0));
-        lblPayment.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblPayment.setForeground(new java.awt.Color(255, 255, 255));
-        lblPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/icomoon_e651(0)_48.png"))); // NOI18N
-        lblPayment.setText("   Payment");
-        lblPayment.setOpaque(true);
-        lblPayment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblPaymentMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblPaymentMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblPayment, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 200, 50));
-
-        lblSett.setBackground(new java.awt.Color(0, 0, 0));
-        lblSett.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblSett.setForeground(new java.awt.Color(255, 255, 255));
-        lblSett.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e8fa(5)_48.png"))); // NOI18N
-        lblSett.setText("   Settings");
-        lblSett.setOpaque(true);
-        lblSett.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblSettMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblSettMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblSett, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 200, 50));
-
-        lblExam.setBackground(new java.awt.Color(0, 0, 0));
-        lblExam.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblExam.setForeground(new java.awt.Color(255, 255, 255));
-        lblExam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/icomoon_e651(0)_48.png"))); // NOI18N
-        lblExam.setText("   Exam");
-        lblExam.setOpaque(true);
-        lblExam.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblExamMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblExamMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblExam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 200, 50));
-
-        lblsub.setBackground(new java.awt.Color(0, 0, 0));
-        lblsub.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        lblsub.setForeground(new java.awt.Color(255, 255, 255));
-        lblsub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e89c(7)_48.png"))); // NOI18N
-        lblsub.setText("   Subject");
-        lblsub.setOpaque(true);
-        lblsub.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblsubMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblsubMouseExited(evt);
-            }
-        });
-        pnlDash.add(lblsub, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 200, 50));
-
-        jLabel1.setText("profile");
-        pnlDash.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 90));
-
-        jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 710));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setOpaque(false);
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 718, 480));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel3.setText("X");
@@ -237,104 +68,6 @@ public class AdminHomeForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblDashMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseEntered
-        lblDash.setFont(new Font("Segoe UI", Font.BOLD, 20));
-
-    }//GEN-LAST:event_lblDashMouseEntered
-
-    private void lblDashMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseExited
-        lblDash.setFont(new Font("Segoe UI Light", Font.BOLD, 18));
-
-    }//GEN-LAST:event_lblDashMouseExited
-
-    private void lblStudeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseEntered
-        lblStude.setFont(new Font("Segoe UI", Font.BOLD, 20));
-      //  lblStude.setBackground(Color.blue);
-//
-    }//GEN-LAST:event_lblStudeMouseEntered
-
-    private void lblLecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseEntered
-        lblLec.setFont(new Font("Segoe UI", Font.BOLD, 20)); 
-         //  lblLec.setBackground(Color.blue);// TODO add your handling code here:
-    }//GEN-LAST:event_lblLecMouseEntered
-
-    private void lblinsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseEntered
-        lblins.setFont(new Font("Segoe UI", Font.BOLD, 20)); 
-        //   lblins.setBackground(Color.blue);// TODO add your handling code here:
-    }//GEN-LAST:event_lblinsMouseEntered
-
-    private void lblPaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseEntered
-        lblPayment.setFont(new Font("Segoe UI", Font.BOLD, 20)); 
-         //  lblPayment.setBackground(Color.blue);// TODO add your handling code here:
-    }//GEN-LAST:event_lblPaymentMouseEntered
-
-    private void lblsubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseEntered
-        lblsub.setFont(new Font("Segoe UI", Font.BOLD, 20)); 
-         //  lblStude.setBackground(Color.blue);// TODO add your handling code here:
-    }//GEN-LAST:event_lblsubMouseEntered
-
-    private void lblrepoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseEntered
-        lblrepo.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblrepoMouseEntered
-
-    private void lblExamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseEntered
-        lblExam.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblExamMouseEntered
-
-    private void lblSettMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseEntered
-        lblSett.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblSettMouseEntered
-
-    private void lblStudeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseExited
-        lblStude.setFont(new Font("Segoe UI Light", Font.BOLD, 18));    // TODO add your handling code here:
-    }//GEN-LAST:event_lblStudeMouseExited
-
-    private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblLecMouseExited
-
-    private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblinsMouseExited
-
-    private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblPaymentMouseExited
-
-    private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblsubMouseExited
-
-    private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblrepoMouseExited
-
-    private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
-    }//GEN-LAST:event_lblExamMouseExited
-
-    private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblSettMouseExited
-
-    private void lblStudeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseClicked
-        lblStude.setBackground(Color.blue );
-        jPanel2.removeAll();
-        StudentMainPnl form = new StudentMainPnl();
-        form.setSize(jLabel2.getSize());
-        jPanel2.add(form);
-        jPanel2.repaint();
-        jPanel2.revalidate();
-    }//GEN-LAST:event_lblStudeMouseClicked
-
-    private void lblLecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseClicked
-        jPanel2.removeAll();
-        LecturerMainPnl form = new LecturerMainPnl();
-        form.setSize(jLabel2.getSize());
-        jPanel2.add(form);
-        jPanel2.repaint();
-        jPanel2.revalidate();    }//GEN-LAST:event_lblLecMouseClicked
 
     /**
      * @param args the command line arguments
@@ -372,25 +105,20 @@ public class AdminHomeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblDash;
-    private javax.swing.JLabel lblExam;
-    private javax.swing.JLabel lblLec;
-    private javax.swing.JLabel lblPayment;
-    private javax.swing.JLabel lblSett;
-    private javax.swing.JLabel lblStude;
-    private javax.swing.JLabel lblins;
-    private javax.swing.JLabel lblrepo;
-    private javax.swing.JLabel lblsub;
-    private javax.swing.JPanel pnlDash;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-        //    setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        jPanel2.removeAll();
+        DashBoard form = new DashBoard();
+       form.setSize(jPanel2.getSize());
+        jPanel2.add(form);
+        jPanel2.repaint();
+        jPanel2.revalidate();
     }
 }

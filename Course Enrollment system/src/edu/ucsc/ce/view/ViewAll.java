@@ -6,15 +6,11 @@
 package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.ExamController;
-import edu.ucsc.ce.controllers.Facultycontroller;
 import edu.ucsc.ce.controllers.StudentController;
 import edu.ucsc.ce.methods.ComboBoxFilling;
 import edu.ucsc.ce.models.ExamDTO;
-import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.ResultDTO;
 import edu.ucsc.ce.models.StudentDTO;
-import static edu.ucsc.ce.view.AddStudentForm.cmbfac;
-import static edu.ucsc.ce.view.AddStudentForm.fac;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
