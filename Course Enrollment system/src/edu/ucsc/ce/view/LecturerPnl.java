@@ -11,12 +11,12 @@ import java.awt.Font;
  *
  * @author Jinadi
  */
-public class StudentPnl extends javax.swing.JPanel {
+public class LecturerPnl extends javax.swing.JPanel {
 
     /**
      * Creates new form StudentPnl
      */
-    public StudentPnl() {
+    public LecturerPnl() {
         initComponents();
     }
 
@@ -117,25 +117,25 @@ public class StudentPnl extends javax.swing.JPanel {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         jLabel2.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        jLabel5.setText("Add Student Details To System");
+        jLabel5.setText("Add Lecturer Details To System");
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        jLabel5.setText("Delete Student Details from System");
+        jLabel5.setText("Delete Lecturer Details from System");
 
 
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
         jLabel4.setFont(new Font("Segoe UI", Font.BOLD, 20));// TODO add your handling code here:
-        jLabel5.setText("Update Student Details of System");
+        jLabel5.setText("Update Lecturer Details of System");
 
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         jLabel1.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
-        jLabel5.setText("View Student Details");
+        jLabel5.setText("View Lecturer Details");
 
     }//GEN-LAST:event_jLabel1MouseEntered
 
