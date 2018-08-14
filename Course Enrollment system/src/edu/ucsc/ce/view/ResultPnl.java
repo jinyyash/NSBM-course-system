@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,12 +11,12 @@ import java.awt.Font;
  *
  * @author Jinadi
  */
-public class InstructorPnl1 extends javax.swing.JPanel {
+public class ResultPnl extends javax.swing.JPanel {
 
     /**
-     * Creates new form InstructorPnl
+     * Creates new form StudentPnl
      */
-    public InstructorPnl1() {
+    public ResultPnl() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Instructor Details");
+        jLabel1.setText("Student Result");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
@@ -54,7 +54,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Add Instructor");
+        jLabel2.setText("Add Result");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
@@ -67,7 +67,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Delete Instructor");
+        jLabel3.setText("Delete Result");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel3MouseEntered(evt);
@@ -80,7 +80,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Update Instructor");
+        jLabel4.setText("Update Result");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel4MouseEntered(evt);
@@ -89,7 +89,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
                 jLabel4MouseExited(evt);
             }
         });
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 160, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 130, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -117,25 +117,25 @@ public class InstructorPnl1 extends javax.swing.JPanel {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         jLabel2.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        jLabel5.setText("Add Instructor Details To System");
+        jLabel5.setText("Add Student Details To System");
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        jLabel5.setText("Delete Instructor Details from System");
+        jLabel5.setText("Delete Student Details from System");
 
 
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
         jLabel4.setFont(new Font("Segoe UI", Font.BOLD, 20));// TODO add your handling code here:
-        jLabel5.setText("Update Instructor Details of System");
+        jLabel5.setText("Update Student Details of System");
 
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         jLabel1.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
-        jLabel5.setText("View Instructor Details");
+        jLabel5.setText("View Student Details");
 
     }//GEN-LAST:event_jLabel1MouseEntered
 
