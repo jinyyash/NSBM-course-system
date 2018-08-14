@@ -5,8 +5,13 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,12 +62,12 @@ public class UpdateStudentForm extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAdd = new javax.swing.JTextArea();
-        cmbfac = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtNIC = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        txtF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -292,9 +297,6 @@ public class UpdateStudentForm extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 320, 110));
 
-        cmbfac.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jPanel1.add(cmbfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 170, 50));
-
         jPanel2.setOpaque(false);
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 730, 220));
 
@@ -313,11 +315,17 @@ public class UpdateStudentForm extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.setOpaque(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 50, 40));
+        jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 210, 170, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 750));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1130, 750));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -423,6 +431,10 @@ public class UpdateStudentForm extends javax.swing.JFrame {
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        loadStDetails();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -463,7 +475,6 @@ public class UpdateStudentForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cmbfac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
@@ -493,11 +504,24 @@ public class UpdateStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
     private javax.swing.JTextArea txtAdd;
+    private javax.swing.JTextField txtF;
     private javax.swing.JTextField txtNIC;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-
+        
+    }
+    
+    private void loadStDetails() {
+        try {
+            StudentDTO dTO = StudentController.searchStudentDTO(txtNIC.getText());
+            txtName.setText(dTO.getName());
+            txtAdd.setText(dTO.getAddress());
+            txtF.setText(dTO.getFacultyDTO().getName());
+            jTextField1.setText(dTO.getDob());
+         } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UpdateStudentForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
