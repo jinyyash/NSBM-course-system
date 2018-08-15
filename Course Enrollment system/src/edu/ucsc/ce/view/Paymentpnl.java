@@ -39,7 +39,7 @@ public class Paymentpnl extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("View Payment Detail");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,10 +52,13 @@ public class Paymentpnl extends javax.swing.JPanel {
         });
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 200, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Add Payment");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
             }
@@ -63,9 +66,9 @@ public class Paymentpnl extends javax.swing.JPanel {
                 jLabel2MouseExited(evt);
             }
         });
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 130, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Delete Payment Details");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,9 +79,9 @@ public class Paymentpnl extends javax.swing.JPanel {
                 jLabel3MouseExited(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 180, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 230, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Update Payment Details");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,17 +102,17 @@ public class Paymentpnl extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 771, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addGap(28, 28, 28))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1000, 90));
@@ -154,6 +157,10 @@ public class Paymentpnl extends javax.swing.JPanel {
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
         jLabel1.setFont(new Font("Segoe UI Light", Font.BOLD, 20)); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+     new PaymentForm().setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

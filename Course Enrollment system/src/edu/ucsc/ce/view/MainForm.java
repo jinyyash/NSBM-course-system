@@ -27,11 +27,14 @@ public class MainForm extends javax.swing.JFrame {
     //AdminHomeForm adminHomeForm=new AdminHomeForm();
     JFrame c;
     int mouseClc;
+    int m = 0;
 
     public MainForm() {
         initComponents();
         jPanel3.setBackground(new Color(0, 0, 0, 102));
         setLocationRelativeTo(null);
+        panelUser.setVisible(false);
+        panelDeleteUser.setVisible(false);
         // enchan();
 
     }
@@ -63,7 +66,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        pnlMain = new javax.swing.JPanel();
         lblUser1 = new javax.swing.JLabel();
         panelUser = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
@@ -99,11 +102,20 @@ public class MainForm extends javax.swing.JFrame {
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setOpaque(false);
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel2MouseEntered(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -111,34 +123,71 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Settings");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 90, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 120, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Lecture");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 110, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Instructor");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 130, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Result");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 110, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Subject");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 110, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Payments");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 120, 50));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 80));
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1000, 260));
+
+        pnlMain.setOpaque(false);
+        jPanel2.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1000, 260));
 
         lblUser1.setBackground(new java.awt.Color(51, 51, 51));
         lblUser1.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -618,6 +667,41 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel11MouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        addStudent();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        addLecturer();    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        addInstructor();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        addResult();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        addSubject();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        addPayment();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        addSettings();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseEntered
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        pnlMain.removeAll();
+    }//GEN-LAST:event_jPanel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -681,7 +765,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -697,10 +780,74 @@ public class MainForm extends javax.swing.JFrame {
     private java.awt.MenuBar menuBar1;
     private javax.swing.JPanel panelDeleteUser;
     private javax.swing.JPanel panelUser;
+    private javax.swing.JPanel pnlMain;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
 
+    }
+
+    private void addStudent() {
+        pnlMain.removeAll();
+        StudentPnl form = new StudentPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addLecturer() {
+        pnlMain.removeAll();
+        LecturerPnl form = new LecturerPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addInstructor() {
+        pnlMain.removeAll();
+        InstructorPnl1 form = new InstructorPnl1();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addResult() {
+        pnlMain.removeAll();
+        ResultPnl form = new ResultPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addSubject() {
+        pnlMain.removeAll();
+        SubjectPnl form = new SubjectPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addPayment() {
+        pnlMain.removeAll();
+        Paymentpnl form = new Paymentpnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addSettings() {
+        pnlMain.removeAll();
+        SettingsPnl form = new SettingsPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
     }
 }

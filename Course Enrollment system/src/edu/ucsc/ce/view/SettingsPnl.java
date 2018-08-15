@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,12 +11,12 @@ import java.awt.Font;
  *
  * @author Jinadi
  */
-public class SubjectPnl extends javax.swing.JPanel {
+public class SettingsPnl extends javax.swing.JPanel {
 
     /**
      * Creates new form InstructorPnl
      */
-    public SubjectPnl() {
+    public SettingsPnl() {
         initComponents();
     }
 
@@ -29,7 +29,6 @@ public class SubjectPnl extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -39,22 +38,9 @@ public class SubjectPnl extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Subject Details");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
-            }
-        });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 130, -1));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Add Subject");
+        jLabel2.setText("Faculty");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -70,8 +56,11 @@ public class SubjectPnl extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Delete  Subject");
+        jLabel3.setText("Course");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel3MouseEntered(evt);
             }
@@ -79,12 +68,15 @@ public class SubjectPnl extends javax.swing.JPanel {
                 jLabel3MouseExited(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 130, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 130, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Update Subject");
+        jLabel4.setText("Lab ");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel4MouseEntered(evt);
             }
@@ -92,7 +84,7 @@ public class SubjectPnl extends javax.swing.JPanel {
                 jLabel4MouseExited(evt);
             }
         });
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 160, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 160, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -102,17 +94,17 @@ public class SubjectPnl extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(130, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addGap(26, 26, 26))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1000, 90));
@@ -126,7 +118,7 @@ public class SubjectPnl extends javax.swing.JPanel {
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         jLabel3.setFont(new Font("Segoe UI", Font.BOLD, 20));
         jLabel5.setText("Delete Instructor Details from System");
-
+        
 
     }//GEN-LAST:event_jLabel3MouseEntered
 
@@ -135,12 +127,6 @@ public class SubjectPnl extends javax.swing.JPanel {
         jLabel5.setText("Update Instructor Details of System");
 
     }//GEN-LAST:event_jLabel4MouseEntered
-
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel1.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
-        jLabel5.setText("View Instructor Details");
-
-    }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         jLabel2.setFont(new Font("Segoe UI Light", Font.BOLD, 20)); // TODO add your handling code here:
@@ -154,17 +140,20 @@ public class SubjectPnl extends javax.swing.JPanel {
         jLabel4.setFont(new Font("Segoe UI Light", Font.BOLD, 20)); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel4MouseExited
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
-        jLabel1.setFont(new Font("Segoe UI Light", Font.BOLD, 20)); // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel1MouseExited
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-new AddSubjectForm()  .setVisible(true);      // TODO add your handling code here:
+        new Faculty().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+new SettingsForm().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        new LabForm().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

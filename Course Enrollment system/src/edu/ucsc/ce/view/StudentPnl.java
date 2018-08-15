@@ -41,10 +41,13 @@ public class StudentPnl extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Update Student Subject Selection");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
             }
@@ -52,12 +55,15 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel1MouseExited(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 270, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 300, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Add Student");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
             }
@@ -65,9 +71,9 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel2MouseExited(evt);
             }
         });
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Delete Student");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,12 +84,15 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel3MouseExited(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 130, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 160, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Update Student");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel4MouseEntered(evt);
             }
@@ -91,7 +100,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel4MouseExited(evt);
             }
         });
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 130, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 200, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -102,8 +111,8 @@ public class StudentPnl extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(201, 201, 201)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,10 +125,13 @@ public class StudentPnl extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 1000, 90));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Student Details");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel6MouseEntered(evt);
             }
@@ -127,12 +139,15 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel6MouseExited(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 130, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 160, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Student Subject Selection");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel7MouseEntered(evt);
             }
@@ -140,7 +155,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel7MouseExited(evt);
             }
         });
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 220, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 250, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
@@ -196,6 +211,26 @@ public class StudentPnl extends javax.swing.JPanel {
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         jLabel7.setFont(new Font("Segoe UI Light", Font.BOLD, 20));     }//GEN-LAST:event_jLabel7MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+      new AddStudentForm().setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        new UpdateStudentForm().setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       new ViewStudent().setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       new StudentSubjectSelecFor().setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+       new UpdateStudentSubjectSelecForm().setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

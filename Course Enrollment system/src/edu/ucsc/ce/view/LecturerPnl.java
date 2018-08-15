@@ -39,7 +39,7 @@ public class LecturerPnl extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Lecturer Details");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,10 +52,13 @@ public class LecturerPnl extends javax.swing.JPanel {
         });
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 130, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Add Lecturer");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
             }
@@ -65,7 +68,7 @@ public class LecturerPnl extends javax.swing.JPanel {
         });
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Delete Lecturer");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,10 +81,13 @@ public class LecturerPnl extends javax.swing.JPanel {
         });
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 130, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Update Lecturer");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel4MouseEntered(evt);
             }
@@ -89,7 +95,7 @@ public class LecturerPnl extends javax.swing.JPanel {
                 jLabel4MouseExited(evt);
             }
         });
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 130, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 160, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -100,9 +106,9 @@ public class LecturerPnl extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(165, 165, 165)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,6 +160,14 @@ public class LecturerPnl extends javax.swing.JPanel {
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
         jLabel1.setFont(new Font("Segoe UI Light", Font.BOLD, 20)); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+     new AddLecturerForm().setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       new UpdateLecturerForm().setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

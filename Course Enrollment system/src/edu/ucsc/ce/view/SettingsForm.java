@@ -225,7 +225,7 @@ public class SettingsForm extends javax.swing.JFrame {
                 jLabel17MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 150, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 170, 30));
 
         jLabel20.setBackground(new java.awt.Color(153, 153, 153));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -242,11 +242,11 @@ public class SettingsForm extends javax.swing.JFrame {
                 jLabel20MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 150, 30));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 180, 30));
 
         jLabel19.setBackground(new java.awt.Color(153, 153, 153));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel19.setText("    delete");
+        jLabel19.setText("           delete");
         jLabel19.setOpaque(true);
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -256,7 +256,7 @@ public class SettingsForm extends javax.swing.JFrame {
                 jLabel19MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 130, 30));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 170, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
