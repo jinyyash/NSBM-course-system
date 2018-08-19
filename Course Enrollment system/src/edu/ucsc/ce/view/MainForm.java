@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -57,6 +58,8 @@ public class MainForm extends javax.swing.JFrame {
         menu2 = new java.awt.Menu();
         jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -89,8 +92,6 @@ public class MainForm extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -106,6 +107,19 @@ public class MainForm extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel3.setText("X");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
 
         jPanel2.setOpaque(false);
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,63 +137,91 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Settings");
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 90, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 120, 50));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Lecture");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 110, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Instructor");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 130, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Result");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel6MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 110, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Subject");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 110, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Payments");
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
             }
         });
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 120, 50));
@@ -403,14 +445,6 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2.add(panelDeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 340, 120));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel3.setText("X");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel4.setText("_");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
@@ -701,6 +735,38 @@ public class MainForm extends javax.swing.JFrame {
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         pnlMain.removeAll();
     }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // jLabel1.setForeground(Color.white);  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        //jLabel5.setForeground(Color.white); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+       // jLabel9.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+       //jLabel6.setForeground(Color.white); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+      // jLabel7.setForeground(Color.white); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+      // jLabel10.setForeground(Color.white);  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        //jLabel8.setBorder(new LineBorder(Color.BLACK, 1));// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+       System.exit(0); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -88,4 +88,21 @@ public class LecturerController {
         int res = stm.executeUpdate();
         return res > 0;
     }
+       public static boolean remove(String PaymentID) throws SQLException, ClassNotFoundException {
+        String sql = "Delete from lecturer where nic='" + PaymentID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        return stm.executeUpdate(sql) > 0;
+    }
+        public static LecturerDTO searchLecturerDTONIC(String LecturerDTOID) throws SQLException, ClassNotFoundException {
+        String sql = "select * from lecturer where nic='" + LecturerDTOID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        LecturerDTO lec = null;
+        if (rst.next()) {
+            lec = new LecturerDTO(LecturerDTOID, rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
+        }
+        return lec ;
+    }
 }

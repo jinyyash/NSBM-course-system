@@ -5,41 +5,29 @@
  */
 package edu.ucsc.ce.view;
 
-import edu.ucsc.ce.controllers.CourseController;
-import edu.ucsc.ce.controllers.Facultycontroller;
+import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.controllers.StudentController;
-import edu.ucsc.ce.methods.ComboBoxFilling;
-import edu.ucsc.ce.models.CourseDTO;
-import edu.ucsc.ce.models.FacultyDTO;
+import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.StudentDTO;
+import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jinadi
  */
-public class AddStudentForm extends javax.swing.JFrame {
+public class DeleteLecture extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
-    public static ArrayList<CourseDTO> course = new ArrayList<>();
-    public static ArrayList<FacultyDTO> fac = new ArrayList<>();
-    public StudentDTO dTO;
-
-    public AddStudentForm() {
+    public DeleteLecture() {
         initComponents();
         enchan();
-        loadCourse();
-        loadFca();
-        setID();
-        setDate();
     }
 
     /**
@@ -52,7 +40,6 @@ public class AddStudentForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnlDash = new javax.swing.JPanel();
         lblrepo = new javax.swing.JLabel();
@@ -66,28 +53,18 @@ public class AddStudentForm extends javax.swing.JFrame {
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtAdd = new javax.swing.JTextArea();
-        cmbCal = new org.freixas.jcalendar.JCalendarCombo();
-        cmbfac = new javax.swing.JComboBox<>();
-        pnlMain = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtNIC = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cmbCourse = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
-        txtID = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -241,121 +218,98 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
-        jLabel3.setText("Student");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 50));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel4.setText("Address");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 180, 110));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel5.setText("Date Of Birth");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 190, 60));
+        jLabel3.setText("Delete Lecturer");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 360, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel6.setText("Faculty");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 160, 50));
+        jLabel6.setText("Speciality");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 160, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 180, 70));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 180, 70));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jRadioButton1.setText("Undergraduate");
-        jRadioButton1.setFocusPainted(false);
-        jRadioButton1.setOpaque(false);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+        jLabel17.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel17.setText("           Cancel");
+        jLabel17.setOpaque(true);
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel17MouseExited(evt);
             }
         });
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jRadioButton2.setText("Postgraduate");
-        jRadioButton2.setOpaque(false);
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("            Delete");
+        jLabel18.setOpaque(true);
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
             }
         });
-        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, -1, 40));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel15.setText("Student State");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 160, 60));
-
+        txtName.setEditable(false);
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 320, 40));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 320, 40));
 
-        txtAdd.setColumns(20);
-        txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtAdd.setRows(5);
-        jScrollPane3.setViewportView(txtAdd);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 90));
-        jPanel1.add(cmbCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 170, 40));
-
-        cmbfac.setEditable(true);
-        cmbfac.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jPanel1.add(cmbfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 170, 50));
-
-        pnlMain.setOpaque(false);
-        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 730, 290));
+        jPanel2.setOpaque(false);
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 730, 220));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("NIC");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 70));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 180, 70));
 
         txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 320, 40));
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 240, 40));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel7.setText("Course");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 160, 50));
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e8fa(5)_48.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setOpaque(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 50, 40));
 
-        cmbCourse.setEditable(true);
-        cmbCourse.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        cmbCourse.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel5.setText("X");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        txtF.setEditable(false);
+        txtF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCourseActionPerformed(evt);
+                txtFActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 260, 170, 50));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
-
-        txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, 40));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel11.setText("Student ID");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 90, 70));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel8.setText("_");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, -20, 30, 50));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel12.setText("X");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 20, -1));
+        jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 320, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 750));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 0, 1130, 750));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -437,35 +391,44 @@ public class AddStudentForm extends javax.swing.JFrame {
         lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        pnlMain.removeAll();
-        UnderGraduate form = new UnderGraduate();
-        form.setSize(pnlMain.getSize());
-        pnlMain.add(form);
-        pnlMain.repaint();
-        pnlMain.revalidate(); // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        jLabel17.setBackground(Color.BLACK);
+        jLabel17.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jLabel17MouseEntered
 
-    private void cmbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCourseActionPerformed
+    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
+        jLabel18.setBackground(Color.BLACK);
+        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseEntered
+
+    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
+        jLabel18.setBackground(Color.GRAY);
+        jLabel18.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
+        jLabel17.setBackground(Color.GRAY);
+        jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseExited
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        loadStDetails();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void txtFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCourseActionPerformed
+    }//GEN-LAST:event_txtFActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        pnlMain.removeAll();
-        PostGraduate form = new PostGraduate();
-        form.setSize(pnlMain.getSize());
-        pnlMain.add(form);
-        pnlMain.repaint();
-        pnlMain.revalidate();  // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        int yes = JOptionPane.showConfirmDialog(this, "Do you really want to remove student", "Remove student", JOptionPane.INFORMATION_MESSAGE);
+        if (yes == 0) {
+            delete();
+        }
+    }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-       this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseClicked
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -484,49 +447,54 @@ public class AddStudentForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteLecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteLecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteLecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStudentForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteLecture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStudentForm().setVisible(true);
+                new DeleteLecture().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    public static org.freixas.jcalendar.JCalendarCombo cmbCal;
-    public static javax.swing.JComboBox<String> cmbCourse;
-    public static javax.swing.JComboBox<String> cmbfac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    public static javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public static javax.swing.JRadioButton jRadioButton1;
-    public static javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
     private javax.swing.JLabel lblLec;
@@ -537,65 +505,36 @@ public class AddStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JPanel pnlMain;
-    public static javax.swing.JTextArea txtAdd;
-    public static javax.swing.JTextField txtID;
-    public static javax.swing.JTextField txtNIC;
-    public static javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtF;
+    private javax.swing.JTextField txtNIC;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
         setLocationRelativeTo(null);
     }
 
-    private void loadCourse() {
+    private void loadStDetails() {
         try {
-            course = CourseController.getAll();
-            for (CourseDTO courseDTO : course) {
-                cmbCourse.addItem(courseDTO.getName());
-            }
-            ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbCourse, true, "No Course found");
-        } catch (SQLException ex) {
-            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
+            LecturerDTO dTO = LecturerController.searchLecturerDTONIC(txtNIC.getText());
+            txtName.setText(dTO.getName());
+            txtF.setText(dTO.getSpeciality());
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(DeleteLecture.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void loadFca() {
+    private void delete() {
         try {
-            fac = Facultycontroller.getAll();
-            for (FacultyDTO courseDTO : fac) {
-                cmbfac.addItem(courseDTO.getName());
-            }
-            ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbfac, true, "No Course found");
-        } catch (SQLException ex) {
-            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddSubjectForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void setID() {
-        try {
-            String lecID = StudentController.getLastID();
-            if (lecID == null) {
-                txtID.setText("S001");
+            if (StudentController.removeStudent(txtNIC.getText())) {
+                JOptionPane.showMessageDialog(this, "Lecturer removed sucessfully");
             } else {
-                String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length() - 1) + (Integer.parseInt(id) + 1));
+                JOptionPane.showMessageDialog(this, "oops!!!");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AddStudentForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddStudentForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "oops!!!");
+            Logger.getLogger(DeleteLecture.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    private void setDate() {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        cmbCal.setDateFormat(format);
     }
 }

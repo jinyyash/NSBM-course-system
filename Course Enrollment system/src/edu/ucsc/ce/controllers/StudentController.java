@@ -248,6 +248,21 @@ public class StudentController {
         }
         return dTO;
     }
+     public static StudentDTO searchStudentDTONIC(String ID) throws SQLException, ClassNotFoundException {
+        String sql = "select * from student where nic='" + ID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        StudentDTO dTO = null;
+        CourseDTO courseDTO = null;
+        FacultyDTO facultyDTO = null;
+        if (rst.next()) {
+            courseDTO = CourseController.searchCourse(rst.getString(2));
+            facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
+        }
+        return dTO;
+    }
 
     public static ArrayList<Student_SubDTO> getAllStudentSubForstudent(String id) throws SQLException, ClassNotFoundException {
         String sql = "select * from Student_Sub where SSID='" + id + "'";
@@ -301,6 +316,13 @@ public class StudentController {
         return courseList;
 
     }
+      public static boolean removeStudent(String PaymentID) throws SQLException, ClassNotFoundException {
+        String sql = "Delete from student where nic='" + PaymentID + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        return stm.executeUpdate(sql) > 0;
+    }
+
 
    
 }

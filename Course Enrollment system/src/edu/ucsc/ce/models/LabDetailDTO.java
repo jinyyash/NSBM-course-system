@@ -10,7 +10,7 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class LabDetailDTO {
-    private Integer ldid;
+    private String ldid;
     private LabDTO labDTO;
     private InstructorDTO instructorDTO;
     private SubjectDTO subjectDTO;
@@ -18,14 +18,22 @@ public class LabDetailDTO {
     /**
      * @return the ldid
      */
-    public Integer getLdid() {
+    
+    public LabDetailDTO(String ldid, LabDTO labDTO, InstructorDTO instructorDTO, SubjectDTO subjectDTO) {
+        this.ldid = ldid;
+        this.labDTO = labDTO;
+        this.instructorDTO = instructorDTO;
+        this.subjectDTO = subjectDTO;
+    }
+
+    public String getLdid() {
         return ldid;
     }
 
     /**
      * @param ldid the ldid to set
      */
-    public void setLdid(Integer ldid) {
+    public void setLdid(String ldid) {
         this.ldid = ldid;
     }
 

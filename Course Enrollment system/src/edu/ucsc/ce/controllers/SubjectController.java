@@ -30,7 +30,7 @@ public class SubjectController {
     static Connection connection;
 
     public static boolean addSubject(SubjectDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into subject values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into subject values(?,?,?,?,?,?,?,?,?)";
 
         connection = DBConnection.getDBConnection().getConnection();
         connection.setAutoCommit(false);
@@ -43,6 +43,7 @@ public class SubjectController {
         stm.setObject(6, c.getCredits());
         stm.setObject(7, c.getPrice());
         stm.setObject(8, c.getDuration());
+          stm.setObject(9, c.getLocation());
         return stm.executeUpdate() > 0;
     }
 
@@ -78,7 +79,7 @@ public class SubjectController {
         if (rst.next()) {
             LecturerDTO  dTO=LecturerController.searchLecturerDTO(rst.getString(2));
             CourseDTO courseDTO=CourseController.searchCourse( rst.getString(3));
-            subjectDTO = new SubjectDTO(LecturerDTOID,dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8));
+            subjectDTO = new SubjectDTO(LecturerDTOID,dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8),rst.getString(9));
         }
         return subjectDTO ;
     }
@@ -153,7 +154,7 @@ public class SubjectController {
             LecturerDTO  dTO=LecturerController.searchLecturerDTO(rst.getString(2));
             CourseDTO courseDTO=CourseController.searchCourse( rst.getString(3));
         
-            subjectDTO = new SubjectDTO(rst.getString(1),dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8));
+            subjectDTO = new SubjectDTO(rst.getString(1),dTO,courseDTO, rst.getString(4), rst.getString(5),Integer.parseInt( rst.getString(6)),Double.parseDouble( rst.getString(7)), rst.getString(8),rst.getString(9));
             arrayList.add(subjectDTO);
         }
         return arrayList ;

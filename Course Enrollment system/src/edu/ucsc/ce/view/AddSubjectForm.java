@@ -86,6 +86,8 @@ public class AddSubjectForm extends javax.swing.JFrame {
         cmbCourse = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         txtSem1 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -312,9 +314,9 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel14.setText("Lecturer");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 170, 80));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, 170, 80));
 
-        jPanel1.add(cmbLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 380, 230, 50));
+        jPanel1.add(cmbLec, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 230, 50));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel15.setText("Subject ID");
@@ -349,7 +351,14 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 270, 180, 80));
 
         txtSem1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtSem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 290, 210, 50));
+        jPanel1.add(txtSem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 230, 50));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel20.setText("Location");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, 180, 90));
+
+        txtLocation.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, 230, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
@@ -523,6 +532,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -539,6 +549,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDash;
     private javax.swing.JTextField txtCredit;
     private javax.swing.JTextField txtDuration;
+    private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtSem;
@@ -600,7 +611,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
     private void add() {
         try {
-            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText());
+            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText(),txtLocation.getText());
             CourseDTO courseDTO=al.get(cmbCourse.getSelectedIndex());
             CourseDetailDTO courseDetailDTO=new CourseDetailDTO(dTO.getSid()+courseDTO.getCid(), courseDTO, dTO,txtSem.getText());
             boolean add = SubjectController.addDetails(dTO, courseDetailDTO);

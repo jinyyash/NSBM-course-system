@@ -10,6 +10,7 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class SubjectDTO {
+
     private String sid;
     private LecturerDTO lectureDTO;
     private CourseDTO courseDTO;
@@ -18,8 +19,9 @@ public class SubjectDTO {
     private Integer credits;
     private Double price;
     private String duration;
+    private String location;
 
-    public SubjectDTO(String sid, LecturerDTO lectureDTO, CourseDTO courseDTO, String name, String semester, Integer credits, Double price, String duration) {
+    public SubjectDTO(String sid, LecturerDTO lectureDTO, CourseDTO courseDTO, String name, String semester, Integer credits, Double price, String duration, String location) {
         this.sid = sid;
         this.lectureDTO = lectureDTO;
         this.courseDTO = courseDTO;
@@ -28,11 +30,11 @@ public class SubjectDTO {
         this.credits = credits;
         this.price = price;
         this.duration = duration;
+        this.location = location;
     }
 
     
     
-
     /**
      * @return the name
      */
@@ -143,5 +145,19 @@ public class SubjectDTO {
      */
     public void setSid(String sid) {
         this.sid = sid;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

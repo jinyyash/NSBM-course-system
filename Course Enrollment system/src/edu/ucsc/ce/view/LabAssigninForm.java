@@ -17,6 +17,7 @@ import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
 import edu.ucsc.ce.models.InstructorDTO;
 import edu.ucsc.ce.models.LabDTO;
+import edu.ucsc.ce.models.LabDetailDTO;
 import edu.ucsc.ce.models.Student_SubDTO;
 import java.awt.Color;
 import java.awt.Font;
@@ -24,6 +25,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,16 +39,32 @@ public class LabAssigninForm extends javax.swing.JFrame {
      */
     ArrayList<FacultyDTO> facultyDTOsList = new ArrayList<>();
     ArrayList<FacultyDetailDTO> DetailDTOs = new ArrayList<>();
-    ArrayList<CourseDetailDTO> courseDetailDTOs=new ArrayList<>();
-    ArrayList<InstructorDTO> instructorDTOs=new ArrayList<>();
-     ArrayList<Student_SubDTO> al=new ArrayList<>();
-     ArrayList<LabDTO> labDTOs=new ArrayList<>();
+    ArrayList<CourseDetailDTO> courseDetailDTOs = new ArrayList<>();
+    ArrayList<InstructorDTO> instructorDTOs = new ArrayList<>();
+    ArrayList<InstructorDTO> instructorDTOsAssigned = new ArrayList<>();
+    ArrayList<Student_SubDTO> al = new ArrayList<>();
+    ArrayList<LabDTO> labDTOs = new ArrayList<>();
+
+    ArrayList<LabDetailDTO> labDTOsDetail = new ArrayList<>();
+    ArrayList<LabDTO> labDTOsToList = new ArrayList<>();
+    String labDetailID;
+
     public LabAssigninForm() {
-        initComponents();
-        enchan();
-        loadFac();
-        loadInst();
-        loadLabs();
+        try {
+            initComponents();
+            enchan();
+            loadFac();
+            loadInst();
+            loadLabs();
+            setLocationRelativeTo(null);
+            if (LabController.getLastLabDetailID() == null) {
+                labDetailID = 1+"";
+            } else {
+                labDetailID = LabController.getLastLabDetailID();
+            }
+         } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -280,7 +299,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 100, 80));
 
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 280, 50));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 260, 50));
 
         lblRemain.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jPanel1.add(lblRemain, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, 120, 80));
@@ -453,7 +472,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, 180, 80));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -548,8 +567,8 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbFacActionPerformed
 
     private void cmbSubItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSubItemStateChanged
-       txtName.setText( courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getLectureDTO().getName());
-      setStudentS();// TODO add your handling code here:
+        txtName.setText(courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getLectureDTO().getName());
+        setStudentS();// TODO add your handling code here:
     }//GEN-LAST:event_cmbSubItemStateChanged
 
     private void cmbSubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbSubMouseClicked
@@ -557,11 +576,11 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbSubMouseClicked
 
     private void cmbSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSubActionPerformed
-       
+
     }//GEN-LAST:event_cmbSubActionPerformed
 
     private void cmbInstructorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbInstructorItemStateChanged
-      lblName.setText(instructorDTOs.get(cmbInstructor.getSelectedIndex()).getName() );  // TODO add your handling code here:
+        lblName.setText(instructorDTOs.get(cmbInstructor.getSelectedIndex()).getName());  // TODO add your handling code here:
     }//GEN-LAST:event_cmbInstructorItemStateChanged
 
     private void cmbInstructorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbInstructorMouseClicked
@@ -599,7 +618,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel22MouseExited
 
     private void cmbCourseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCourseItemStateChanged
-      setSub(); // TODO add your handling code here:
+        setSub(); // TODO add your handling code here:
     }//GEN-LAST:event_cmbCourseItemStateChanged
 
     private void cmbCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbCourseMouseClicked
@@ -611,7 +630,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbCourseActionPerformed
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        // TODO add your handling code here:
+        addToL();  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseEntered
@@ -721,7 +740,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
 
     private void setCourse() {
         try {
-            cmbCourse.removeAll();
+            cmbCourse.removeAllItems();
             FacultyDTO dTO = facultyDTOsList.get(cmbFac.getSelectedIndex());
             DetailDTOs = CourseController.getAllFacultyDetails(dTO.getFid());
             for (FacultyDetailDTO DetailDTO : DetailDTOs) {
@@ -736,11 +755,11 @@ public class LabAssigninForm extends javax.swing.JFrame {
 
     private void setSub() {
         try {
-            cmbSub.removeAll();
+            cmbSub.removeAllItems();
             CourseDTO courseDTO = DetailDTOs.get(cmbCourse.getSelectedIndex()).getCourseDTO();
             courseDetailDTOs = CourseController.getAllCourseDetailsWithSub(courseDTO.getCid());
             for (CourseDetailDTO courseDetailDTO : courseDetailDTOs) {
-                cmbSub.addItem(courseDetailDTO.getSubjectDTO().getName() );
+                cmbSub.addItem(courseDetailDTO.getSubjectDTO().getName());
             }
         } catch (SQLException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -750,31 +769,32 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }
 
     private void loadInst() {
- 
+
         try {
-            instructorDTOs=InstructorControll.getAlDTO();
+            instructorDTOs = InstructorControll.getAlDTO();
             for (InstructorDTO courseDetailDTO : instructorDTOs) {
-                cmbInstructor.addItem(courseDetailDTO.getIid() );
+                cmbInstructor.addItem(courseDetailDTO.getIid());
             }
         } catch (SQLException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
         }
- }
+    }
 
     private void setStudentS() {
         try {
-           al=StudentController.getAllStudentSub();
+            al = StudentController.getAllStudentSub();
             System.out.println(al.size());
-            int count=0;
+            int count = 0;
             for (Student_SubDTO student_SubDTO : al) {
-                  System.out.println(al.size());
-                if(student_SubDTO.getSubjectDTO().getSid().equals(courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getSid())){
+                System.out.println(al.size());
+                if (student_SubDTO.getSubjectDTO().getSid().equals(courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO().getSid())) {
                     count++;
                 }
             }
-            txtSt.setText(count+"");
+            txtSt.setText(count + "");
+            lblRemain.setText(count + "");
         } catch (SQLException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -784,9 +804,9 @@ public class LabAssigninForm extends javax.swing.JFrame {
 
     private void loadLabs() {
         try {
-            labDTOs=LabController.getAll();
+            labDTOs = LabController.getAll();
             for (LabDTO labDTO : labDTOs) {
-                cmbLab.addItem(labDTO.getName()+" : occupied  : "+labDTO.getNumOfOc());
+                cmbLab.addItem(labDTO.getName() + " : occupied  : " + labDTO.getNumOfOc());
             }
         } catch (SQLException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -796,6 +816,31 @@ public class LabAssigninForm extends javax.swing.JFrame {
     }
 
     private void addToTable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+        Object[] row = {labDTOs.get(cmbLab.getSelectedIndex()).getName(), labDTOs.get(cmbLab.getSelectedIndex()).getNumOfOc()};
+        dtm1.addRow(row);
+        int numOf = Integer.parseInt(txtSt.getText());
+        int lab = labDTOs.get(cmbLab.getSelectedIndex()).getNumOfOc();
+        labDTOsToList.add(labDTOs.get(cmbLab.getSelectedIndex()));
+        if (Integer.parseInt(lblRemain.getText()) >= lab) {
+            lblRemain.setText(numOf - lab + "");
+        } else if (lab - numOf > 0) {
+            lblRemain.setText(0 + "");
+        }
+        LabDetailDTO detailDTO = new LabDetailDTO(labDetailID, labDTOs.get(cmbLab.getSelectedIndex()), instructorDTOs.get(cmbInstructor.getSelectedIndex()), courseDetailDTOs.get(cmbSub.getSelectedIndex()).getSubjectDTO());
+        labDTOsDetail.add(detailDTO);
+    }
+
+    private void addToL() {
+        try {
+            boolean add = LabController.addInstructorLab(labDTOsDetail);
+            if (add) {
+                JOptionPane.showMessageDialog(this, "Instructor assigned to lab");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

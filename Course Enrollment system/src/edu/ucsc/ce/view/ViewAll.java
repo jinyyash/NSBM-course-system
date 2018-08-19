@@ -32,7 +32,7 @@ public class ViewAll extends javax.swing.JPanel {
     public ViewAll() {
         initComponents();
 
-        loadStudent();
+       // loadStudent();
         loadExam();
 
     }
@@ -47,11 +47,9 @@ public class ViewAll extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cmbSt = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         cmbExam = new javax.swing.JComboBox<>();
         lblName = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblCourse = new javax.swing.JLabel();
@@ -72,24 +70,10 @@ public class ViewAll extends javax.swing.JPanel {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cmbSt.setEditable(true);
-        cmbSt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cmbSt.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbStItemStateChanged(evt);
-            }
-        });
-        cmbSt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbStActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cmbSt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 120, 48));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Exam ID");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 90, 48));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 48));
 
         cmbExam.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbExam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
@@ -98,41 +82,36 @@ public class ViewAll extends javax.swing.JPanel {
                 cmbExamItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbExam, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 120, 48));
+        jPanel1.add(cmbExam, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 120, 48));
 
         lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 180, 48));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Student ID");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 145, 48));
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 180, 48));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Name");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 145, 48));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 145, 48));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Course");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 145, 48));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 145, 48));
 
         lblCourse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCourse.setForeground(new java.awt.Color(255, 255, 255));
         lblCourse.setText("Student ID");
-        jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, 48));
+        jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 48));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("E-mail");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 140, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 102, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Print");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 140, 40));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 140, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,7 +130,7 @@ public class ViewAll extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("year");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 76, 48));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 76, 48));
 
         cmbYear.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "2018", "2017", "2016", "2015", "2014" }));
@@ -160,7 +139,7 @@ public class ViewAll extends javax.swing.JPanel {
                 cmbYearItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 120, 48));
+        jPanel1.add(cmbYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 120, 48));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 200));
 
@@ -178,18 +157,8 @@ public class ViewAll extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbExamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbExamItemStateChanged
-
+        getAllStudentExam();
     }//GEN-LAST:event_cmbExamItemStateChanged
-
-    private void cmbStItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStItemStateChanged
-        studentResult();
-        lblName.setText(studentDTOs.get(cmbSt.getSelectedIndex()).getName());
-        lblCourse.setText(studentDTOs.get(cmbSt.getSelectedIndex()).getCourseDTO().getName());
-    }//GEN-LAST:event_cmbStItemStateChanged
-
-    private void cmbStActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStActionPerformed
-        studentResult();
-    }//GEN-LAST:event_cmbStActionPerformed
 
     private void cmbSemItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSemItemStateChanged
         studentResult();
@@ -203,13 +172,11 @@ public class ViewAll extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbExam;
     private javax.swing.JComboBox<String> cmbSem;
-    private javax.swing.JComboBox<String> cmbSt;
     private javax.swing.JComboBox<String> cmbYear;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -226,7 +193,7 @@ public class ViewAll extends javax.swing.JPanel {
         } else if (cmbExam.getSelectedIndex() != 0 && cmbSem.getSelectedIndex() == 0 && cmbYear.getSelectedIndex() == 0) {
             getStudentExam();
         } else if (cmbExam.getSelectedIndex() != 0 && cmbSem.getSelectedIndex() != 0 && cmbYear.getSelectedIndex() != 0) {
-            forAllExamsSemYear();     
+            forAllExamsSemYear();
         } else if (cmbExam.getSelectedIndex() == 0 && cmbSem.getSelectedIndex() != 0 && cmbYear.getSelectedIndex() != 0) {
             getForSemYear();
         }
@@ -235,7 +202,7 @@ public class ViewAll extends javax.swing.JPanel {
     private void getAllStudentExam() {
         try {
             //System.out.println(cmbSt.getSelectedIndex());
-            ArrayList<ResultDTO> al = ExamController.getAllResultForStudent(studentDTOs.get(cmbSt.getSelectedIndex()).getSid());
+            ArrayList<ResultDTO> al = ExamController.getAllResultForExam(examDTOs.get(cmbExam.getSelectedIndex()).getEid());
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
             for (ResultDTO resultDTO : al) {
@@ -251,7 +218,7 @@ public class ViewAll extends javax.swing.JPanel {
 
     private void getStudentExam() {
         try {
-            ArrayList<ResultDTO> al = ExamController.getAllResultForStudentExam(studentDTOs.get(cmbSt.getSelectedIndex()).getSid(), examDTOs.get(cmbExam.getSelectedIndex() - 1).getEid());
+            ArrayList<ResultDTO> al = ExamController.getAllResultForExam( examDTOs.get(cmbExam.getSelectedIndex() - 1).getEid());
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
             for (ResultDTO resultDTO : al) {
@@ -280,20 +247,7 @@ public class ViewAll extends javax.swing.JPanel {
         }
     }
 
-    private void loadStudent() {
-        try {
-            studentDTOs = StudentController.getAll();
-            for (StudentDTO dTO : studentDTOs) {
-                cmbSt.addItem(dTO.getSid());
-            }
-            ComboBoxFilling combo = new ComboBoxFilling();
-            combo.setSearchableCombo(cmbSt, true, "No Student found");
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ViewAll.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     private void Year() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -303,7 +257,7 @@ public class ViewAll extends javax.swing.JPanel {
         try {
             ArrayList<ResultDTO> al;
 
-            al = ExamController.getAllResultForStudentExam(studentDTOs.get(cmbSt.getSelectedIndex()).getSid(), examDTOs.get(cmbExam.getSelectedIndex() - 1).getEid());
+            al = ExamController.getAllResultForExam(examDTOs.get(cmbExam.getSelectedIndex() - 1).getEid());
 
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
@@ -324,10 +278,10 @@ public class ViewAll extends javax.swing.JPanel {
 
     private void getForSemYear() {
         try {
-            System.out.println(cmbSt.getSelectedIndex());
+           // System.out.println(cmbSt.getSelectedIndex());
             ArrayList<ResultDTO> al;
 
-            al = ExamController.getAllResultForStudent(studentDTOs.get(cmbSt.getSelectedIndex()).getSid());
+            al = ExamController.getAllResult();
 
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
