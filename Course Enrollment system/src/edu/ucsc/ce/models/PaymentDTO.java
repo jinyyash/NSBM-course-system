@@ -13,7 +13,7 @@ import java.beans.PropertyChangeSupport;
  */
 public class PaymentDTO {
 
-    private Integer pid;
+    private String pid;
     private SubjectDTO subjectDTO;
     private StudentDTO studentDTO;
     private String date;
@@ -25,8 +25,7 @@ public class PaymentDTO {
      * @param studentDTO
      * @return the pid
      */
-    
-    public PaymentDTO(Integer pid, SubjectDTO subjectDTO, StudentDTO studentDTO, String date, String time) {
+    public PaymentDTO(String pid, SubjectDTO subjectDTO, StudentDTO studentDTO, String date, String time) {
         this.pid = pid;
         this.subjectDTO = subjectDTO;
         this.studentDTO = studentDTO;
@@ -34,20 +33,18 @@ public class PaymentDTO {
         this.time = time;
     }
 
-    public Integer getPid() {
+    public String getPid() {
         return pid;
     }
 
     /**
      * @param pid the pid to set
      */
-    public void setPid(Integer pid) {
-        java.lang.Integer oldPid = this.pid;
-        this.pid = pid;
-        getPropertyChangeSupport().firePropertyChange(getPROP_PID(), oldPid, pid);
-    }
+    public void setPid(String pid) {
 
-    
+        this.pid = pid;
+
+    }
 
     /**
      * @return the date

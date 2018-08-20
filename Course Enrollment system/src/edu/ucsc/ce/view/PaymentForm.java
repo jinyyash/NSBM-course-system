@@ -643,7 +643,7 @@ public class PaymentForm extends javax.swing.JFrame {
             id = did;
         }
         Object[] r = {id, subjectDTO.getName(), subjectDTO.getPrice(), txtDis.getText(), subjectDTO.getPrice() - (subjectDTO.getPrice() * dis / 100) + ""};
-        PaymentDTO paymentDTO = new PaymentDTO(Integer.parseInt(id), subjectDTO, studentList.get(cmbstu.getSelectedIndex()), Calendar.DATE + "", Calendar.getInstance().getTime() + "");
+        PaymentDTO paymentDTO = new PaymentDTO(id, subjectDTO, studentList.get(cmbstu.getSelectedIndex()), Calendar.DATE + "", Calendar.getInstance().getTime() + "");
         dtm1.addRow(r);
         List.add(paymentDTO);
     }
