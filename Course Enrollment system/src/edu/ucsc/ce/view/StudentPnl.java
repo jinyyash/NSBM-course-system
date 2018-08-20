@@ -55,7 +55,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel1MouseExited(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 380, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 460, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -103,7 +103,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel4MouseExited(evt);
             }
         });
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 200, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 230, 30));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 

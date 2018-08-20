@@ -54,7 +54,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
                 jLabel1MouseExited(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 210, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 240, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +135,7 @@ public class InstructorPnl1 extends javax.swing.JPanel {
                 jLabel9MouseExited(evt);
             }
         });
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 150, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
