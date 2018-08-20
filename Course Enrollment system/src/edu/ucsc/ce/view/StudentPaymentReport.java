@@ -5,7 +5,9 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.PaymntController;
 import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.models.PaymentDTO;
 import edu.ucsc.ce.models.ResultDTO;
 import edu.ucsc.ce.models.Student_SubDTO;
 import static edu.ucsc.ce.view.LabForm.pnlMain;
@@ -23,18 +25,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jinadi
  */
-public class StudentSubjectReport extends javax.swing.JFrame {
+public class StudentPaymentReport extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
     //AdminHomeForm adminHomeForm=new AdminHomeForm();
     JFrame c;
-    
-    public StudentSubjectReport() {
+
+    public StudentPaymentReport() {
         initComponents();
         enchan();
-        
+
     }
 
     /**
@@ -86,6 +88,7 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,7 +252,7 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
         jLabel5.setText("Student Payment Details");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 620, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 500, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("Student ID");
@@ -263,12 +266,16 @@ public class StudentSubjectReport extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Subject ID", "Subject Name", "Semester", "Creadits"
+                "Name", "NIC", "Course", "Subject", "Payment date", "Payment amount"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Name");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("NIC");
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 660, 430));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 660, 330));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -382,7 +389,7 @@ public class StudentSubjectReport extends javax.swing.JFrame {
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         this.dispose();
-        new StudentSubjectReport().setVisible(true);
+        new StudentPaymentReport().setVisible(true);
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -400,7 +407,7 @@ public class StudentSubjectReport extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       this.dispose(); // TODO add your handling code here:
+        this.dispose(); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
@@ -420,21 +427,23 @@ public class StudentSubjectReport extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentPaymentReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentPaymentReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentPaymentReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentPaymentReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentSubjectReport().setVisible(true);
+                new StudentPaymentReport().setVisible(true);
             }
         });
     }
@@ -474,25 +483,25 @@ public class StudentSubjectReport extends javax.swing.JFrame {
 
     private void enchan() {
         setLocationRelativeTo(null);
-        
+
     }
-    
+
     private void loadStDetails() {
         try {
-            ArrayList<Student_SubDTO> list = StudentController.getAllStudentSubforStudent(txtNIC.getText());
+            ArrayList<PaymentDTO> list = PaymntController.getAllPaymentForStudent(txtNIC.getText());
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
-            
-            for (Student_SubDTO DTO : list) {
-                
-                Object[] row = {DTO.getSubjectDTO().getSid(), DTO.getSubjectDTO().getName(), DTO.getSubjectDTO().getSemester(), DTO.getSubjectDTO().getCredits()};
+
+            for (PaymentDTO DTO : list) {
+
+                Object[] row = {DTO.getStudentDTO().getName(), DTO.getStudentDTO().getNIC(), DTO.getSubjectDTO().getCourseDTO().getName(), DTO.getSubjectDTO().getName(), DTO.getTime(), DTO.getSubjectDTO().getPrice()};
                 dtm.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentPaymentReport.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentPaymentReport.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 }

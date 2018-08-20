@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,17 +10,21 @@ package edu.ucsc.ce.models;
  * @author Jinadi
  */
 public class StudentDTO {
+
     private String sid;
     private CourseDTO courseDTO;
     private FacultyDTO facultyDTO;
-     private String NIC; 
+    private String NIC;
     private String name;
-     private String batch;
+    private String batch;
     private String address;
     private String dob;
+    private String email;
+    private String parentName;
+    private String parentEmail;
     private int state;
 
-    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String batch, String address, String dob, int state) {
+    public StudentDTO(String sid, CourseDTO courseDTO, FacultyDTO facultyDTO, String NIC, String name, String batch, String address, String dob,int state, String email, String parentName, String parentEmail) {
         this.sid = sid;
         this.courseDTO = courseDTO;
         this.facultyDTO = facultyDTO;
@@ -30,10 +34,14 @@ public class StudentDTO {
         this.address = address;
         this.dob = dob;
         this.state = state;
+        this.email = email;
+        this.parentName = parentName;
+        this.parentEmail = parentEmail;
+        
     }
 
-    
-    
+   
+
     /**
      * @return the name
      */
@@ -159,5 +167,47 @@ public class StudentDTO {
     public void setState(int state) {
         this.state = state;
     }
-    
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the parentName
+     */
+    public String getParentName() {
+        return parentName;
+    }
+
+    /**
+     * @param parentName the parentName to set
+     */
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    /**
+     * @return the parentEmail
+     */
+    public String getParentEmail() {
+        return parentEmail;
+    }
+
+    /**
+     * @param parentEmail the parentEmail to set
+     */
+    public void setParentEmail(String parentEmail) {
+        this.parentEmail = parentEmail;
+    }
+
 }

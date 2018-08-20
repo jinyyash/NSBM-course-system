@@ -69,7 +69,7 @@ public class PaymntController {
         }
     }
 
-    public static ArrayList<PaymentDTO> getAllPostgraduate(String sid) throws SQLException, ClassNotFoundException {
+    public static ArrayList<PaymentDTO> getAllPaymentForStudent(String sid) throws SQLException, ClassNotFoundException {
         String sql = "select * from payment where sid='" + sid + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();

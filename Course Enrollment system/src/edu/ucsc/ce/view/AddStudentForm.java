@@ -88,6 +88,12 @@ public class AddStudentForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtParentName = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtParentMail = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -246,15 +252,15 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel4.setText("Address");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 180, 110));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 180, 70));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel5.setText("Date Of Birth");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 190, 60));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 190, 60));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel6.setText("Faculty");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 160, 50));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 160, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
@@ -285,22 +291,28 @@ public class AddStudentForm extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel15.setText("Student State");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 160, 60));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 160, 60));
 
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 320, 40));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 310, 40));
 
         txtAdd.setColumns(20);
         txtAdd.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         txtAdd.setRows(5);
         jScrollPane3.setViewportView(txtAdd);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 90));
-        jPanel1.add(cmbCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 170, 40));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 310, 60));
+
+        cmbCal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbCal, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 200, 40));
 
         cmbfac.setEditable(true);
         cmbfac.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jPanel1.add(cmbfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 170, 50));
+        jPanel1.add(cmbfac, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 200, 50));
 
         pnlMain.setOpaque(false);
         jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 730, 290));
@@ -310,11 +322,11 @@ public class AddStudentForm extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 180, 70));
 
         txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 320, 40));
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 310, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel7.setText("Course");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, 160, 50));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 160, 50));
 
         cmbCourse.setEditable(true);
         cmbCourse.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -323,13 +335,13 @@ public class AddStudentForm extends javax.swing.JFrame {
                 cmbCourseActionPerformed(evt);
             }
         });
-        jPanel1.add(cmbCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 260, 170, 50));
+        jPanel1.add(cmbCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 190, 200, 50));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 72, 710, 10));
 
         txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, 40));
+        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 310, 40));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel11.setText("Student ID");
@@ -352,6 +364,27 @@ public class AddStudentForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 20, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("parent name");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 120, 70));
+
+        txtParentName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtParentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 260, 200, 40));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel14.setText("parent email");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 130, 80));
+
+        txtParentMail.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtParentMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 200, 40));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel16.setText(" email");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 130, 90));
+
+        txtEmail.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 200, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
@@ -467,6 +500,10 @@ public class AddStudentForm extends javax.swing.JFrame {
          // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void cmbCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -513,7 +550,10 @@ public class AddStudentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     public static javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -539,9 +579,12 @@ public class AddStudentForm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDash;
     private javax.swing.JPanel pnlMain;
     public static javax.swing.JTextArea txtAdd;
+    public static javax.swing.JTextField txtEmail;
     public static javax.swing.JTextField txtID;
     public static javax.swing.JTextField txtNIC;
     public static javax.swing.JTextField txtName;
+    public static javax.swing.JTextField txtParentMail;
+    public static javax.swing.JTextField txtParentName;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {

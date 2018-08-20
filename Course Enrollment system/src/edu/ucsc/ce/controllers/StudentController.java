@@ -33,7 +33,7 @@ import javax.swing.JOptionPane;
 public class StudentController {
 
     public static boolean addStudent(StudentDTO c) throws SQLException, ClassNotFoundException {
-        String sql = "insert into student values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into student values(?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, c.getSid());
@@ -45,6 +45,9 @@ public class StudentController {
         stm.setObject(7, c.getAddress());
         stm.setObject(8, c.getDob());
         stm.setObject(9, c.getState());
+         stm.setObject(10, c.getEmail());
+          stm.setObject(11, c.getParentName());
+           stm.setObject(12, c.getParentEmail());
         return stm.executeUpdate() > 0;
     }
 
@@ -157,7 +160,7 @@ public class StudentController {
         while (rst.next()) {
             courseDTO = CourseController.searchCourse(rst.getString(2));
             facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
-            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)),rst.getString(10),rst.getString(11),rst.getString(12));
 
             courseList.add(dTO);
         }
@@ -244,7 +247,7 @@ public class StudentController {
         if (rst.next()) {
             courseDTO = CourseController.searchCourse(rst.getString(2));
             facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
-            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)),rst.getString(10),rst.getString(11),rst.getString(12));
         }
         return dTO;
     }
@@ -260,7 +263,7 @@ public class StudentController {
         if (rst.next()) {
             courseDTO = CourseController.searchCourse(rst.getString(2));
             facultyDTO = Facultycontroller.searchCourse(rst.getString(3));
-            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)));
+            dTO = new StudentDTO(rst.getString(1), courseDTO, facultyDTO, rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), Integer.parseInt(rst.getString(9)),rst.getString(10),rst.getString(11),rst.getString(12));
         }
         return dTO;
     }

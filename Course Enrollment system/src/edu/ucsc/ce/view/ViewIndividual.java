@@ -131,6 +131,11 @@ public class ViewIndividual extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("E-mail");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 140, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 102, 204));
@@ -202,6 +207,10 @@ public class ViewIndividual extends javax.swing.JPanel {
     private void cmbYearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbYearItemStateChanged
         studentResult();
     }//GEN-LAST:event_cmbYearItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     mail();   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -349,5 +358,9 @@ public class ViewIndividual extends javax.swing.JPanel {
             Logger.getLogger(ViewIndividual.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private void mail() {
+        
     }
 }
