@@ -89,8 +89,11 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -363,6 +366,19 @@ public class AddSubjectForm extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel21.setText("X");
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         pack();
@@ -479,6 +495,10 @@ public class AddSubjectForm extends javax.swing.JFrame {
         add();
     }//GEN-LAST:event_jLabel18MouseClicked
 
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel21MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -533,7 +553,9 @@ public class AddSubjectForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
@@ -558,7 +580,7 @@ public class AddSubjectForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-
+        setLocationRelativeTo(null);
     }
 
     private void loadCourseCombo() {

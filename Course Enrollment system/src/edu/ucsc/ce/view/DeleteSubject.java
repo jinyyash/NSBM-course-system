@@ -5,8 +5,12 @@
  */
 package edu.ucsc.ce.view;
 
-import edu.ucsc.ce.controllers.LecturerController;
-import edu.ucsc.ce.models.LecturerDTO;
+import edu.ucsc.ce.controllers.CourseController;
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.controllers.SubjectController;
+import edu.ucsc.ce.models.CourseDetailDTO;
+import edu.ucsc.ce.models.StudentDTO;
+import edu.ucsc.ce.models.SubjectDTO;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
@@ -18,16 +22,14 @@ import javax.swing.JOptionPane;
  *
  * @author Jinadi
  */
-public class AddLecturerForm extends javax.swing.JFrame {
+public class DeleteSubject extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
-    public AddLecturerForm() {
+    public DeleteSubject() {
         initComponents();
         enchan();
-        setLecID();
-        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,6 +41,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnlDash = new javax.swing.JPanel();
         lblrepo = new javax.swing.JLabel();
@@ -52,22 +55,20 @@ public class AddLecturerForm extends javax.swing.JFrame {
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtq = new javax.swing.JTextField();
-        txtNIC1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtspeci = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        txtNIC = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtF = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -220,58 +221,16 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
-        jLabel3.setText("Lecturer");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 200, 50));
+        jLabel3.setText("Delete Subject");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 360, 50));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel6.setText("Course");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 160, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 180, 80));
-
-        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 330, 50));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel10.setText("Qualification");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 80));
-
-        txtq.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtq, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 330, 50));
-
-        txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 330, 50));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel11.setText("NIC");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 180, 80));
-
-        txtspeci.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtspeci.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtspeciActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtspeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 330, 50));
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel12.setText("Speciality");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 180, 80));
-
-        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("            Add");
-        jLabel18.setOpaque(true);
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel18MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 180, 70));
 
         jLabel17.setBackground(new java.awt.Color(153, 153, 153));
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -287,31 +246,77 @@ public class AddLecturerForm extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel13.setText("ID");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 180, 80));
+        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("            Delete");
+        jLabel18.setOpaque(true);
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
 
-        txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 320, 50));
+        txtName.setEditable(false);
+        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 320, 40));
 
-        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 620, 10));
+        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel10.setText("Subject ID");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 180, 70));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
+        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 240, 40));
+
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e8fa(5)_48.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setOpaque(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 50, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel4.setText("_");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel14.setText("X");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel5.setText("X");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        txtF.setEditable(false);
+        txtF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 320, 40));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/FontAwesome_f00d(0)_256.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 280, 320));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel11.setText("removing a subject leads to delete all the contents ");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 620, 60));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 0, 1130, 750));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -393,6 +398,11 @@ public class AddLecturerForm extends javax.swing.JFrame {
         lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
+    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
+        jLabel17.setBackground(Color.BLACK);
+        jLabel17.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jLabel17MouseEntered
+
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
         jLabel18.setBackground(Color.BLACK);
         jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
@@ -403,27 +413,29 @@ public class AddLecturerForm extends javax.swing.JFrame {
         jLabel18.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel18MouseExited
 
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
-        jLabel17.setBackground(Color.BLACK);
-        jLabel17.setForeground(Color.WHITE);
-    }//GEN-LAST:event_jLabel17MouseEntered
-
     private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
         jLabel17.setBackground(Color.GRAY);
         jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel17MouseExited
 
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        loadStDetails();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void txtFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFActionPerformed
+
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        addLecturer();
+        int yes = JOptionPane.showConfirmDialog(this, "Do you really want to remove student", "Remove student", JOptionPane.INFORMATION_MESSAGE);
+        if (yes == 0) {
+            delete();
+        }
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void txtspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeciActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtspeciActionPerformed
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.dispose(); // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -442,40 +454,55 @@ public class AddLecturerForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteSubject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteSubject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteSubject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteSubject.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddLecturerForm().setVisible(true);
+                new DeleteSubject().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
     private javax.swing.JLabel lblLec;
@@ -486,51 +513,36 @@ public class AddLecturerForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNIC1;
+    private javax.swing.JTextField txtF;
+    private javax.swing.JTextField txtNIC;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtq;
-    private javax.swing.JTextField txtspeci;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-
+        setLocationRelativeTo(null);
     }
-
-    private void addLecturer() {
+    
+    private void loadStDetails() {
         try {
-            String id = txtID.getText();
-            String name = txtName.getText();
-            String nic = txtNIC1.getText();
-            String qua = txtq.getText();
-            String speciality = txtspeci.getText();
-            LecturerDTO lecturerDTO = new LecturerDTO(id, nic, name, qua, speciality);
-            boolean add = LecturerController.addLecturer(lecturerDTO);
-            if (add) {
-                JOptionPane.showMessageDialog(null, "Lecturer Added sucessfully");
-            } else {
-                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
-            }
+            SubjectDTO dTO=SubjectController.searchSubjectDTO(txtNIC.getText());
+            txtName.setText(dTO.getName());
+            txtF.setText(dTO.getCourseDTO().getName());
+            
         } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "OOPz!Try Again");
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteSubject.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void setLecID() {
-
+    
+    private void delete() {
         try {
-            String lecID = LecturerController.getLastLecturerDTOID();
-            if (lecID.equals("")) {
-                txtID.setText("LEC001");
+            if (SubjectController.remove(txtNIC.getText())) {
+                JOptionPane.showMessageDialog(this, "Course removed sucessfully");
             } else {
-                String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+                JOptionPane.showMessageDialog(this, "oops!!!");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "oops!!!");
+            Logger.getLogger(DeleteSubject.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

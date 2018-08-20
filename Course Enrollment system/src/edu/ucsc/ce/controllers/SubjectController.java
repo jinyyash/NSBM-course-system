@@ -159,5 +159,10 @@ public class SubjectController {
         }
         return arrayList ;
     }
-     
+     public static boolean remove(String id) throws SQLException, ClassNotFoundException {
+        String sql = "Delete from subject where ssid='" + id + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        return stm.executeUpdate(sql) > 0;
+    }
 }

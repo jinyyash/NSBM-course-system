@@ -174,8 +174,8 @@ public class StudentController {
         //stm.setObject(2, c.getCourseDTO().getCid());
         for (CourseDetailDTO courseDetailDTO : courseDetailDTOs) {
             stm.setObject(1, sdto.getSid() + courseDetailDTO.getSubjectDTO().getSid());
-            stm.setObject(2, sdto.getSid());
-            stm.setObject(3, courseDetailDTO.getSubjectDTO().getSid());
+            stm.setObject(3, sdto.getSid());
+            stm.setObject(2, courseDetailDTO.getSubjectDTO().getSid());
             stm.addBatch();
         }
 
@@ -248,7 +248,8 @@ public class StudentController {
         }
         return dTO;
     }
-     public static StudentDTO searchStudentDTONIC(String ID) throws SQLException, ClassNotFoundException {
+
+    public static StudentDTO searchStudentDTONIC(String ID) throws SQLException, ClassNotFoundException {
         String sql = "select * from student where nic='" + ID + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
@@ -300,7 +301,8 @@ public class StudentController {
         return courseList;
 
     }
-     public static ArrayList<PostgraduateDTO> getAllPostgraduate() throws SQLException, ClassNotFoundException {
+
+    public static ArrayList<PostgraduateDTO> getAllPostgraduate() throws SQLException, ClassNotFoundException {
         String sql = "select * from postgraduate";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
@@ -310,19 +312,40 @@ public class StudentController {
         PostgraduateDTO udto = null;
         while (rst.next()) {
             dTO = searchStudentDTO(rst.getString("sid"));
-            udto = new PostgraduateDTO(dTO, Integer.parseInt(rst.getString(2)),rst.getString(3),rst.getString(4));
+            udto = new PostgraduateDTO(dTO, Integer.parseInt(rst.getString(2)), rst.getString(3), rst.getString(4));
             courseList.add(udto);
         }
         return courseList;
 
     }
-      public static boolean removeStudent(String PaymentID) throws SQLException, ClassNotFoundException {
+
+    public static boolean removeStudent(String PaymentID) throws SQLException, ClassNotFoundException {
         String sql = "Delete from student where nic='" + PaymentID + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         return stm.executeUpdate(sql) > 0;
     }
 
-
    
+
+    public static ArrayList<Student_SubDTO> getAllStudentSubforStudent(String id) throws SQLException, ClassNotFoundException {
+        String sql = "select distinct * from Student_Sub where sid='" + id + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        ArrayList<Student_SubDTO> courseList = new ArrayList();
+        StudentDTO dTO = null;
+        Student_SubDTO student_SubDTO = null;
+        SubjectDTO sdto = null;
+        while (rst.next()) {
+            dTO = searchStudentDTO(rst.getString(2));
+            sdto = SubjectController.searchSubjectDTO(rst.getString(3));
+            student_SubDTO = new Student_SubDTO(rst.getString(1), dTO, sdto);
+
+            courseList.add(student_SubDTO);
+        }
+        return courseList;
+
+    }
+
 }

@@ -5,29 +5,36 @@
  */
 package edu.ucsc.ce.view;
 
-import edu.ucsc.ce.controllers.LecturerController;
-import edu.ucsc.ce.models.LecturerDTO;
+import edu.ucsc.ce.controllers.StudentController;
+import edu.ucsc.ce.models.ResultDTO;
+import edu.ucsc.ce.models.Student_SubDTO;
+import static edu.ucsc.ce.view.LabForm.pnlMain;
+import static edu.ucsc.ce.view.ViewStudent.jLabel2;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jinadi
  */
-public class AddLecturerForm extends javax.swing.JFrame {
+public class StudentSubjectReport extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
-    public AddLecturerForm() {
+    //AdminHomeForm adminHomeForm=new AdminHomeForm();
+    JFrame c;
+    
+    public StudentSubjectReport() {
         initComponents();
         enchan();
-        setLecID();
-        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -39,7 +46,17 @@ public class AddLecturerForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jFrame1 = new javax.swing.JFrame();
+        menuBar1 = new java.awt.MenuBar();
+        menu1 = new java.awt.Menu();
+        menu2 = new java.awt.Menu();
+        jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnlDash = new javax.swing.JPanel();
         lblrepo = new javax.swing.JLabel();
         lblDash = new javax.swing.JLabel();
@@ -51,29 +68,40 @@ public class AddLecturerForm extends javax.swing.JFrame {
         lblExam = new javax.swing.JLabel();
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtq = new javax.swing.JTextField();
-        txtNIC1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        txtspeci = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        txtNIC = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        menu1.setLabel("File");
+        menuBar1.add(menu1);
+
+        menu2.setLabel("Edit");
+        menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel3.setText("X");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
 
         pnlDash.setBackground(new java.awt.Color(0, 0, 0));
         pnlDash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,47 +246,33 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
         jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 710));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
-        jLabel3.setText("Lecturer");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 200, 50));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel9.setText("Name");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 180, 80));
-
-        txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 330, 50));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
+        jLabel5.setText("Student Subject List");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 500, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel10.setText("Qualification");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 180, 80));
+        jLabel10.setText("Student ID");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 180, 70));
 
-        txtq.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtq, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 330, 50));
+        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 240, 40));
 
-        txtNIC1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 330, 50));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel11.setText("NIC");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 180, 80));
-
-        txtspeci.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        txtspeci.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtspeciActionPerformed(evt);
+            },
+            new String [] {
+                "Subject ID", "Subject Name", "Semester", "Creadits"
             }
-        });
-        jPanel1.add(txtspeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 330, 50));
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel12.setText("Speciality");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 180, 80));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 660, 430));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("            Add");
+        jLabel18.setText("            Refresh");
         jLabel18.setOpaque(true);
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -271,127 +285,105 @@ public class AddLecturerForm extends javax.swing.JFrame {
                 jLabel18MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, 170, 50));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 650, 170, 50));
 
-        jLabel17.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel17.setText("           Cancel");
-        jLabel17.setOpaque(true);
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel17MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel17MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 640, 170, 50));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel13.setText("ID");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 180, 80));
-
-        txtID.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 320, 50));
-
-        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 620, 10));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel4.setText("_");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel14.setText("X");
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e8fa(5)_48.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setOpaque(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                jLabel7MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 50, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1000, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblDashMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseEntered
-        lblDash.setFont(new Font("Segoe UI", Font.BOLD, 20));
-
-    }//GEN-LAST:event_lblDashMouseEntered
-
-    private void lblDashMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseExited
-        lblDash.setFont(new Font("Segoe UI Light", Font.BOLD, 18));
-
-    }//GEN-LAST:event_lblDashMouseExited
-
-    private void lblStudeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseEntered
-        lblStude.setFont(new Font("Segoe UI", Font.BOLD, 20));
-
-    }//GEN-LAST:event_lblStudeMouseEntered
-
-    private void lblLecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseEntered
-        lblLec.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblLecMouseEntered
-
-    private void lblinsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseEntered
-        lblins.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblinsMouseEntered
-
-    private void lblPaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseEntered
-        lblPayment.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblPaymentMouseEntered
-
-    private void lblsubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseEntered
-        lblsub.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblsubMouseEntered
-
     private void lblrepoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseEntered
         lblrepo.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseEntered
-
-    private void lblExamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseEntered
-        lblExam.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblExamMouseEntered
-
-    private void lblSettMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseEntered
-        lblSett.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblSettMouseEntered
-
-    private void lblStudeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseExited
-        lblStude.setFont(new Font("Segoe UI Light", Font.BOLD, 18));    // TODO add your handling code here:
-    }//GEN-LAST:event_lblStudeMouseExited
-
-    private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblLecMouseExited
-
-    private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblinsMouseExited
-
-    private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblPaymentMouseExited
-
-    private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
-    }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
         lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
-    private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
-    }//GEN-LAST:event_lblExamMouseExited
+    private void lblDashMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseEntered
+        lblDash.setFont(new Font("Segoe UI", Font.BOLD, 20));
+    }//GEN-LAST:event_lblDashMouseEntered
+
+    private void lblDashMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashMouseExited
+        lblDash.setFont(new Font("Segoe UI Light", Font.BOLD, 18));
+    }//GEN-LAST:event_lblDashMouseExited
+
+    private void lblStudeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseEntered
+        lblStude.setFont(new Font("Segoe UI", Font.BOLD, 20));
+    }//GEN-LAST:event_lblStudeMouseEntered
+
+    private void lblStudeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudeMouseExited
+        lblStude.setFont(new Font("Segoe UI Light", Font.BOLD, 18));    // TODO add your handling code here:
+    }//GEN-LAST:event_lblStudeMouseExited
+
+    private void lblLecMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseEntered
+        lblLec.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblLecMouseEntered
+
+    private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblLecMouseExited
+
+    private void lblinsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseEntered
+        lblins.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblinsMouseEntered
+
+    private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblinsMouseExited
+
+    private void lblPaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseEntered
+        lblPayment.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPaymentMouseEntered
+
+    private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPaymentMouseExited
+
+    private void lblSettMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseEntered
+        lblSett.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblSettMouseEntered
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
         lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
+
+    private void lblExamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseEntered
+        lblExam.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblExamMouseEntered
+
+    private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+    }//GEN-LAST:event_lblExamMouseExited
+
+    private void lblsubMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseEntered
+        lblsub.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblsubMouseEntered
+
+    private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+    }//GEN-LAST:event_lblsubMouseExited
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        this.dispose();
+        new StudentSubjectReport().setVisible(true);
+    }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
         jLabel18.setBackground(Color.BLACK);
@@ -403,27 +395,13 @@ public class AddLecturerForm extends javax.swing.JFrame {
         jLabel18.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel18MouseExited
 
-    private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
-        jLabel17.setBackground(Color.BLACK);
-        jLabel17.setForeground(Color.WHITE);
-    }//GEN-LAST:event_jLabel17MouseEntered
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        loadStDetails();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
-        jLabel17.setBackground(Color.GRAY);
-        jLabel17.setForeground(Color.BLACK);        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel17MouseExited
-
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        addLecturer();
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void txtspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtspeciActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtspeciActionPerformed
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        this.dispose(); // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+       this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -442,13 +420,13 @@ public class AddLecturerForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddLecturerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -456,26 +434,28 @@ public class AddLecturerForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddLecturerForm().setVisible(true);
+                new StudentSubjectReport().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
     private javax.swing.JLabel lblLec;
@@ -485,52 +465,34 @@ public class AddLecturerForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblins;
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.MenuBar menuBar1;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNIC1;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtq;
-    private javax.swing.JTextField txtspeci;
+    private javax.swing.JTextField txtNIC;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-
+        setLocationRelativeTo(null);
+        
     }
-
-    private void addLecturer() {
+    
+    private void loadStDetails() {
         try {
-            String id = txtID.getText();
-            String name = txtName.getText();
-            String nic = txtNIC1.getText();
-            String qua = txtq.getText();
-            String speciality = txtspeci.getText();
-            LecturerDTO lecturerDTO = new LecturerDTO(id, nic, name, qua, speciality);
-            boolean add = LecturerController.addLecturer(lecturerDTO);
-            if (add) {
-                JOptionPane.showMessageDialog(null, "Lecturer Added sucessfully");
-            } else {
-                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "OOPz!Try Again");
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void setLecID() {
-
-        try {
-            String lecID = LecturerController.getLastLecturerDTOID();
-            if (lecID.equals("")) {
-                txtID.setText("LEC001");
-            } else {
-                String id = lecID.substring(lecID.length() - 1, lecID.length());
-                txtID.setText(lecID.substring(0, lecID.length()-1) + (Integer.parseInt(id) + 1));
+            ArrayList<Student_SubDTO> list = StudentController.getAllStudentSubforStudent(txtNIC.getText());
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            
+            for (Student_SubDTO DTO : list) {
+                
+                Object[] row = {DTO.getSubjectDTO().getSid(), DTO.getSubjectDTO().getName(), DTO.getSubjectDTO().getSemester(), DTO.getSubjectDTO().getCredits()};
+                dtm.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 }

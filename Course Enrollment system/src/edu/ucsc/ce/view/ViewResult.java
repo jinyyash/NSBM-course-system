@@ -305,6 +305,11 @@ public class ViewResult extends javax.swing.JFrame {
         jLabel14.setText("                   All");
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel14.setOpaque(true);
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 380, 40));
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 790, 510));
 
@@ -453,6 +458,15 @@ public class ViewResult extends javax.swing.JFrame {
         jLabel13.setForeground(Color.BLACK);
         jLabel13.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLabel13MouseExited
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        jPanel2.removeAll();
+        ViewAll form = new ViewAll();
+        form.setSize(jLabel2.getSize());
+        jPanel2.add(form);
+        jPanel2.repaint();
+        jPanel2.revalidate();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments

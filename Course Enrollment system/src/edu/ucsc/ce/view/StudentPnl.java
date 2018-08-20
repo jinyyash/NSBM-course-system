@@ -55,7 +55,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel1MouseExited(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 300, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 380, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,12 +71,15 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel2MouseExited(evt);
             }
         });
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 170, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Delete Student");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel3MouseEntered(evt);
             }
@@ -84,7 +87,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel3MouseExited(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 160, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,7 +142,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel6MouseExited(evt);
             }
         });
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 160, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 230, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,7 +158,7 @@ public class StudentPnl extends javax.swing.JPanel {
                 jLabel7MouseExited(evt);
             }
         });
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 250, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 310, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
@@ -206,7 +209,7 @@ public class StudentPnl extends javax.swing.JPanel {
         jLabel6.setFont(new Font("Segoe UI Light", Font.BOLD, 20));     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        jLabel1.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
+        jLabel7.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
         jLabel5.setText("Update Student Subject");    }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
@@ -231,6 +234,10 @@ public class StudentPnl extends javax.swing.JPanel {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
        new UpdateStudentSubjectSelecForm().setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+       new DeletStudent().setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

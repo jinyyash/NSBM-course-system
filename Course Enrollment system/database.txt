@@ -57,6 +57,8 @@ create table subject(
 	
 	
 );	
+ALTER TABLE subject
+ADD location varchar(20);
 
 create table Instructor(
 	IID varchar(10) NOT NULL PRIMARY KEY,

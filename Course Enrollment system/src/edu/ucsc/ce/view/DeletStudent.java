@@ -56,13 +56,14 @@ public class DeletStudent extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtNIC = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtF = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -262,9 +263,6 @@ public class DeletStudent extends javax.swing.JFrame {
         txtName.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 320, 40));
 
-        jPanel2.setOpaque(false);
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 730, 220));
-
         jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel10.setText("NIC");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 180, 70));
@@ -304,6 +302,13 @@ public class DeletStudent extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 320, 40));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/FontAwesome_f00d(0)_256.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 280, 320));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel11.setText("removing a student leads to delete all the contents of him.");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 620, 60));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
@@ -474,6 +479,7 @@ public class DeletStudent extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -482,9 +488,9 @@ public class DeletStudent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
     private javax.swing.JLabel lblLec;

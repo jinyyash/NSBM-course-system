@@ -193,6 +193,7 @@ public class ViewUndergraduates extends javax.swing.JPanel {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
             for (UndergraduateDTO graduate : graduates) {
+                System.out.println(graduate.getStudentDTO().getNIC());
                 Object row[] = {graduate.getStudentDTO().getNIC(), graduate.getStudentDTO().getName(), graduate.getStudentDTO().getFacultyDTO().getName(), graduate.getStudentDTO().getCourseDTO().getName()};
                 dtm.addRow(row);
             }

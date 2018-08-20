@@ -114,9 +114,12 @@ public class LabAssigninForm extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -471,6 +474,19 @@ public class LabAssigninForm extends javax.swing.JFrame {
         jLabel14.setText("Remain Student");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 520, 180, 80));
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel15.setText("X");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -641,6 +657,10 @@ public class LabAssigninForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel24MouseExited
 
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel15MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -687,6 +707,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -697,6 +718,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

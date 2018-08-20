@@ -393,7 +393,7 @@ public class ViewStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        System.exit(0);
+       this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked

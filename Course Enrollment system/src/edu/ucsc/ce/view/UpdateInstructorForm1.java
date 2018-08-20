@@ -26,6 +26,7 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     public UpdateInstructorForm1() {
         initComponents();
         enchan();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -70,9 +71,12 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtName2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -339,6 +343,19 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         txtName2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jPanel1.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 320, 40));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel14.setText("X");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1000, 720));
 
@@ -458,6 +475,10 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
 update();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -502,10 +523,12 @@ update();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

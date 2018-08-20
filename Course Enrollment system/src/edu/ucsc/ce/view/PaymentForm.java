@@ -37,13 +37,14 @@ public class PaymentForm extends javax.swing.JFrame {
     ArrayList<PaymentDTO> List = new ArrayList<>();
     String newID = "";
     String id = getLatID();
-
     DefaultTableModel dtm;
     DefaultTableModel dtm1;
 
     public PaymentForm() {
         initComponents();
         enchan();
+        setLocationRelativeTo(null);
+        
         loadStudent();
 
     }
@@ -87,9 +88,12 @@ public class PaymentForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSub = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -372,6 +376,19 @@ public class PaymentForm extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 650, 160, 40));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel4.setText("_");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel13.setText("X");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -491,6 +508,10 @@ public class PaymentForm extends javax.swing.JFrame {
         jLabel20.setBackground(Color.GRAY);
         jLabel20.setForeground(Color.BLACK);    }//GEN-LAST:event_jLabel20MouseExited
 
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -532,11 +553,12 @@ public class PaymentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

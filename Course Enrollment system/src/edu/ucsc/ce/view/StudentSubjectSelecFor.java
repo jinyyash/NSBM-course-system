@@ -40,6 +40,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     public StudentSubjectSelecFor() {
         initComponents();
         enchan();
+        setLocationRelativeTo(null);
         loadStudentID();
 
     }
@@ -94,9 +95,12 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -461,6 +465,19 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 630, 170, 50));
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel14.setText("X");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel13.setText("_");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -600,10 +617,10 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         StudentDTO dTO = studentList.get(cmbID.getSelectedIndex());
         // TODO add your handling code here:
-         dtm1 = (DefaultTableModel) jTable2.getModel();
-        
+        dtm1 = (DefaultTableModel) jTable2.getModel();
+
         loadSubjectToTable(dTO.getCourseDTO(), dTO.getBatch());
-        
+
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -630,10 +647,10 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         try {
             StudentDTO studentDTO = studentList.get(cmbID.getSelectedIndex());
             boolean add = StudentController.addStudentSubject(selectedList, studentDTO);
-            if(add){
-                JOptionPane.showMessageDialog(null,"Subject added");
-            }else{
-                 JOptionPane.showMessageDialog(null,"faild");
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Subject added");
+            } else {
+                JOptionPane.showMessageDialog(null, "faild");
             }
         } catch (SQLException ex) {
             Logger.getLogger(StudentSubjectSelecFor.class.getName()).log(Level.SEVERE, null, ex);
@@ -642,6 +659,10 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -686,6 +707,8 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -755,14 +778,16 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
 
     private void loadSubjectToTable(CourseDTO courseDTO, String batch) {
         try {
-            ArrayList<CourseDetailDTO> cddtos = SubjectController.getAllSubjectDetail();
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
+            ArrayList<CourseDetailDTO> cddtos = SubjectController.getAllSubjectDetail();
+
             for (CourseDetailDTO cddto : cddtos) {
                 int year = Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(batch);
                 System.out.println(cddto.getCourseDTO().getCid().equals(courseDTO.getCid()));
                 if ((cddto.getCourseDTO().getCid().equals(courseDTO.getCid())) && (year == Integer.parseInt(cddto.getSubjectDTO().getSemester())) && (jComboBox1.getSelectedIndex() + 1) == Integer.parseInt(cddto.getSemester())) {
                     courseDetailList.add(cddto);
+                    System.out.println("added");
                     Object[] row = {cddto.getSubjectDTO().getName(), cddto.getSubjectDTO().getLectureDTO().getName(), cddto.getSubjectDTO().getCredits(), cddto.getSubjectDTO().getDuration(), cddto.getSubjectDTO().getPrice()};
                     dtm.addRow(row);
 

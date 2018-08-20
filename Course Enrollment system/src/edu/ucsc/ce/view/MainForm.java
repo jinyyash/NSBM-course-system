@@ -69,6 +69,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         pnlMain = new javax.swing.JPanel();
         lblUser1 = new javax.swing.JLabel();
         panelUser = new javax.swing.JPanel();
@@ -92,6 +93,8 @@ public class MainForm extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         jLabel60 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -146,7 +149,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel8MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, 90, 30));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 90, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Student");
@@ -188,7 +191,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 130, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Result");
+        jLabel6.setText("Exam");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,7 +201,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel6MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 110, 50));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Subject");
@@ -211,7 +214,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel7MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 110, 50));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 110, 50));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Payments");
@@ -224,9 +227,22 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel10MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 120, 50));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 120, 50));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1000, 80));
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setText("Result");
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel14MouseEntered(evt);
+            }
+        });
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, 50));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1000, 80));
 
         pnlMain.setOpaque(false);
         jPanel2.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1000, 260));
@@ -443,6 +459,15 @@ public class MainForm extends javax.swing.JFrame {
         panelDeleteUser.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 30));
 
         jPanel2.add(panelDeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 340, 120));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel12.setText("NSBM");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel13.setText("Student Management System");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
@@ -768,6 +793,14 @@ public class MainForm extends javax.swing.JFrame {
        System.exit(0); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -809,6 +842,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
