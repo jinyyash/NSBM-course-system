@@ -14,6 +14,7 @@ import edu.ucsc.ce.models.StudentDTO;
 import static edu.ucsc.ce.view.AddStudentForm.txtID;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -41,6 +42,8 @@ public class ResultForm extends javax.swing.JFrame {
         enchan();
         setLocationRelativeTo(null);
         loadExam();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
         loadstudent();
     }
 
@@ -515,7 +518,7 @@ public class ResultForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseExited
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-       DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.removeRow(jTable1.getSelectedRow());
         resultList.remove(jTable1.getSelectedRow());
     }//GEN-LAST:event_jLabel20MouseClicked
@@ -681,8 +684,8 @@ public class ResultForm extends javax.swing.JFrame {
         if (id == null) {
             id = "1";
         } else {
-            String did = Integer.parseInt(id)+1+"";
-          /*  if (newID.equals("")) {
+            String did = Integer.parseInt(id) + 1 + "";
+            /*  if (newID.equals("")) {
                 newID = id.substring(0, id.length() - 1) + (Integer.parseInt(did) + 1);
                 id = newID;
             } else {
@@ -690,12 +693,12 @@ public class ResultForm extends javax.swing.JFrame {
                 System.out.println(resultList.size());
                 id = newID;
             }*/
-          id=did;
+            id = did;
         }
         ResultDTO r = new ResultDTO(id, ex, studentDTO, result, grade);
 
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-      
+
         Object[] row = {r.getRid(), r.getStudentDTO().getName(), r.getExamDTO().getEid(), r.getResult(), r.getGrade()};
         resultList.add(r);
         dtm.addRow(row);
@@ -716,7 +719,7 @@ public class ResultForm extends javax.swing.JFrame {
 
     private void addResult() {
         try {
-            boolean add=ExamController.Addresult(resultList);
+            boolean add = ExamController.Addresult(resultList);
             if (add) {
                 JOptionPane.showMessageDialog(null, "Result Added sucessfully");
             } else {

@@ -17,8 +17,12 @@ public class DBConnection {
 
     private static DBConnection dbConnection;
      private Connection conn;
-
-    private DBConnection() throws SQLException, ClassNotFoundException {
+/**
+ * 
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
+    private DBConnection() throws SQLException, ClassNotFoundException {//constructor private then we cant access it when we create object
         Class.forName("com.mysql.jdbc.Driver");
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/nsbm", "root", "");
     }

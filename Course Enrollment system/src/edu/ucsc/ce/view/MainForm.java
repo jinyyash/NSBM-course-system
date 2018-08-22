@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.UserController;
 import edu.ucsc.ce.models.User;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +37,9 @@ public class MainForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         panelUser.setVisible(false);
         panelDeleteUser.setVisible(false);
-        // enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
+        // enchan();
     }
 
     /**
@@ -87,6 +89,8 @@ public class MainForm extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         lblDele1 = new javax.swing.JLabel();
         panelDeleteUser = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
@@ -175,7 +179,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel5MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 110, 50));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 110, 50));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Instructor");
@@ -188,10 +192,10 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel9MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 130, 50));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 130, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Exam");
+        jLabel6.setText("Result");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -201,7 +205,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel6MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 110, 50));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 110, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Subject");
@@ -230,7 +234,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 120, 50));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel14.setText("Result");
+        jLabel14.setText("Exam");
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -240,7 +244,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel14MouseEntered(evt);
             }
         });
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, 110, 50));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 110, 50));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1000, 80));
 
@@ -303,7 +307,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setText("re-enter password");
-        panelUser.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 50));
+        panelUser.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, 50));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,8 +321,8 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel49.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("password");
-        panelUser.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 50));
+        jLabel49.setText("type");
+        panelUser.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 80, 50));
 
         jPasswordField2.setFont(new java.awt.Font("Raleway Light", 0, 15)); // NOI18N
         jPasswordField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -327,7 +331,7 @@ public class MainForm extends javax.swing.JFrame {
                 jPasswordField2ActionPerformed(evt);
             }
         });
-        panelUser.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 150, 30));
+        panelUser.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 150, 30));
 
         jPasswordField1.setFont(new java.awt.Font("Raleway Light", 0, 15)); // NOI18N
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -349,7 +353,7 @@ public class MainForm extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        panelUser.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 100, 30));
+        panelUser.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 100, 30));
 
         jTextField4.setFont(new java.awt.Font("Raleway Light", 0, 15)); // NOI18N
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -369,6 +373,10 @@ public class MainForm extends javax.swing.JFrame {
         });
         panelUser.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150, 30));
 
+        jLabel51.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel51.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel51.setText("Add");
+        jLabel51.setOpaque(true);
         jLabel51.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel51MouseClicked(evt);
@@ -377,7 +385,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel51MouseExited(evt);
             }
         });
-        panelUser.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 50, 60));
+        panelUser.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 70, 40));
 
         jLabel52.setFont(new java.awt.Font("Raleway Thin", 0, 18)); // NOI18N
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -395,7 +403,16 @@ public class MainForm extends javax.swing.JFrame {
         });
         panelUser.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 40, 40));
 
-        jPanel2.add(panelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 350, 230));
+        jLabel50.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("password");
+        panelUser.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 50));
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "user" }));
+        panelUser.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 150, 30));
+
+        jPanel2.add(panelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, 350, 240));
 
         lblDele1.setBackground(new java.awt.Color(51, 51, 51));
         lblDele1.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -544,7 +561,7 @@ public class MainForm extends javax.swing.JFrame {
                 String temp2 = jPasswordField2.getText().toString();
                 if (temp1.equals(temp2) & !"".equals(jTextField1.getText()) & !"".equals(jTextField4.getText()) & !"".equals(jPasswordField1.getText().toString())) {
                     try {
-                        User user = new User(jTextField4.getText(), jTextField1.getText(), jPasswordField1.getText().toString());
+                        User user = new User(jTextField4.getText(), jTextField1.getText(), jPasswordField1.getText().toString(), jComboBox1.getSelectedIndex());
                         res = UserController.addNewUser(user);
                         if (res == true & !"".equals(jTextField1.getText()) & !"".equals(jTextField4.getText()) & !"".equals(jPasswordField1.getText().toString())) {
 
@@ -602,7 +619,7 @@ public class MainForm extends javax.swing.JFrame {
                 String temp2 = jPasswordField2.getText().toString();
                 if (temp1.equals(temp2) & !"".equals(jTextField1.getText()) & !"".equals(jTextField4.getText()) & !"".equals(jPasswordField1.getText().toString())) {
                     try {
-                        User user = new User(jTextField4.getText(), jTextField1.getText(), jPasswordField1.getText().toString());
+                        User user = new User(jTextField4.getText(), jTextField1.getText(), jPasswordField1.getText().toString(), jComboBox1.getSelectedIndex());
                         System.out.println("pw" + jPasswordField1.getText().toString());
                         res = UserController.addNewUser(user);
                         if (res == true) {
@@ -687,8 +704,8 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jLabel60MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel60MouseClicked
         try {
-            String user = txtUser.getText();
-            if ("admin".equals(user)) {
+            User user = UserController.searchUserU(txtUser.getText());
+            if (user.getType() == 0) {
                 JOptionPane.showMessageDialog(MainForm.this, " you cannot delete administrator user account ", "error", 0);
                 txtUser.setText("");
             } else {
@@ -759,6 +776,8 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
         pnlMain.removeAll();
+        pnlMain.repaint();
+        pnlMain.revalidate();
     }//GEN-LAST:event_jPanel2MouseClicked
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
@@ -770,19 +789,19 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-       // jLabel9.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
+        // jLabel9.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-       //jLabel6.setForeground(Color.white); // TODO add your handling code here:
+        //jLabel6.setForeground(Color.white); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-      // jLabel7.setForeground(Color.white); // TODO add your handling code here:
+        // jLabel7.setForeground(Color.white); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-      // jLabel10.setForeground(Color.white);  // TODO add your handling code here:
+        // jLabel10.setForeground(Color.white);  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
@@ -790,11 +809,11 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       System.exit(0); // TODO add your handling code here:
+        System.exit(0); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        // TODO add your handling code here:
+        addExam();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
@@ -837,6 +856,7 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -853,6 +873,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
@@ -947,6 +968,15 @@ public class MainForm extends javax.swing.JFrame {
     private void addSettings() {
         pnlMain.removeAll();
         SettingsPnl form = new SettingsPnl();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }
+
+    private void addExam() {
+        pnlMain.removeAll();
+        ExamPnl form = new ExamPnl();
         form.setSize(pnlMain.getSize());
         pnlMain.add(form);
         pnlMain.repaint();

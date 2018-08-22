@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.UserController;
 import edu.ucsc.ce.models.User;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,9 +35,9 @@ public class MainAdimForm1 extends javax.swing.JFrame {
         initComponents();
         jPanel3.setBackground(new Color(0, 0, 0, 102));
         setLocationRelativeTo(null);
-        
-        // enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
+        // enchan();
     }
 
     /**
@@ -270,23 +271,23 @@ public class MainAdimForm1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-       // jLabel9.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
+        // jLabel9.setFont(new Font("Segoe UI", Font.BOLD, 20)); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-       //jLabel6.setForeground(Color.white); // TODO add your handling code here:
+        //jLabel6.setForeground(Color.white); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-      // jLabel7.setForeground(Color.white); // TODO add your handling code here:
+        // jLabel7.setForeground(Color.white); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
-      // jLabel10.setForeground(Color.white);  // TODO add your handling code here:
+        // jLabel10.setForeground(Color.white);  // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       System.exit(0); // TODO add your handling code here:
+        System.exit(0); // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked

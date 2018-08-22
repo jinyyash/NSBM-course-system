@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.StudentController;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,9 @@ public class UpdateStudentForm extends javax.swing.JFrame {
     public UpdateStudentForm() {
         initComponents();
         enchan();
+        setLocationRelativeTo(null);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -510,9 +514,9 @@ public class UpdateStudentForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
-        
+
     }
-    
+
     private void loadStDetails() {
         try {
             StudentDTO dTO = StudentController.searchStudentDTO(txtNIC.getText());
@@ -520,7 +524,7 @@ public class UpdateStudentForm extends javax.swing.JFrame {
             txtAdd.setText(dTO.getAddress());
             txtF.setText(dTO.getFacultyDTO().getName());
             jTextField1.setText(dTO.getDob());
-         } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UpdateStudentForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

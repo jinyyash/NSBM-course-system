@@ -16,6 +16,7 @@ import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.FacultyDetailDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -39,6 +40,8 @@ public class AddExamForm extends javax.swing.JFrame {
         initComponents();
         enchan();
         loadFca();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
         setLocationRelativeTo(null);
         // getSubID();
 
@@ -664,7 +667,7 @@ public class AddExamForm extends javax.swing.JFrame {
 
     private void getCourse(FacultyDTO get) {
         try {
-            
+
             DetailDTOs = CourseController.getAllFacultyDetails(get.getFid());
             for (FacultyDetailDTO DetailDTO : DetailDTOs) {
                 cmbCourse.addItem(DetailDTO.getCourseDTO().getName());
@@ -696,7 +699,7 @@ public class AddExamForm extends javax.swing.JFrame {
             String EId = txtEid.getText();
             ExamDTO examDTO = new ExamDTO(EId, courseDetailDTOs.get(cmbSubject.getSelectedIndex()).getSubjectDTO(), txtBame.getText() + " $" + txtType.getText(), txtDate.getText(), Double.parseDouble(txtStartTime.getText()), Double.parseDouble(txtStartTime.getText()));
             Boolean add = ExamController.addExam(examDTO);
-             if (add) {
+            if (add) {
                 JOptionPane.showMessageDialog(null, "Exam Added sucessfully");
             } else {
                 JOptionPane.showMessageDialog(null, "OOPz!Try Again");

@@ -269,7 +269,7 @@ public class StudentController {
     }
 
     public static ArrayList<Student_SubDTO> getAllStudentSubForstudent(String id) throws SQLException, ClassNotFoundException {
-        String sql = "select * from Student_Sub where SSID='" + id + "'";
+        String sql = "select * from Student_Sub where SID='" + id + "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -278,8 +278,8 @@ public class StudentController {
         Student_SubDTO student_SubDTO = null;
         SubjectDTO sdto = null;
         while (rst.next()) {
-            dTO = searchStudentDTO(rst.getString(2));
-            sdto = SubjectController.searchSubjectDTO(rst.getString(3));
+            dTO = searchStudentDTO(rst.getString(3));
+            sdto = SubjectController.searchSubjectDTO(rst.getString(2));
             student_SubDTO = new Student_SubDTO(rst.getString(1), dTO, sdto);
 
             courseList.add(student_SubDTO);
@@ -315,7 +315,7 @@ public class StudentController {
         PostgraduateDTO udto = null;
         while (rst.next()) {
             dTO = searchStudentDTO(rst.getString("sid"));
-            udto = new PostgraduateDTO(dTO, Integer.parseInt(rst.getString(2)), rst.getString(3), rst.getString(4));
+            udto = new PostgraduateDTO(dTO,rst.getString(2), rst.getString(3), rst.getString(4));
             courseList.add(udto);
         }
         return courseList;
@@ -341,8 +341,8 @@ public class StudentController {
         Student_SubDTO student_SubDTO = null;
         SubjectDTO sdto = null;
         while (rst.next()) {
-            dTO = searchStudentDTO(rst.getString(2));
-            sdto = SubjectController.searchSubjectDTO(rst.getString(3));
+            dTO = searchStudentDTO(rst.getString(3));
+            sdto = SubjectController.searchSubjectDTO(rst.getString(2));
             student_SubDTO = new Student_SubDTO(rst.getString(1), dTO, sdto);
 
             courseList.add(student_SubDTO);

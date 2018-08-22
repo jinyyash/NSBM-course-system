@@ -6,19 +6,24 @@
 package edu.ucsc.ce.view;
 
 import edu.ucsc.ce.controllers.ExamController;
-import edu.ucsc.ce.controllers.Facultycontroller;
 import edu.ucsc.ce.controllers.StudentController;
 import edu.ucsc.ce.methods.ComboBoxFilling;
 import edu.ucsc.ce.models.ExamDTO;
-import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.ResultDTO;
 import edu.ucsc.ce.models.StudentDTO;
-import static edu.ucsc.ce.view.AddStudentForm.cmbfac;
-import static edu.ucsc.ce.view.AddStudentForm.fac;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -106,7 +111,7 @@ public class ViewIndividual extends javax.swing.JPanel {
 
         lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 180, 48));
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 180, 48));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,8 +130,7 @@ public class ViewIndividual extends javax.swing.JPanel {
 
         lblCourse.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblCourse.setForeground(new java.awt.Color(255, 255, 255));
-        lblCourse.setText("Student ID");
-        jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, 48));
+        jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 180, 48));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 204));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -362,5 +366,40 @@ public class ViewIndividual extends javax.swing.JPanel {
 
     private void mail() {
         
+    }
+     private class SendEmailActionListener implements ActionListener {
+
+        SendEmailActionListener() {
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.transport.protocol", "smtp");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+            Session session = Session.getDefaultInstance(props);
+            try {
+                InternetAddress fromAddress = new InternetAddress("malkanthinanayakkara91@gmail.com");
+                InternetAddress toAddress = new InternetAddress(studentDTOs.get(cmbSt.getSelectedIndex()).getParentEmail());
+
+                Message message = new MimeMessage(session);
+                message.setFrom(fromAddress);
+                message.setRecipient(Message.RecipientType.TO, toAddress);
+                message.setSubject("Student Result Regarding to"+studentDTOs.get(cmbSt.getSelectedIndex()).getName());
+                message.setText("Exam results are updated");
+//Transport.send(message);
+
+                Transport.send(message,"malkanthinanayakkara91",
+                       "0718681357");
+            } catch (MessagingException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

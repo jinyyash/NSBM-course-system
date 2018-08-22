@@ -11,6 +11,7 @@ import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,8 @@ public class DeleteLecture extends javax.swing.JFrame {
         initComponents();
         enchan();
         setLocationRelativeTo(null);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**

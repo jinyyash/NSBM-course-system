@@ -53,8 +53,6 @@ public class ViewAll extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         lblCourse = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbSem = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -102,16 +100,6 @@ public class ViewAll extends javax.swing.JPanel {
         lblCourse.setForeground(new java.awt.Color(255, 255, 255));
         lblCourse.setText("Student ID");
         jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 48));
-
-        jButton1.setBackground(new java.awt.Color(0, 102, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("E-mail");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 140, 40));
-
-        jButton2.setBackground(new java.awt.Color(0, 102, 204));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Print");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 140, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,8 +161,6 @@ public class ViewAll extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbExam;
     private javax.swing.JComboBox<String> cmbSem;
     private javax.swing.JComboBox<String> cmbYear;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

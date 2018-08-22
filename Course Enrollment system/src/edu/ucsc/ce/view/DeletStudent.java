@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.StudentController;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class DeletStudent extends javax.swing.JFrame {
     public DeletStudent() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -509,18 +512,18 @@ public class DeletStudent extends javax.swing.JFrame {
     private void enchan() {
         setLocationRelativeTo(null);
     }
-    
+
     private void loadStDetails() {
         try {
             StudentDTO dTO = StudentController.searchStudentDTONIC(txtNIC.getText());
             txtName.setText(dTO.getName());
             txtF.setText(dTO.getFacultyDTO().getName());
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DeletStudent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void delete() {
         try {
             if (StudentController.removeStudent(txtNIC.getText())) {

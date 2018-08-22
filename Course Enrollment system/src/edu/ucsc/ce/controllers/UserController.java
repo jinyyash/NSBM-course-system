@@ -21,7 +21,7 @@ import java.sql.Statement;
 public class UserController {
 
     public static boolean addNewUser(User user) throws ClassNotFoundException, SQLException {
-        String sql = "Insert into user values('" + user.getUserName() + "','" + user.getName() + "',PASSWORD('" + user.getPassword() + "'))";
+        String sql = "Insert into user values('" + user.getUserName() + "','" + user.getName() + "',PASSWORD('" + user.getPassword() + "')"+",'"+user.getType()+"'"+")";
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
         int res = stm.executeUpdate(sql);
@@ -71,5 +71,17 @@ public class UserController {
         Statement stm = conn.createStatement();
         int res = stm.executeUpdate(sql);
         return res > 0;
+    }
+    
+     public static User searchUserU(String userName) throws SQLException, ClassNotFoundException {
+        String sql = "Select * from user where userName='" + userName + "'";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        Statement stm = conn.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        User user=null;
+        while (rst.next()) {
+             user=new User(userName, rst.getString(2), rst.getString(3), Integer.parseInt(rst.getString(4)));
+        } 
+        return user;
     }
 }

@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.InstructorControll;
 import edu.ucsc.ce.models.InstructorDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,8 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
         initComponents();
         enchan();
         setLocationRelativeTo(null);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -412,31 +415,31 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStudeMouseExited
 
     private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-    lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblLecMouseExited
 
     private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-    lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblinsMouseExited
 
     private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-    lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblPaymentMouseExited
 
     private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-    lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-    lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
     private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-           lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
     }//GEN-LAST:event_lblExamMouseExited
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-    lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -464,7 +467,7 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelActionPerformed
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-       searchInstructor();
+        searchInstructor();
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void txtEmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmaActionPerformed
@@ -472,7 +475,7 @@ public class UpdateInstructorForm1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmaActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-update();        // TODO add your handling code here:
+        update();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
@@ -562,15 +565,15 @@ update();        // TODO add your handling code here:
 
     private void searchInstructor() {
         try {
-            String id=txtIID.getText();
-            InstructorDTO instructorDTO=InstructorControll.searchInstructor(id);
+            String id = txtIID.getText();
+            InstructorDTO instructorDTO = InstructorControll.searchInstructor(id);
             txtNIC1.setText(instructorDTO.getNic());
             txtName2.setText(instructorDTO.getName());
             txtAdd.setText(instructorDTO.getAddress());
             txtQ.setText(instructorDTO.getQualification());
-            txtTel.setText(instructorDTO.getTel()+"");
+            txtTel.setText(instructorDTO.getTel() + "");
             txtEma.setText(instructorDTO.getEmail());
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UpdateInstructorForm1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -578,23 +581,23 @@ update();        // TODO add your handling code here:
 
     private void update() {
         try {
-            String id=txtIID.getText();
-            String name=txtName2.getText();
-            String nic=txtNIC1.getText();
-            String add=txtAdd.getText();
-            String qua=txtQ.getText();
-            int tel=Integer.parseInt(txtTel.getText());
-            String email=txtEma.getText();
-            InstructorDTO dTO=new InstructorDTO(id, nic,name,add, qua, tel, email);
-            boolean up=InstructorControll.updateInstructor(dTO);
-            if(up){
-                JOptionPane.showMessageDialog(null,"Instructor updated sucessfully");
-            }else{
-                JOptionPane.showMessageDialog(null,"oopz!!Try Again");
-                
+            String id = txtIID.getText();
+            String name = txtName2.getText();
+            String nic = txtNIC1.getText();
+            String add = txtAdd.getText();
+            String qua = txtQ.getText();
+            int tel = Integer.parseInt(txtTel.getText());
+            String email = txtEma.getText();
+            InstructorDTO dTO = new InstructorDTO(id, nic, name, add, qua, tel, email);
+            boolean up = InstructorControll.updateInstructor(dTO);
+            if (up) {
+                JOptionPane.showMessageDialog(null, "Instructor updated sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "oopz!!Try Again");
+
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"oopz!!Try Again");
+            JOptionPane.showMessageDialog(null, "oopz!!Try Again");
             Logger.getLogger(UpdateInstructorForm1.class.getName()).log(Level.SEVERE, null, ex);
         }
 

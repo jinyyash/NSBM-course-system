@@ -24,9 +24,9 @@ create table student(
 	address varchar(50),
 	dob varchar(10),
 	type int,
-        email varchar(10),
-	parenName varchar(10),
-	parentMail varchar(10),
+        email varchar(100),
+	parenName varchar(50),
+	parentMail varchar(100),
 	FOREIGN KEY (CID) REFERENCES Courses(CID),
 	FOREIGN KEY (FID) REFERENCES Facult(FID)
 );
@@ -155,6 +155,8 @@ create table user(
 	password varchar(500)NOT NULL,
 	constraint primary key(userName,password)
 );
+ALTER TABLE user
+ADD Type int;
 create table Undergraduate(
 	SID varchar(10) NOT NULL PRIMARY KEY ,
 	yearOfExam int,
@@ -167,6 +169,6 @@ create table Postgraduate(
 	SID varchar(10) NOT NULL PRIMARY KEY ,
 	year int,
 	qualification varchar(50),
-	institute varchar(50)
+	institute varchar(50),
 	FOREIGN KEY (SID) REFERENCES Sutudent(SID)	
 );

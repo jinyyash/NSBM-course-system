@@ -13,8 +13,10 @@ import edu.ucsc.ce.models.PaymentDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import edu.ucsc.ce.models.Student_SubDTO;
 import edu.ucsc.ce.models.SubjectDTO;
+import edu.ucsc.ce.view.ResultForm;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,7 +46,8 @@ public class PaymentForm extends javax.swing.JFrame {
         initComponents();
         enchan();
         setLocationRelativeTo(null);
-        
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
         loadStudent();
 
     }
@@ -477,7 +480,7 @@ public class PaymentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbstuItemStateChanged
 
     private void cmbstuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbstuActionPerformed
-        // TODO add your handling code here:
+        loadSub();// TODO add your handling code here:
     }//GEN-LAST:event_cmbstuActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
@@ -612,6 +615,7 @@ public class PaymentForm extends javax.swing.JFrame {
             lblCourse.setText(sdto.getCourseDTO().getName());
 
             subList = StudentController.getAllStudentSubForstudent(sdto.getSid());
+            System.out.println(subList.get(0).getSubjectDTO().getName());
             for (Student_SubDTO courseDTO : subList) {
                 Object[] row = {courseDTO.getSubjectDTO().getSid(), courseDTO.getSubjectDTO().getName(), courseDTO.getSubjectDTO().getPrice()};
                 dtm.addRow(row);

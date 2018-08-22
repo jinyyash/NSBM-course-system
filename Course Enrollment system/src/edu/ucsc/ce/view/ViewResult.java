@@ -10,6 +10,7 @@ import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +27,7 @@ public class ViewResult extends javax.swing.JFrame {
     public ViewResult() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
     }
 
@@ -398,7 +400,7 @@ public class ViewResult extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked

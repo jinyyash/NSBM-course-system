@@ -13,6 +13,7 @@ import edu.ucsc.ce.models.StudentDTO;
 import edu.ucsc.ce.models.SubjectDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,8 @@ public class DeleteSubject extends javax.swing.JFrame {
     public DeleteSubject() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -521,18 +524,18 @@ public class DeleteSubject extends javax.swing.JFrame {
     private void enchan() {
         setLocationRelativeTo(null);
     }
-    
+
     private void loadStDetails() {
         try {
-            SubjectDTO dTO=SubjectController.searchSubjectDTO(txtNIC.getText());
+            SubjectDTO dTO = SubjectController.searchSubjectDTO(txtNIC.getText());
             txtName.setText(dTO.getName());
             txtF.setText(dTO.getCourseDTO().getName());
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DeleteSubject.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void delete() {
         try {
             if (SubjectController.remove(txtNIC.getText())) {

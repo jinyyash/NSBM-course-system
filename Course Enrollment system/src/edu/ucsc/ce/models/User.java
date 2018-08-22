@@ -14,14 +14,13 @@ public class User {
     private String userName;
     private String name;
     private String password;
+    private int type;
 
-    public User() {
-    }
-
-    public User(String userName, String name, String password) {
+    public User(String userName, String name, String password, int type) {
         this.userName = userName;
         this.name = name;
         this.password = password;
+        this.type = type;
     }
 
     public User(String userName, String password) {
@@ -69,6 +68,20 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the type
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(int type) {
+        this.type = type;
     }
 
 }

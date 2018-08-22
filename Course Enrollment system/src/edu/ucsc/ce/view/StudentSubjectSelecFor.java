@@ -14,6 +14,7 @@ import edu.ucsc.ce.models.CourseDetailDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,6 +43,7 @@ public class StudentSubjectSelecFor extends javax.swing.JFrame {
         enchan();
         setLocationRelativeTo(null);
         loadStudentID();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
     }
 

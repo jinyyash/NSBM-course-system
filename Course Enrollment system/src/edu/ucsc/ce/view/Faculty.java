@@ -7,6 +7,7 @@ package edu.ucsc.ce.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 /**
  *
@@ -21,6 +22,8 @@ public class Faculty extends javax.swing.JFrame {
         initComponents();
         enchan();
         setLocationRelativeTo(null);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**

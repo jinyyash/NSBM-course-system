@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.InstructorControll;
 import edu.ucsc.ce.models.InstructorDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class AddInstructorForm extends javax.swing.JFrame {
     public AddInstructorForm() {
         initComponents();
         enchan();
+                        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
         loadInstructurID();
         setLocationRelativeTo(null);
     }

@@ -16,6 +16,7 @@ import edu.ucsc.ce.models.LecturerDTO;
 import edu.ucsc.ce.models.SubjectDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -39,8 +40,9 @@ public class AddSubjectForm extends javax.swing.JFrame {
         enchan();
         loadCourseCombo();
         loadLecCombo();
-        // getSubID();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
+        // getSubID();
     }
 
     /**
@@ -633,9 +635,9 @@ public class AddSubjectForm extends javax.swing.JFrame {
 
     private void add() {
         try {
-            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText(),txtLocation.getText());
-            CourseDTO courseDTO=al.get(cmbCourse.getSelectedIndex());
-            CourseDetailDTO courseDetailDTO=new CourseDetailDTO(dTO.getSid()+courseDTO.getCid(), courseDTO, dTO,txtSem.getText());
+            SubjectDTO dTO = new SubjectDTO(txtSid.getText(), lec.get(cmbLec.getSelectedIndex()), al.get(cmbCourse.getSelectedIndex()), txtName.getText(), txtSem1.getText(), Integer.parseInt(txtCredit.getText()), Double.parseDouble(txtPrice.getText()), txtDuration.getText(), txtLocation.getText());
+            CourseDTO courseDTO = al.get(cmbCourse.getSelectedIndex());
+            CourseDetailDTO courseDetailDTO = new CourseDetailDTO(dTO.getSid() + courseDTO.getCid(), courseDTO, dTO, txtSem.getText());
             boolean add = SubjectController.addDetails(dTO, courseDetailDTO);
             if (add) {
                 JOptionPane.showMessageDialog(null, "Subject Added sucessfully");

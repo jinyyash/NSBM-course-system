@@ -68,6 +68,7 @@ public class PostGraduate extends javax.swing.JPanel {
         pnlPost.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 170, 50));
 
         cmbYear.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2011", "2012", "2013", "2014", "2015" }));
         pnlPost.add(cmbYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 130, 40));
 
         txtInstitute.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -185,7 +186,7 @@ addstudent();
     private void addstudent() {
         try {
             StudentDTO dTO=new StudentDTO( AddStudentForm.txtID.getText(),AddStudentForm.course.get(AddStudentForm.cmbCourse.getSelectedIndex()),  AddStudentForm.fac.get(AddStudentForm.cmbfac.getSelectedIndex()), AddStudentForm.txtNIC.getText(), AddStudentForm.txtName.getText(),txtBatch.getText(), AddStudentForm.txtAdd.getText(), AddStudentForm.cmbCal.getSelectedItem()+"",2,AddStudentForm.txtEmail.getText(),AddStudentForm.txtParentName.getText(),AddStudentForm.txtParentMail.getText());
-            PostgraduateDTO dTO1=new PostgraduateDTO(dTO,(Integer)cmbYear.getSelectedItem(), txtQuali.getText(),txtInstitute.getText());
+            PostgraduateDTO dTO1=new PostgraduateDTO(dTO,  cmbYear.getSelectedItem().toString(), txtQuali.getText(),txtInstitute.getText());
             boolean add=StudentController.addPostGraduate(dTO, dTO1);
              if(add){
                 JOptionPane.showMessageDialog(null,"Student added sucessfully");

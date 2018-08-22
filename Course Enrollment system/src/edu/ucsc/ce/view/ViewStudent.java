@@ -10,6 +10,7 @@ import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +27,7 @@ public class ViewStudent extends javax.swing.JFrame {
     public ViewStudent() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
     }
 
@@ -305,6 +307,17 @@ public class ViewStudent extends javax.swing.JFrame {
         jLabel14.setText("                   Postgraduate");
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel14.setOpaque(true);
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel14MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel14MouseExited(evt);
+            }
+        });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 380, 40));
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 790, 510));
 
@@ -393,7 +406,7 @@ public class ViewStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
@@ -453,6 +466,25 @@ public class ViewStudent extends javax.swing.JFrame {
         jLabel13.setForeground(Color.BLACK);
         jLabel13.setBackground(Color.WHITE);
     }//GEN-LAST:event_jLabel13MouseExited
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        jPanel2.removeAll();
+        ViewPostgraduates form = new ViewPostgraduates();
+        form.setSize(jLabel2.getSize());
+        jPanel2.add(form);
+        jPanel2.repaint();
+        jPanel2.revalidate();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseEntered
+        jLabel14.setForeground(Color.WHITE);
+        jLabel14.setBackground(Color.BLACK);  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseEntered
+
+    private void jLabel14MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseExited
+        jLabel14.setForeground(Color.BLACK);
+        jLabel14.setBackground(Color.WHITE);// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseExited
 
     /**
      * @param args the command line arguments

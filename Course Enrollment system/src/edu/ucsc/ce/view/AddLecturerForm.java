@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.models.LecturerDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,8 @@ public class AddLecturerForm extends javax.swing.JFrame {
         initComponents();
         enchan();
         setLecID();
+                        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
         setLocationRelativeTo(null);
     }
 
@@ -521,7 +524,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
         try {
             String lecID = LecturerController.getLastLecturerDTOID();
-            if (lecID.equals("")) {
+            if (lecID==null) {
                 txtID.setText("LEC001");
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());

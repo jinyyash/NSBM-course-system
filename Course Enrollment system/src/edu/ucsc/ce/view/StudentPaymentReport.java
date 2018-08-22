@@ -14,6 +14,7 @@ import static edu.ucsc.ce.view.LabForm.pnlMain;
 import static edu.ucsc.ce.view.ViewStudent.jLabel2;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -36,6 +37,7 @@ public class StudentPaymentReport extends javax.swing.JFrame {
     public StudentPaymentReport() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
 
     }
 

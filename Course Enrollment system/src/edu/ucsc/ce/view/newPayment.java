@@ -5,37 +5,49 @@
  */
 package edu.ucsc.ce.view;
 
+import edu.ucsc.ce.controllers.PaymntController;
 import edu.ucsc.ce.controllers.StudentController;
-import edu.ucsc.ce.models.ResultDTO;
+import edu.ucsc.ce.methods.ComboBoxFilling;
+import edu.ucsc.ce.models.PaymentDTO;
+import edu.ucsc.ce.models.StudentDTO;
 import edu.ucsc.ce.models.Student_SubDTO;
+import edu.ucsc.ce.models.SubjectDTO;
 import static edu.ucsc.ce.view.LabForm.pnlMain;
 import static edu.ucsc.ce.view.ViewStudent.jLabel2;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jinadi
  */
-public class StudentSubjectReport extends javax.swing.JFrame {
+public class newPayment extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHomeForm
      */
     //AdminHomeForm adminHomeForm=new AdminHomeForm();
     JFrame c;
+    ArrayList<StudentDTO> studentList = new ArrayList<>();
+    ArrayList<Student_SubDTO> subList = new ArrayList<>();
+    ArrayList<PaymentDTO> List = new ArrayList<>();
+    String newID = "";
+    String id = getLatID();
+    DefaultTableModel dtm;
+    DefaultTableModel dtm1;
 
-    public StudentSubjectReport() {
+    public newPayment() {
         initComponents();
         enchan();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+        loadStudent();
 
     }
 
@@ -59,6 +71,25 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        cmbstu = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        lblCourse = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblFac2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSub = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        txtDis = new javax.swing.JTextField();
+        lblSubName = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         pnlDash = new javax.swing.JPanel();
         lblrepo = new javax.swing.JLabel();
         lblDash = new javax.swing.JLabel();
@@ -70,13 +101,6 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         lblExam = new javax.swing.JLabel();
         lblsub = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtNIC = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -88,23 +112,162 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel3.setText("X");
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel4.setText("_");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
+        jLabel5.setText("Payment");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 50));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel11.setText("Student ID");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 90, 70));
+
+        cmbstu.setEditable(true);
+        cmbstu.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        cmbstu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbstuItemStateChanged(evt);
+            }
+        });
+        cmbstu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbstuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmbstu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 250, 40));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel7.setText("Course");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 70, 70));
+
+        lblCourse.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(lblCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 260, 50));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel9.setText("Name");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 70, 50));
+
+        lblName.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 350, 50));
+
+        lblFac2.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jPanel1.add(lblFac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 140, 250, 50));
+
+        tblSub.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Subject ID", "Name", "price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblSub);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 740, 130));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        jLabel12.setText("Discount");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 180, 70));
+
+        txtDis.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jPanel1.add(txtDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 70, 40));
+
+        lblSubName.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        lblSubName.setText("%");
+        jPanel1.add(lblSubName, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 50, 50));
+
+        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setText("            Add");
+        jLabel18.setOpaque(true);
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel18MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 160, 40));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Payment ID", "Subject Name", "Price", "Discount", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 740, 200));
+
+        jLabel20.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel20.setText("            Add");
+        jLabel20.setOpaque(true);
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel20MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel20MouseExited(evt);
+            }
+        });
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 650, 160, 40));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel13.setText("X");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, 20, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel6.setText("_");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, -20, 30, 50));
 
         pnlDash.setBackground(new java.awt.Color(0, 0, 0));
         pnlDash.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,67 +412,52 @@ public class StudentSubjectReport extends javax.swing.JFrame {
 
         jPanel1.add(pnlDash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 710));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e7f0(10)_48.png"))); // NOI18N
-        jLabel5.setText("Student Payment Details");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 620, 50));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        jLabel10.setText("Student ID");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 180, 70));
-
-        txtNIC.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jPanel1.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 240, 40));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Subject ID", "Subject Name", "Semester", "Creadits"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 660, 430));
-
-        jLabel18.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel18.setText("            Refresh");
-        jLabel18.setOpaque(true);
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel18MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel18MouseExited(evt);
-            }
-        });
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 650, 170, 50));
-
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/Material Icons_e8fa(5)_48.png"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.setOpaque(true);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 50, 40));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/ucsc/ce/images/background-xx.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1000, 710));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbstuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbstuItemStateChanged
+        loadSub();
+    }//GEN-LAST:event_cmbstuItemStateChanged
+
+    private void cmbstuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbstuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbstuActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        setSub(Double.parseDouble(txtDis.getText()));
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
+        jLabel18.setBackground(Color.BLACK);
+        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseEntered
+
+    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
+        jLabel18.setBackground(Color.GRAY);
+        jLabel18.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel18MouseExited
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        add();  // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
+        jLabel20.setBackground(Color.BLACK);
+        jLabel20.setForeground(Color.WHITE);
+    }//GEN-LAST:event_jLabel20MouseEntered
+
+    private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
+        jLabel20.setBackground(Color.GRAY);
+    }//GEN-LAST:event_jLabel20MouseExited
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     private void lblrepoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseEntered
         lblrepo.setFont(new Font("Segoe UI", Font.BOLD, 20));        // TODO add your handling code here:
@@ -383,29 +531,6 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        this.dispose();
-        new StudentSubjectReport().setVisible(true);
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
-        jLabel18.setBackground(Color.BLACK);
-        jLabel18.setForeground(Color.WHITE);        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel18MouseEntered
-
-    private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
-        jLabel18.setBackground(Color.GRAY);
-        jLabel18.setForeground(Color.BLACK);
-    }//GEN-LAST:event_jLabel18MouseExited
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        loadStDetails();  // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.dispose(); // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -423,13 +548,13 @@ public class StudentSubjectReport extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentSubjectReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newPayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -437,34 +562,45 @@ public class StudentSubjectReport extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentSubjectReport().setVisible(true);
+                new newPayment().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbstu;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblCourse;
     private javax.swing.JLabel lblDash;
     private javax.swing.JLabel lblExam;
+    private javax.swing.JLabel lblFac2;
     private javax.swing.JLabel lblLec;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPayment;
     private javax.swing.JLabel lblSett;
     private javax.swing.JLabel lblStude;
+    private javax.swing.JLabel lblSubName;
     private javax.swing.JLabel lblins;
     private javax.swing.JLabel lblrepo;
     private javax.swing.JLabel lblsub;
@@ -472,7 +608,8 @@ public class StudentSubjectReport extends javax.swing.JFrame {
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private javax.swing.JPanel pnlDash;
-    private javax.swing.JTextField txtNIC;
+    private javax.swing.JTable tblSub;
+    private javax.swing.JTextField txtDis;
     // End of variables declaration//GEN-END:variables
 
     private void enchan() {
@@ -480,22 +617,90 @@ public class StudentSubjectReport extends javax.swing.JFrame {
 
     }
 
-    private void loadStDetails() {
+    private void loadStudent() {
         try {
-            ArrayList<Student_SubDTO> list = StudentController.getAllStudentSubforStudent(txtNIC.getText());
-            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            studentList = StudentController.getAll();
+            for (StudentDTO courseDTO : studentList) {
+                cmbstu.addItem(courseDTO.getSid());
+            }
+            ComboBoxFilling combo = new ComboBoxFilling();
+            combo.setSearchableCombo(cmbstu, true, "No Student found");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadSub() {
+        try {
+            dtm = (DefaultTableModel) tblSub.getModel();
             dtm.setRowCount(0);
+            subList.clear();
+            System.out.println(studentList.size());
+            StudentDTO sdto = studentList.get(cmbstu.getSelectedIndex());
+            lblName.setText(sdto.getName());
+            lblCourse.setText(sdto.getCourseDTO().getName());
 
-            for (Student_SubDTO DTO : list) {
-
-                Object[] row = {DTO.getSubjectDTO().getSid(), DTO.getSubjectDTO().getName(), DTO.getSubjectDTO().getSemester(), DTO.getSubjectDTO().getCredits()};
+            subList = StudentController.getAllStudentSubForstudent(sdto.getSid());
+            for (Student_SubDTO courseDTO : subList) {
+                Object[] row = {courseDTO.getSubjectDTO().getSid(), courseDTO.getSubjectDTO().getName(), courseDTO.getSubjectDTO().getPrice()};
                 dtm.addRow(row);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(StudentSubjectReport.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void setSub(Double dis) {
+        dtm1 = (DefaultTableModel) jTable1.getModel();
+        int row = tblSub.getSelectedRow();
+        SubjectDTO subjectDTO = subList.get(row).getSubjectDTO();
+        if (id == null) {
+            id = "1";
+        } else {
+            String did = Integer.parseInt(id) + 1 + "";
+            /*  if (newID.equals("")) {
+                newID = id.substring(0, id.length() - 1) + (Integer.parseInt(did) + 1);
+                id = newID;
+            } else {
+                newID = id.substring(0, id.length() - 1) + (Integer.parseInt(did) + resultList.size() + 1);
+                System.out.println(resultList.size());
+                id = newID;
+            }*/
+            id = did;
+        }
+        Object[] r = {id, subjectDTO.getName(), subjectDTO.getPrice(), txtDis.getText(), subjectDTO.getPrice() - (subjectDTO.getPrice() * dis / 100) + ""};
+        PaymentDTO paymentDTO = new PaymentDTO(id, subjectDTO, studentList.get(cmbstu.getSelectedIndex()), Calendar.DATE + "", Calendar.getInstance().getTime() + "");
+        dtm1.addRow(r);
+        List.add(paymentDTO);
+    }
+
+    private String getLatID() {
+        String id = "";
+        try {
+            id = PaymntController.getID();
+        } catch (SQLException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ResultForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+
+    private void add() {
+        try {
+            boolean add = PaymntController.AddPaymentList(List);
+            if (add) {
+                JOptionPane.showMessageDialog(null, "Payment Added sucessfully");
+            } else {
+                JOptionPane.showMessageDialog(null, "OOPz!Try Again");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -9,6 +9,7 @@ import edu.ucsc.ce.controllers.LecturerController;
 import edu.ucsc.ce.models.LecturerDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class UpdateLecturerForm extends javax.swing.JFrame {
     public UpdateLecturerForm() {
         initComponents();
         enchan();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -357,31 +360,31 @@ public class UpdateLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStudeMouseExited
 
     private void lblLecMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLecMouseExited
-    lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblLec.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblLecMouseExited
 
     private void lblinsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblinsMouseExited
-    lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblins.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblinsMouseExited
 
     private void lblPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseExited
-    lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblPayment.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblPaymentMouseExited
 
     private void lblsubMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblsubMouseExited
-    lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblsub.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblsubMouseExited
 
     private void lblrepoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblrepoMouseExited
-    lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblrepo.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblrepoMouseExited
 
     private void lblExamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseExited
-           lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
+        lblExam.setFont(new Font("Segoe UI Light", Font.BOLD, 18)); // TODO add your handling code here:
     }//GEN-LAST:event_lblExamMouseExited
 
     private void lblSettMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettMouseExited
-    lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
+        lblSett.setFont(new Font("Segoe UI Light", Font.BOLD, 18));        // TODO add your handling code here:
     }//GEN-LAST:event_lblSettMouseExited
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
@@ -405,7 +408,7 @@ public class UpdateLecturerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel17MouseExited
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-Upadte();        // TODO add your handling code here:
+        Upadte();        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -493,14 +496,14 @@ Upadte();        // TODO add your handling code here:
             String qua = txtQ.getText();
             String speciality = txtSpec.getText();
             LecturerDTO lecturerDTO = new LecturerDTO(id, nic, name, qua, speciality);
-            boolean update=LecturerController.updateLecture(lecturerDTO);
-            if(update){
-                JOptionPane.showConfirmDialog(null,"Lecturer Updatetd Sucessfully.." );
-            }else{
-                JOptionPane.showConfirmDialog(null,"OOPS!!Try again" );
+            boolean update = LecturerController.updateLecture(lecturerDTO);
+            if (update) {
+                JOptionPane.showConfirmDialog(null, "Lecturer Updatetd Sucessfully..");
+            } else {
+                JOptionPane.showConfirmDialog(null, "OOPS!!Try again");
             }
         } catch (SQLException | ClassNotFoundException ex) {
-             JOptionPane.showConfirmDialog(null,"OOPS!!Try again" );
+            JOptionPane.showConfirmDialog(null, "OOPS!!Try again");
             Logger.getLogger(UpdateLecturerForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

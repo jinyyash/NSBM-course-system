@@ -21,6 +21,7 @@ import edu.ucsc.ce.models.LabDetailDTO;
 import edu.ucsc.ce.models.Student_SubDTO;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -44,8 +45,7 @@ public class LabAssigninForm extends javax.swing.JFrame {
     ArrayList<InstructorDTO> instructorDTOsAssigned = new ArrayList<>();
     ArrayList<Student_SubDTO> al = new ArrayList<>();
     ArrayList<LabDTO> labDTOs = new ArrayList<>();
-
-    ArrayList<LabDetailDTO> labDTOsDetail = new ArrayList<>();
+     ArrayList<LabDetailDTO> labDTOsDetail = new ArrayList<>();
     ArrayList<LabDTO> labDTOsToList = new ArrayList<>();
     String labDetailID;
 
@@ -56,13 +56,15 @@ public class LabAssigninForm extends javax.swing.JFrame {
             loadFac();
             loadInst();
             loadLabs();
+            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
             setLocationRelativeTo(null);
             if (LabController.getLastLabDetailID() == null) {
-                labDetailID = 1+"";
+                labDetailID = 1 + "";
             } else {
                 labDetailID = LabController.getLastLabDetailID();
             }
-         } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(LabAssigninForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

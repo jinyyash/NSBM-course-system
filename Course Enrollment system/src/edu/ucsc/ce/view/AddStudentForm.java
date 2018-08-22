@@ -13,6 +13,7 @@ import edu.ucsc.ce.models.CourseDTO;
 import edu.ucsc.ce.models.FacultyDTO;
 import edu.ucsc.ce.models.StudentDTO;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,8 @@ public class AddStudentForm extends javax.swing.JFrame {
         loadFca();
         setID();
         setDate();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("download.png")));
+
     }
 
     /**
@@ -493,11 +496,11 @@ public class AddStudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void cmbCalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCalActionPerformed

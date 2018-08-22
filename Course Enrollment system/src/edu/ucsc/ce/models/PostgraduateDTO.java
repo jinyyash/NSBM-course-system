@@ -11,11 +11,11 @@ package edu.ucsc.ce.models;
  */
 public class PostgraduateDTO {
     private StudentDTO studentDTO;
-    private Integer year;
+    private String year;
     private String quali;
     private String institute;
 
-    public PostgraduateDTO(StudentDTO studentDTO, Integer year, String quali, String institute) {
+    public PostgraduateDTO(StudentDTO studentDTO, String year, String quali, String institute) {
         this.studentDTO = studentDTO;
         this.year = year;
         this.quali = quali;
@@ -40,14 +40,14 @@ public class PostgraduateDTO {
     /**
      * @return the year
      */
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
     /**
      * @param year the year to set
      */
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
