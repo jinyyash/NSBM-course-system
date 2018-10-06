@@ -665,7 +665,7 @@ public class AddExamForm extends javax.swing.JFrame {
         }
     }
 
-    private void getCourse(FacultyDTO get) {
+    private void getCourse(FacultyDTO get) {        //get courses of a faculty from the db 
         try {
 
             DetailDTOs = CourseController.getAllFacultyDetails(get.getFid());
@@ -694,7 +694,7 @@ public class AddExamForm extends javax.swing.JFrame {
         }
     }
 
-    private void addExam() {
+    private void addExam() {         //add exam details
         try {
             String EId = txtEid.getText();
             ExamDTO examDTO = new ExamDTO(EId, courseDetailDTOs.get(cmbSubject.getSelectedIndex()).getSubjectDTO(), txtBame.getText() + " $" + txtType.getText(), txtDate.getText(), Double.parseDouble(txtStartTime.getText()), Double.parseDouble(txtStartTime.getText()));
