@@ -526,7 +526,7 @@ public class AddInstructorForm extends javax.swing.JFrame {
 
     }
 
-    private void loadInstructurID() {
+    private void loadInstructurID() {     //loads instructor id when panel appears
         try {
             String id=InstructorControll.getLastInstrucorDTOID();
             if (id==null) {
