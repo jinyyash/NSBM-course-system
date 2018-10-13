@@ -252,7 +252,7 @@ public class AddLabPanel extends javax.swing.JPanel {
     private void getLabID() {
         try {
             String lecID = LabController.getLastLabID();
-            if (lecID == null) {
+            if (lecID == null) {                                     //if the lecID is null, fill it with the given ID
                 txtID.setText("Lab001");
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());
