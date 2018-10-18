@@ -524,7 +524,7 @@ public class AddLecturerForm extends javax.swing.JFrame {
 
         try {
             String lecID = LecturerController.getLastLecturerDTOID();
-            if (lecID==null) {
+            if (lecID==null) {                                         //if lecturer id is null set it to given value
                 txtID.setText("LEC001");
             } else {
                 String id = lecID.substring(lecID.length() - 1, lecID.length());
