@@ -594,7 +594,7 @@ public class AddStudentForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    private void loadCourse() {
+    private void loadCourse() {           //load courses from DB
         try {
             course = CourseController.getAll();
             for (CourseDTO courseDTO : course) {
@@ -624,7 +624,7 @@ public class AddStudentForm extends javax.swing.JFrame {
         }
     }
 
-    private void setID() {
+    private void setID() {             
         try {
             String lecID = StudentController.getLastID();
             if (lecID == null) {
@@ -640,7 +640,7 @@ public class AddStudentForm extends javax.swing.JFrame {
         }
     }
 
-    private void setDate() {
+    private void setDate() {           
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         cmbCal.setDateFormat(format);
     }
